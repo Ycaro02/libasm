@@ -1,6 +1,7 @@
 # include "../../libasm.h"
 # include "../basic_define.h"
 # include <stdio.h>
+# include <stdlib.h>
 
 int basic_strlen(char *str)
 {
@@ -37,7 +38,8 @@ int main(void)
         printf(RED"Strlen test KO\n"RESET);
     }
     char *str = "alo";
-    char *str2 = "ccccc";
-    ft_strcpy(str, str2);
+    char *str2 = malloc(sizeof(char) * 4);
+    str2 = ft_strcpy(str2, str);
+    printf("ret strcpy = %s\n", str2);
     return (0);
 }

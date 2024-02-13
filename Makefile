@@ -6,7 +6,7 @@
 #    By: ycaro <ycaro@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 16:33:38 by nfour             #+#    #+#              #
-#    Updated: 2024/02/13 15:13:11 by ycaro            ###   ########.fr        #
+#    Updated: 2024/02/13 17:05:35 by ycaro            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ SRCS	=	src/ft_strlen.s\
 			src/ft_strcpy.s
 
 NAME	= 	libasm.a
+
+GDB_RULE	= make -C tester gdb
 
 LINK	= ld -o
 
@@ -42,6 +44,9 @@ ${NAME}:	$(OBJS)
 			@ranlib $(NAME)
 			@echo "\033[7;32m -----  Compiling libasm done  ----- \033[0m"
 			@${CALL_TESTER}
+
+gdb:
+	${GDB_RULE}
 
 clean:
 			@echo "\033[7;31m\n -----  Cleaning all objects...  ----- \033[0m\n"

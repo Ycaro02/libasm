@@ -20,6 +20,6 @@ _ft_strlen_loop:
 
 _ft_strlen_exit:
 	mov rax, rcx		; put return value in rax
-	pop rdi				; pop rdi from stack
 	pop rcx
+	pop rdi				; pop rdi from stack
 	ret
