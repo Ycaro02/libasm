@@ -30,6 +30,27 @@ static int test_strlen()
 }
 
 
+static int test_strcpy()
+{
+    char *str = "alo";
+    int max = 10;
+    char *tmp = malloc(sizeof(char) * max);
+    for (int i = 0; i < max; ++i) {
+        tmp[i] = 'Y';
+    }
+    tmp[max - 1] = '\0';
+    printf("tmp before = %s\n", tmp);
+    tmp = ft_strcpy(tmp, str);
+    printf("ret strcpy = %s\n", tmp);
+    
+    char *big = "1234567890123456789";
+    tmp = ft_strcpy(tmp, big);
+    printf("ret strcpy = %s\n", tmp);
+    free(tmp);
+    return (0);
+
+}
+
 int main(void)
 {
     if (test_strlen() == 0){
@@ -37,9 +58,9 @@ int main(void)
     } else {
         printf(RED"Strlen test KO\n"RESET);
     }
-    char *str = "alo";
-    char *str2 = malloc(sizeof(char) * 4);
-    str2 = ft_strcpy(str2, str);
-    printf("ret strcpy = %s\n", str2);
-    return (0);
+    if (test_strcpy() == 0){
+        printf(GREEN"Strcpy test OK\n"RESET);
+    } else {
+        printf(RED"Strcpy test KO\n"RESET);
+    }
 }
