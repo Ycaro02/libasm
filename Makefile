@@ -6,13 +6,14 @@
 #    By: ycaro <ycaro@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 16:33:38 by nfour             #+#    #+#              #
-#    Updated: 2024/02/13 14:20:53 by ycaro            ###   ########.fr        #
+#    Updated: 2024/02/13 15:13:11 by ycaro            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NASM	= 	nasm -f elf64 -o
 
-SRCS	=	src/ft_strlen.s
+SRCS	=	src/ft_strlen.s\
+			src/ft_strcpy.s
 
 NAME	= 	libasm.a
 

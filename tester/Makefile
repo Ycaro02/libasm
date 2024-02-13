@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+         #
+#    By: ycaro <ycaro@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 16:33:38 by nfour             #+#    #+#              #
-#    Updated: 2024/02/12 17:52:39 by nfour            ###   ########.fr        #
+#    Updated: 2024/02/13 15:20:38 by ycaro            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ LIB			= 	libasm.a
 
 NAME		=	libasm_test
 
-CC			= 	gcc
+CC			= 	gcc -g
 
 MAIN		= 	src/test.c
 
@@ -28,7 +28,7 @@ ${NAME}:
 		./script/check_lib.sh
 		@echo " \033[5;36m ----- Compiling ${NAME} ...  ----- \033[0m"
 		cp ../${LIB} .
-		gcc ${MAIN} ${LIB} -o ${NAME} 
+		${CC} ${MAIN} ${LIB} -o ${NAME} 
 		./${NAME}
 
 clean:
