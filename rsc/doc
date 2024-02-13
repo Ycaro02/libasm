@@ -4,7 +4,6 @@ Run gdb
     - start
     - ni for each instuction
 
-
 https://beta.hackndo.com/buffer-overflow/                               --> buffer owerflow with asm example
 
 https://en.wikipedia.org/wiki/X86_instruction_listings                  --> Instruction
@@ -16,3 +15,9 @@ https://www.eecg.utoronto.ca/~amza/www.mindsec.com/files/x86regs.html   --> Regi
 https://en.wikibooks.org/wiki/X86_Assembly/X86_Architecture
 
 https://onecompiler.com/assembly/423f8fy9n                              --> Online assembly compiler
+
+
+https://stackoverflow.com/questions/26783797/repnz-scas-assembly-instruction-specifics  --> how to while on string
+- repnz scasb:
+repnz means "repeat until zero flag is not set and cx is not zero". Each iteration decrements ecx. 
+scas or more precisely scasb compares the value in al to the memory operand (always es:[edi] or es:[di] depending on address size), then sets the flags accordingly (zero flag will be set if the two values equal) and increments (or decrements, based on the direction flag) edi.
