@@ -1,4 +1,14 @@
+GDB PEDA
+https://gitlab.com/kalilinux/packages/gdb-peda
+Run gdb
+    - start
+    - ni for each instuction
+
+
+https://beta.hackndo.com/buffer-overflow/                               --> buffer owerflow with asm example
+
 https://en.wikipedia.org/wiki/X86_instruction_listings                  --> Instruction
+https://beta.hackndo.com/stack-introduction/#prologue---%C3%A9pilogue
 
 https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/     --> Syscalls
 
