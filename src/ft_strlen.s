@@ -7,10 +7,12 @@ ft_strlen:			; int strlen(char *s);
 	;pop 	rbp			; Pop rbp to restore stack
 
 	push	rdi				; push rdi on stack to save it
-	push	rcx				; push rcx on stack 
-	mov		rcx, -1			; rcx - 1 to enter in while, rcx = 0xfffffffffffff
-	cmp		BYTE [rdi], 0	; if !rdi
+	push	rcx				; push rcx on stack
+	xor		rcx, rcx		; initial value 0, for blank or null string 
+	cmp		rdi, 0x0		; rdi NULL
+	; cmp		BYTE [rdi], 0	; if *rdi == 0
 	je		_ft_strlen_exit ; jump equal exit
+	mov		rcx, -1			; rcx - 1 to enter in while, rcx = 0xfffffffffffff
 
 _ft_strlen_loop:
 	cld						; clear direction

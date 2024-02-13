@@ -1,6 +1,8 @@
 #ifndef LIBASM_H
 # define LIBASM_H
 
-int ft_strlen(char const *str);
+# include <stddef.h>
+
+size_t ft_strlen(char const *str);
 
 #endif /* LIBASM_H */

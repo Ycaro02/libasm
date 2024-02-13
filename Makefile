@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+         #
+#    By: ycaro <ycaro@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 16:33:38 by nfour             #+#    #+#              #
-#    Updated: 2024/02/12 18:11:36 by nfour            ###   ########.fr        #
+#    Updated: 2024/02/13 14:20:53 by ycaro            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NASM	= 	nasm -f elf64 -o
 
-SRCS	=	src/test.s
+SRCS	=	src/ft_strlen.s
 
 NAME	= 	libasm.a
 
