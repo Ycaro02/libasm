@@ -11,18 +11,17 @@ ft_strcpy:			; int strlen(char *s);
 	push	rdi				; push rdi on stack 1st args
 	push	rsi				; push rci on stack 2second args
 	push	rcx				; push rcx on stack counter
-
 	push	rdx				; tmp value
 
+_strcpy_protect:
 	cmp		rdi, 0x0		; rdi NULL
-	je		_ft_strcpy_exit
+	je		_strcpy_exit
 	cmp		rsi, 0x0		; rsi NULL	
-	je		_ft_strcpy_exit
+	je		_strcpy_exit
 
+_strcpy_init:
 	xchg	rdi, rsi		; exchange data between rsi and rdi
-
 	call	ft_strlen		; call ft_strlen on rdi --> src, store result in rax
-
 	xchg	rdi, rsi		; restore initiale rsi rdi data
 	mov		rcx, rax		; store src_size in rcx
 
@@ -31,7 +30,7 @@ _strcopy_loop:
 	; xor		al, al			; set al to 0
 	repnz movsb				; repeat until *rdi != al -> '\0'
 
-_ft_strcpy_exit:
+_strcpy_exit:
 	mov		BYTE [rdi], 0x0; need to put '\0'
 	pop 	rdx
 	pop		rcx
