@@ -29,7 +29,7 @@ ${NAME}:
 		@echo " \033[5;36m ----- Compiling ${NAME} ...  ----- \033[0m"
 		cp ../${LIB} .
 		${CC} ${MAIN} ${LIB} -o ${NAME} 
-		./${NAME}
+		valgrind ./${NAME}
 
 gdb:
 	gdb ${NAME}
