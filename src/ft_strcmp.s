@@ -3,10 +3,10 @@ BITS 64
 global	ft_strcmp
 
 ft_strcmp:
-    push        rdi
-    push        rsi
-    push        rcx
-	xor		    rcx, rcx
+    push        rdi                         ; push rdi to save it
+    push        rsi                         ; push rsi to save it
+    push        rcx                         ; push rcx to save it
+	xor		    rcx, rcx                    ; rcx = 0
     cmp		    rdi, 0x0		            ; rdi NULL
 	je		    _strcmp_protect1            ; jump equal exit
     movzx       rax, byte[rdi + rcx]        ; str1[0] in rax for out error
@@ -44,8 +44,8 @@ _strcmp_protect2:
     xor     rdx, rdx                        ; give default value for rdx if str2 == NULL 
 
 _strcmp_exit:
-    pop    rcx
-    pop    rsi
-    pop    rdi
-    sub		rax, rdx
+    pop    rcx                              ; retore register value
+    pop    rsi                              ; retore register value
+    pop    rdi                              ; retore register value
+    sub		rax, rdx                        ; sub rdx to rax and get return value in rax
 	ret
