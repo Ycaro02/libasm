@@ -39,7 +39,7 @@ _strcpy_loop:
 	cld							; clear direction flag
 	xor			al, al			; set al to 0
 	repz movsb					; repeat until *rdi != al -> '\0'
-	mov			BYTE [rdi], 0x0	; need to put '\0'
+	mov			byte[rdi], 0x0	; need to put '\0'
 
 _strcpy_exit:
 	pop			rdx
