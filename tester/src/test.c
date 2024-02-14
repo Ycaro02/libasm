@@ -16,21 +16,6 @@ int new_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[j]);
 }
 
-int cmpbis(char *s1, char *s2)
-{
-	int i = 0, j = 0;
-
-
-	while (s1[i] && s2[j]) {
-        if (s1[i] != s2[j]) {
-            break;
-        }
-		++i;
-		++j;
-	}
-	return (s1[i] - s2[j]);
-}
-
 
 /*
 Dump of assembler code for function basic_strlen:
@@ -40,27 +25,32 @@ Dump of assembler code for function basic_strlen:
 size_t basic_strlen(char *str)
 {
     size_t i = 0;
+    if (!str)
+        return (0);
     while (str[i]) {
         i++;
     }
     return (i);
 }
 
+static int check_strlen(char *str)
+{
+    return (ft_strlen(str) == basic_strlen(str));
+}
+
 static int test_strlen()
 {
-    char *str = "koala";
-    printf("str:%s\nAssembly len |%lu|\n", str, ft_strlen(str));
-    printf("Basic strlen |%lu|\n", basic_strlen(str));
-    str = NULL;
-    printf("str:NULL\nAssembly len |%lu|\n", ft_strlen(str));
-    str = "heylolsdasdadsa";
-    printf("str:%s\nAssembly len |%lu|\n", str, ft_strlen(str));
-    str = "very longnnfjf lonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnng";
-    printf("str:%s\nAssembly len |%lu|\n", str, ft_strlen(str));
-    str = "";
-    printf("str:%s\nAssembly len |%lu|\n", str, ft_strlen(str));
+    if (!check_strlen("koala")\
+        || !check_strlen(NULL)\
+        || !check_strlen("")\
+        || !check_strlen(" ")\
+        || !check_strlen("very longnnfjf lonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnng")\
+        || !check_strlen("y")\
+        || !check_strlen("yooo\nsdasda")\
+        || !check_strlen("yasda\0sdadsa")) {
+            return (1);
+    }
     return (0);
-
 }
 
 static int test_gccstrlen()
@@ -81,12 +71,6 @@ static int test_gccstrlen()
 }
 
 
-
-
-static int ahah(){
-    return (0x42);
-}
-
 static int strcpy_null_test()
 {
     int max = 10, ret = 0;
@@ -96,24 +80,19 @@ static int strcpy_null_test()
     }
     tmp[max - 1] = '\0';
     char *save = strdup(tmp);
-    ahah();
-    printf("Test ft_strcpy(NULL, NULL)\n");
     ft_strcpy(NULL, NULL);
-    if (cmpbis(save, tmp) != 0) {
+    if (ft_strcmp(save, tmp) != 0) {
         ret = 1;
     } 
     else 
     {
-        printf("Test ft_strcpy(tmp, NULL)\n");
         tmp = ft_strcpy(tmp, NULL);
-        printf("tmp = %s\n", tmp);
-        if (cmpbis(save, tmp) != 0) {
+        if (ft_strcmp(save, tmp) != 0) {
             ret = 1;
         } 
         else {
-            printf("Test ft_strcpy(NULL, tmp)\n");
             ft_strcpy(NULL, tmp);
-            if (cmpbis(save, tmp) != 0) {
+            if (ft_strcmp(save, tmp) != 0) {
                 ret = 1;
             }
         }
@@ -134,7 +113,7 @@ static int test_strcpy()
     }
     tmp[max - 1] = '\0';
     tmp = ft_strcpy(tmp, str);
-    if (cmpbis(str, tmp) != 0) {
+    if (ft_strcmp(str, tmp) != 0) {
         printf(RED"Error ret strcpy = %s expected %s\n"RESET, tmp, str);
         ret = 1;
     }
@@ -143,7 +122,7 @@ static int test_strcpy()
         
         char *big = "1234567";
         tmp = ft_strcpy(tmp, big);
-        if (cmpbis(save, tmp) != 0) {
+        if (ft_strcmp(save, tmp) != 0) {
             printf(RED"Error ret strcpy = %s expected %s\n"RESET, tmp, save);
             ret = 1;
         }
@@ -167,6 +146,14 @@ int main(void)
     } else {
         printf(RED"Strcpy test KO\n"RESET);
     }
-    ft_strcmp("koala", "kopoa");
+    if (ft_strcmp("koala", "kopoa") != 'a' - 'p')
+        printf("Error strcmp\n");
+    if (ft_strcmp("koala", "koala") != 0)
+        printf("Error strcmp\n");
+    char *test1 = "bonjours";
+    char *test2 = "bonjours";
+    printf(PURPLE"cmp --> |%s| : |%s| = %d\n"RESET, test1, test2, ft_strcmp(test1, test2));
+    test2 = "bonjour";
+    printf("%scmp --> |%s| : |%s| = %d%s\n",PURPLE, test1, test2, ft_strcmp(test1, test2), RESET);
     // test_gccstrlen();
 }

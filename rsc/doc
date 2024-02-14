@@ -32,6 +32,8 @@ movsb move data from string to string
 ;pop 	rbp			; Pop rbp to restore stack
 
 
+MOVSXD	Cette instruction permet de copier un registre de taille inférieur dans un registre 64 bits en remplissant les bits supplémentaires avec l'extension des signes.
+
 MOVZX : operandedestination(register), operandesource
 - Cette instruction permet de copier un registre de taille inférieur dans un registre de plus grande taille en remplissant les bits supplémentaires par des 0.
 
