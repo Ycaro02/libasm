@@ -37,15 +37,15 @@ _strcmp_get_last_char:
 
 
 _strcmp_protect1:
-    xor     rax, rax                        ; give default value for rax if str1 == NULL
-    jmp     _strcmp_rdi_check
+    xor         rax, rax                    ; give default value for rax if str1 == NULL
+    jmp         _strcmp_rdi_check
 
 _strcmp_protect2:
-    xor     rdx, rdx                        ; give default value for rdx if str2 == NULL 
+    xor         rdx, rdx                    ; give default value for rdx if str2 == NULL 
 
 _strcmp_exit:
-    pop    rcx                              ; retore register value
-    pop    rsi                              ; retore register value
-    pop    rdi                              ; retore register value
-    sub		rax, rdx                        ; sub rdx to rax and get return value in rax
+    pop         rcx                         ; retore register value
+    pop         rsi                         ; retore register value
+    pop         rdi                         ; retore register value
+    sub		    rax, rdx                    ; sub rdx to rax and get return value in rax
 	ret
