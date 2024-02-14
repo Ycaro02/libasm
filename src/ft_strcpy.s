@@ -35,7 +35,7 @@ _strcpy_init:
 	cmp		rdx, rcx		; compare dest_len, src_len
 	jl		_strcpy_exit	; jump lower exit
 
-_strcopy_loop:
+_strcpy_loop:
 	cld						; clear direction flag
 	xor		al, al			; set al to 0
 	repz movsb				; repeat until *rdi != al -> '\0'

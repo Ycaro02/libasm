@@ -4,7 +4,7 @@
 # include <stdlib.h>
 #include <string.h>
 
-int basic_strcmp(char *s1, char *s2)
+int         basic_strcmp(char *s1, char *s2)
 {
 	int i = 0, j = 0;
 
@@ -15,7 +15,7 @@ int basic_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[j]);
 }
 
-size_t basic_strlen(char *str)
+size_t      basic_strlen(char *str)
 {
     size_t i = 0;
     if (!str)
@@ -26,12 +26,12 @@ size_t basic_strlen(char *str)
     return (i);
 }
 
-static int check_strlen(char *str)
+static int  check_strlen(char *str)
 {
     return (ft_strlen(str) == basic_strlen(str));
 }
 
-static int test_strlen()
+static int  test_strlen()
 {
     if (!check_strlen("koala")\
         || !check_strlen(NULL)\
@@ -46,7 +46,7 @@ static int test_strlen()
     return (0);
 }
 
-static int check_strcpy(char *src, char *str, char *expected)
+static int  check_strcpy(char *src, char *str, char *expected)
 {
     src = ft_strcpy(src, str);
     if (ft_strcmp(expected, src) != 0) {
@@ -56,7 +56,7 @@ static int check_strcpy(char *src, char *str, char *expected)
     return (0);
 }
 
-static int strcpy_null_test()
+static int  strcpy_null_test()
 {
     int max = 10, ret = 0;
     char *tmp = malloc(sizeof(char) * max);
@@ -88,7 +88,7 @@ static int strcpy_null_test()
     
 }
 
-static int test_strcpy()
+static int  test_strcpy()
 {
     char *str = "Classic test";
     int max = 25, ret = 0;
@@ -130,7 +130,7 @@ static int test_strcpy()
 
 }
 
-static int test_strcmp()
+static int  test_strcmp()
 {    
     if (ft_strcmp("koala", "kopoa") != 'a' - 'p') {
         printf(YELLOW"Error strcmp koala kopoa\n"RESET);
@@ -163,7 +163,8 @@ static int test_strcmp()
     return (0);
 }
 
-void tester_hub(int test_fun(void), char *str){
+void        tester_hub(int test_fun(void), char *str)
+{
     int     error = 0;
     char    *color, *msg;
 

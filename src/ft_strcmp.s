@@ -7,44 +7,43 @@ ft_strcmp:
     push    rsi
     push    rcx
 	xor		rcx, rcx
-	xor		rax, rax
     cmp		rdi, 0x0		      ; rdi NULL
 	je		_strcmp_protect1      ; jump equal exit
     movzx   rax, byte[rdi + rcx]  ; str1[0] in rax for out error
 
-_check_second_args:
+_strcmp_rdi_check:
     cmp		rsi, 0x0		        ; rdi NULL
 	je		_strcmp_protect2        ; jump equal exit
     movzx   rdx, byte[rsi + rcx]    ; str2[0] in rdx for out error
     cmp     rdi, 0x0
-    je      _strcmp_out
+    je      _strcmp_exit
 
-_compare:
+_strcmp_compare:
 	cmp		byte[rdi + rcx], 0	; if str1[rcx] == 0
-	jz		_strcmp_exit		; jump if zero flag
+	jz		_strcmp_get_last_char		; jump if zero flag
 	cmp		byte[rsi + rcx], 0	; if str2[rcx] == 0
-	jz		_strcmp_exit		; jump if zero flag
+	jz		_strcmp_get_last_char		; jump if zero flag
 	mov		al, byte[rsi + rcx]	; put rsi byte in al
 	cmp		byte[rdi + rcx], al	; compare byte/char
-	jnz		_strcmp_exit		; if not zero flag, not same char
+	jnz		_strcmp_get_last_char		; if not zero flag, not same char
 	inc		rcx			        ; else increment rcx
-	jmp		_compare			; continue while
+	jmp		_strcmp_compare			; continue while
 
 
-_strcmp_exit:
+_strcmp_get_last_char:
 	movzx		rax, byte[rdi + rcx]	; get char in rax, rdx
 	movzx		rdx, byte[rsi + rcx]	; get char in rax, rdx
-    jmp         _strcmp_out
+    jmp         _strcmp_exit
 
 
 _strcmp_protect1:
     xor     rax, rax                    ; give default value for rax if str1 == NULL
-    jmp     _check_second_args
+    jmp     _strcmp_rdi_check
 
 _strcmp_protect2:
     xor     rdx, rdx                    ; give default value for rdx if str2 == NULL 
 
-_strcmp_out:
+_strcmp_exit:
     pop    rcx
     pop    rsi
     pop    rdi
