@@ -3,6 +3,9 @@
         "*.def": "source.def",
         "malloc.h": "c",
         "string.h": "c",
-        "unistd.h": "c"
+        "unistd.h": "c",
+        "errno.h": "c",
+        "stddef.h": "c",
+        "basic_define.h": "c"
     }
 }

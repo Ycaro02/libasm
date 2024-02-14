@@ -15,6 +15,7 @@ NASM	= 	nasm -f elf64 -o
 SRCS	=	src/ft_strlen.s\
 			src/ft_strcpy.s\
 			src/ft_strcmp.s\
+			src/write.s\
 			src/gcc_strlen.s\
 
 NAME	= 	libasm.a
@@ -43,9 +44,9 @@ all:		${NAME}
 ${NAME}:	$(OBJS)
 			@ echo " \033[5;36m ----- Compiling libasm project...  ----- \033[0m\n"
 			@ar -rcs $(NAME) $(OBJS)
-# @ranlib $(NAME) || ar -s $(NAME)
 			@echo "\033[7;32m -----  Compiling libasm done  ----- \033[0m"
 			@${CALL_TESTER}
+# @ranlib $(NAME) || ar -s $(NAME)
 
 test:
 			@${CALL_TESTER} test

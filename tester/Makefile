@@ -14,7 +14,7 @@ LIB			= 	libasm.a
 
 NAME		=	libasm_test
 
-CC			= 	gcc -g
+CC			= 	gcc -g -fPIE
 
 MAIN		= 	src/test.c
 

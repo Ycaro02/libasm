@@ -21,8 +21,6 @@ _strcpy_protect:
 	cmp			rsi, 0x0		; rsi NULL	
 	je			_strcpy_exit
 
-; need to check for string memory surperposition
-
 _strcpy_init:
 	call 		ft_strlen		; compute dest len
 	mov			rdx, rax		; store len in rdx
@@ -48,10 +46,3 @@ _strcpy_exit:
 	pop			rdi
 	mov			rax, rdi		; return src pointer
 	ret
-
-
-
-; Les deux chaînes ne doivent pas se chevaucher. 
-
-;La fonction strcpy() copie la chaîne pointée par src
-;(y compris l'octet nul « \0 » final)dans la chaîne pointée par dest.
