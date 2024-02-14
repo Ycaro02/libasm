@@ -42,8 +42,8 @@ all:		${NAME}
 
 ${NAME}:	$(OBJS)
 			@ echo " \033[5;36m ----- Compiling libasm project...  ----- \033[0m\n"
-			@ar -rc $(NAME) $(OBJS)
-			@ranlib $(NAME)
+			@ar -rcs $(NAME) $(OBJS)
+# @ranlib $(NAME) || ar -s $(NAME)
 			@echo "\033[7;32m -----  Compiling libasm done  ----- \033[0m"
 			@${CALL_TESTER}
 

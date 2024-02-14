@@ -4,24 +4,7 @@
 # include <stdlib.h>
 #include <string.h>
 
-
-// static int test_gccstrlen()
-// {
-//     char *str = "koala";
-//     printf("str:%s\nAssembly len |%lu|\n", str, gcc_strlen(str));
-//     printf("Basic strlen |%lu|\n", basic_strlen(str));
-//     str = NULL;
-//     printf("str:NULL\nAssembly len |%lu|\n", gcc_strlen(str));
-//     str = "heylolsdasdadsa";
-//     printf("str:%s\nAssembly len |%lu|\n", str, gcc_strlen(str));
-//     str = "very longnnfjf lonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnng";
-//     printf("str:%s\nAssembly len |%lu|\n", str, gcc_strlen(str));
-//     str = "";
-//     printf("str:%s\nAssembly len |%lu|\n", str, gcc_strlen(str));
-//     return (0);
-// }
-
-int new_strcmp(char *s1, char *s2)
+int basic_strcmp(char *s1, char *s2)
 {
 	int i = 0, j = 0;
 
@@ -63,6 +46,16 @@ static int test_strlen()
     return (0);
 }
 
+static int check_strcpy(char *src, char *str, char *expected)
+{
+    src = ft_strcpy(src, str);
+    if (ft_strcmp(expected, src) != 0) {
+        printf(RED"Error ret strcpy = %s expected %s\n"RESET, src, expected);
+        return (1);
+    }
+    return (0);
+}
+
 static int strcpy_null_test()
 {
     int max = 10, ret = 0;
@@ -97,31 +90,42 @@ static int strcpy_null_test()
 
 static int test_strcpy()
 {
-    char *str = "alo";
-    int max = 10, ret = 0;
+    char *str = "Classic test";
+    int max = 25, ret = 0;
     char *tmp = malloc(sizeof(char) * max);
     for (int i = 0; i < max; ++i) {
         tmp[i] = 'Y';
     }
     tmp[max - 1] = '\0';
-    tmp = ft_strcpy(tmp, str);
-    if (ft_strcmp(str, tmp) != 0) {
-        printf(RED"Error ret strcpy = %s expected %s\n"RESET, tmp, str);
+
+    if (check_strcpy(tmp, str, str)) {
         ret = 1;
-    }
-    if (ret != 1) {
+    } 
+    if (ret == 0) {
         char *save = strdup(tmp);
-        
-        char *big = "1234567";
-        tmp = ft_strcpy(tmp, big);
-        if (ft_strcmp(save, tmp) != 0) {
-            printf(RED"Error ret strcpy = %s expected %s\n"RESET, tmp, save);
+        char *big = "Biggggeeeeeeeeeeeeeeeeeeeesseeeeeeeesst";
+        if (check_strcpy(tmp, big, save)) {
             ret = 1;
         }
         free(save);
     }
+    if (ret == 0) {
+        free(tmp);
+        max = 200;
+        tmp = malloc(sizeof(char)*max);
+        for (int i = 0; i < max; ++i) {
+            tmp[i] = 'Y';
+        }
+        tmp[max - 1] = '\0';
+        str = "BIG BIG BIG BIG BIG BIG BIG BIG TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST OK OK OK OK OK\nBIG TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST OK OK OK OK OK";
+        if (check_strcpy(tmp, str, str)) {
+            ret = 1;
+        } 
+    }
     free(tmp);
-    ret = strcpy_null_test();
+    if (ret == 0) {
+        ret = strcpy_null_test();
+    }
     return (ret);
 
 }
@@ -129,45 +133,49 @@ static int test_strcpy()
 static int test_strcmp()
 {    
     if (ft_strcmp("koala", "kopoa") != 'a' - 'p') {
-        printf("Error strcmp koala kopoa\n");
+        printf(YELLOW"Error strcmp koala kopoa\n"RESET);
         return (1);
     }
     if (ft_strcmp("koala", "koala") != 0) {
-        printf("Error koala koala\n");
+        printf(YELLOW"Error koala koala\n"RESET);
         return (1);
     }
     if (ft_strcmp(NULL, NULL) != 0) {
-        printf("Error NULL NULL %d expected %d\n", ft_strcmp(NULL, NULL), 0);
+        printf(YELLOW"Error NULL NULL %d expected %d\n"RESET, ft_strcmp(NULL, NULL), 0);
         return (1);
     }
     if (ft_strcmp("koala", NULL) != 'k') {
-        printf("Error koala NULL %d expected %d\n", ft_strcmp("koala", NULL), 'k');
+        printf(YELLOW"Error koala NULL %d expected %d\n"RESET, ft_strcmp("koala", NULL), 'k');
         return (1);
     }
     if (ft_strcmp(NULL, "koala") != -'k') {
-        printf("Error NULL koala %d expected %d\n", ft_strcmp(NULL, "koala"), -'k');
+        printf(YELLOW"Error NULL koala %d expected %d\n"RESET, ft_strcmp(NULL, "koala"), -'k');
+        return (1);
+    }
+    if (ft_strcmp("koalaaaaaaaaa", "koala") != 'a') {
+        printf(YELLOW"Error koalaaaaaaaaa %d koala expected %d\n"RESET, ft_strcmp("koalaaaaaaaaa", "koala"), 'a');
+        return (1);
+    }
+    if (ft_strcmp("koala", "koalaaaaaaaaa") != -'a') {
+        printf(YELLOW"Error koala %d koalaaaaaaaaa expected %d\n"RESET, ft_strcmp("koala", "koalaaaaaaaaa"), -'a');
         return (1);
     }
     return (0);
 }
-    // char *test1 = "bonjours";
-    // char *test2 = "bonjours";
-    // printf(PURPLE"cmp --> |%s| : |%s| = %d\n"RESET, test1, test2, ft_strcmp(test1, test2));
-    // test2 = "bonjour";
-    // printf("%scmp --> |%s| : |%s| = %d%s\n",PURPLE, test1, test2, ft_strcmp(test1, test2), RESET);
 
 void tester_hub(int test_fun(void), char *str){
-    if (test_fun() == 0) {
-        printf(GREEN"%s test OK\n"RESET, str);
+    int     error = 0;
+    char    *color, *msg;
 
-    } else {
-        printf(RED"%s test KO\n"RESET, str);
-    }
+    error = test_fun();
+    color = error == 0 ? GREEN : RED;
+    msg = error == 0 ? "OK" : "KO";
+    printf("%s test %s%s\n"RESET, str, color, msg);
 }
 
 int main(void)
 {
-    tester_hub(test_strlen, "strlen");
-    tester_hub(test_strcpy, "strcpy");
-    tester_hub(test_strcmp, "strcmp");
+    tester_hub(test_strlen, YELLOW"ft_strlen"RESET);
+    tester_hub(test_strcpy, YELLOW"ft_strcpy"RESET);
+    tester_hub(test_strcmp, YELLOW"ft_strcmp"RESET);
 }

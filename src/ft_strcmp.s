@@ -20,12 +20,12 @@ _check_second_args:
     je      _strcmp_out
 
 _compare:
-	cmp		byte[rdi + rcx], 0	; if rdi[rcx] == '\0' --> ZF = 1
-	jz		_strcmp_exit		; if zero flag
-	cmp		byte[rsi + rcx], 0	; if rsi[rcx] == '\0' --> ZF = 1
-	jz		_strcmp_exit		; if zero flag
+	cmp		byte[rdi + rcx], 0	; if str1[rcx] == 0
+	jz		_strcmp_exit		; jump if zero flag
+	cmp		byte[rsi + rcx], 0	; if str2[rcx] == 0
+	jz		_strcmp_exit		; jump if zero flag
 	mov		al, byte[rsi + rcx]	; put rsi byte in al
-	cmp		byte[rdi + rcx], al	; cmp byte
+	cmp		byte[rdi + rcx], al	; compare byte/char
 	jnz		_strcmp_exit		; if not zero flag, not same char
 	inc		rcx			        ; else increment rcx
 	jmp		_compare			; continue while
@@ -38,11 +38,11 @@ _strcmp_exit:
 
 
 _strcmp_protect1:
-    xor     rax, rax
+    xor     rax, rax                    ; give default value for rax if str1 == NULL
     jmp     _check_second_args
 
 _strcmp_protect2:
-    xor     rdx, rdx     
+    xor     rdx, rdx                    ; give default value for rdx if str2 == NULL 
 
 _strcmp_out:
     pop    rcx
