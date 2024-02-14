@@ -13,7 +13,9 @@
 NASM	= 	nasm -f elf64 -o
 
 SRCS	=	src/ft_strlen.s\
-			src/ft_strcpy.s
+			src/ft_strcpy.s\
+			src/ft_strcmp.s\
+			src/gcc_strlen.s\
 
 NAME	= 	libasm.a
 
@@ -45,8 +47,11 @@ ${NAME}:	$(OBJS)
 			@echo "\033[7;32m -----  Compiling libasm done  ----- \033[0m"
 			@${CALL_TESTER}
 
-gdb:
-	${GDB_RULE}
+test:
+			@${CALL_TESTER} test
+
+g:
+			${GDB_RULE}
 
 clean:
 			@echo "\033[7;31m\n -----  Cleaning all objects...  ----- \033[0m\n"

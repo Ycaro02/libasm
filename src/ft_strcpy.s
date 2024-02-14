@@ -1,3 +1,5 @@
+BITS 64
+
 section .text
 	global ft_strcpy	; Function entry point
 
@@ -9,7 +11,7 @@ extern	ft_strlen
 
 ft_strcpy:			; int strlen(char *s);
 	push	rdi				; push rdi on stack 1st args
-	push	rsi				; push rci on stack 2second args
+	push	rsi				; push rsi on stack 2second args
 	push	rcx				; push rcx on stack counter
 	push	rdx				; second count
 
@@ -18,11 +20,13 @@ _strcpy_protect:
 	je		_strcpy_exit
 	cmp		rsi, 0x0		; rsi NULL	
 	je		_strcpy_exit
-	call 	ft_strlen		; compute dest len
-	mov		rdx, rax		; store len in rdx
+
 ; need to check for string memory surperposition
 
 _strcpy_init:
+	call 	ft_strlen		; compute dest len
+	mov		rdx, rax		; store len in rdx
+
 	xchg	rdi, rsi		; exchange data between rsi and rdi
 	call	ft_strlen		; call ft_strlen on rdi --> src, store result in rax
 	xchg	rdi, rsi		; restore initiale rsi rdi data
@@ -48,7 +52,6 @@ _strcpy_exit:
 
 
 ; Les deux chaînes ne doivent pas se chevaucher. 
-; La chaîne dest doit être assez grande pour accueillir la copie.
 
 ;La fonction strcpy() copie la chaîne pointée par src
 ;(y compris l'octet nul « \0 » final)dans la chaîne pointée par dest.

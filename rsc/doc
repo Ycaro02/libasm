@@ -30,3 +30,52 @@ movsb move data from string to string
 ;push	rbp			; Save the stack frame of caller, pushed on stack 
 ;mov 	rbp, rsp	; Set my own stack frame
 ;pop 	rbp			; Pop rbp to restore stack
+
+
+MOVZX : operandedestination(register), operandesource
+- Cette instruction permet de copier un registre de taille inférieur dans un registre de plus grande taille en remplissant les bits supplémentaires par des 0.
+
+TEST : and & logic
+
+https://www.tutorialspoint.com/assembly_programming/assembly_conditions.htm ----> jump usage
+
+https://www.unilim.fr/pages_perso/tristan.vaccon/cours_nasm.pdf ---> nasm cours
+
+
+/* gcc basic strlen version, basic while with jump and label, and iter on string */
+
+ft_strlen:
+	push   rbp                      ; save rbp
+	mov    rbp,rsp                  ; set my own rbb with rsb value
+	mov    QWORD [rbp-0x18],rdi     ; store rdi/args pointer in stack rbp - 0x18
+	mov    QWORD [rbp-0x8],0x0      ; store index in statck rbp - ox8
+
+	cmp		rdi, 0x0		; rdi NULL
+	je		_ft_strlen_exit ; jump equal exit
+	jmp    _ft_strlen_mov   ; jmp start while
+
+_ft_strlen_add:             
+	add    QWORD [rbp-0x8],0x1  ; increment index
+
+;rbp-0x18    = str
+;rbp-0x8     = i
+
+_ft_strlen_mov:             ; start while
+    ;rdx = str
+	mov    rdx,QWORD [rbp-0x18]     ; store args pointer value in rdx
+    ;rax = i
+	mov    rax,QWORD [rbp-0x8]      ; store index in rax
+    ;rax += str AKA str += i AKA str + i
+	add    rax,rdx                  ; rax += rdx, we are a the good adress to take char
+    ;char c = *rax
+    movzx  eax,BYTE [rax]           ; put byte rax in eax
+    ;c == 0 
+    test   al,al                    ; test al, al is a sub register of eax, represent lowerbyte
+    ;if c not equal 0 jump to add
+    jne    _ft_strlen_add
+
+
+_ft_strlen_exit:
+	mov    rax,QWORD [rbp-0x8]
+	pop    rbp
+	ret
