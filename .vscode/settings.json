@@ -6,6 +6,9 @@
         "unistd.h": "c",
         "errno.h": "c",
         "stddef.h": "c",
-        "basic_define.h": "c"
+        "basic_define.h": "c",
+        "libasm.h": "c",
+        "features.h": "c",
+        "fcntl.h": "c"
     }
 }
