@@ -6,7 +6,7 @@
 #    By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 16:33:38 by nfour             #+#    #+#              #
-#    Updated: 2024/02/15 15:09:17 by nfour            ###   ########.fr        #
+#    Updated: 2024/02/15 15:32:30 by nfour            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,9 @@ BONUS_NAME		= libasm_bonus_test
 
 MAIN_BONUS		=	src/test_bonus.c\
 					src/list.c\
-					src/my_atoi_base.c\
 					src/test_implementation.c\
+					src/ft_itoa.c\
+					src/my_atoi_base.c\
 
 CC			= 	gcc -Wall -Wextra -Werror -g
 
