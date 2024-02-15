@@ -1,14 +1,83 @@
 {
-    "files.associations": {
-        "*.def": "source.def",
-        "malloc.h": "c",
-        "string.h": "c",
-        "unistd.h": "c",
-        "errno.h": "c",
-        "stddef.h": "c",
-        "basic_define.h": "c",
-        "libasm.h": "c",
-        "features.h": "c",
-        "fcntl.h": "c"
+    "git.openRepositoryInParentFolders": "never",
+    "zenMode.hideLineNumbers": false,
+    "remote.SSH.remotePlatform": {
+        "192.168.1.17": "linux"
+    },
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "GitHub Dark Default",
+
+    "42header.username": "nfour",
+    "42header.email": "<marvin@42.fr>",
+
+    // The number of spaces a tab is equal to. This setting is overridden
+    // based on the file contents when `editor.detectIndentation` is true.
+    "editor.tabSize": 4,
+	
+    // Insert spaces when pressing Tab. This setting is overriden
+    // based on the file contents when `editor.detectIndentation` is true.
+    "editor.insertSpaces": false,
+
+    // When opening a file, `editor.tabSize` and `editor.insertSpaces`
+    // will be detected based on the file contents. Set to false to keep
+    // the values you've explicitly set, above.
+    "editor.detectIndentation": false,
+
+    "editor.tokenColorCustomizations": {
+        "[GitHub Dark Default]": {
+            "textMateRules": [
+                {
+                    "scope": [
+                        "variable",
+                        "variable.other.local",
+                        "variable.other.local.c",
+                        "variable.other.member",
+                        "variable.other.member.c",
+                        "variable.other",
+                        "variable.parameter",
+                        "variable.parameter.function",
+                        "variable.other.readwrite.local",
+                        "variable.other.readwrite"
+                    ],
+                    "settings": {
+                        "foreground": "#1cc4ad"  // Couleur de votre choix
+                    }
+                }
+            ]
+        }
+    },
+
+    "highlight.regexes": {
+    "(//.*)": {
+        "color": "#007f00",
+        "filterFileRegex": "\\.c$|\\.h$",
+        },
+    "(\\/\\*[\\s\\S]*?\\*\\/)": {
+        "color": "#007f00",
+        "filterFileRegex": "\\.c$|\\.h$",
+        },
+
+        "(#.*)": {
+            "color": "#d13437",
+            "filterFileRegex": "\\.def$",
+          },
+          "([0-9])": {
+            "color": "#00a0c8",
+            "filterFileRegex": "\\.def$"
+          },
+          "(name.*)": {
+            "color": "#00ffff",
+            "filterFileRegex": "\\.def$"
+          },
+   
+          "(id|width|height|max_hp|max|anim_id|total_len|frame_max|anim_step|anim_width|anim_height|img_max|step_number|monster_max|nb_dir)": {
+            "color": "#d1b337",
+            "filterFileRegex": "\\.def$"
+          },
+
+          "(;.*)": {
+            "color": "#007f00",
+            "filterFileRegex": "\\.s",
+            },
     }
 }

@@ -63,17 +63,23 @@ static int  strcpy_null_test()
 	char *save = strdup(tmp);
 	ft_strcpy(NULL, NULL);
 	if (ft_strcmp(save, tmp) != 0) {
+		printf(RED"Error ret strcpy tested NULL NULL\n"RESET);
+		printf(YELLOW"Error ret strcpy got %s expected %s\n"RESET, tmp, save);
 		ret = 1;
 	} 
 	else 
 	{
 		tmp = ft_strcpy(tmp, NULL);
 		if (ft_strcmp(save, tmp) != 0) {
+			printf(RED"Error ret strcpy tested %s NULL\n"RESET, save);
+			printf(YELLOW"Error ret strcpy got %s expected %s\n"RESET, tmp, save);
 			ret = 1;
 		} 
 		else {
 			ft_strcpy(NULL, tmp);
 			if (ft_strcmp(save, tmp) != 0) {
+				printf(RED"Error ret strcpy tested NULL %s\n"RESET, save);
+				printf(YELLOW"Error ret strcpy got %s expected %s\n"RESET, tmp, save);
 				ret = 1;
 			}
 		}
@@ -163,38 +169,30 @@ int  test_strcmp()
 int check_strdup(char *str)
 {
 	int		ret = 0;
-	char	*real = strdup(str);
-	char	*me = ft_strdup(str);
+	char	*real = NULL;
+	if (str) {
+		real = strdup(str);
+	}
+	char	*me = NULL;
+	me = ft_strdup(str);
 	if (ft_strcmp(real, me) != 0) {
 		printf(RED"Error strdup got %s expected %s\n"RESET, me, real);
 		ret = 1;
-	} else {
-		printf(GREEN"Ok strdup got %s expected %s\n"RESET, me, real);
-
+	} 
+	if (real && me) {
+		free(real);
+		free(me);
 	}
-	free(real);
-	free(me);
 	return (ret);
 }
 
-char *test()
-{
-	char *buff = (char *)0x4222;
-	int		cc = 0x55;
-	cc = 0x77;
-	buff = (char *)0x999;
-	buff = malloc(cc);
-	int ret = cc;
-	(void)ret;
-	buff[0] = 'c';
-	return (buff);
-}
-
-
 int test_strdup()
 {
-		// || check_strdup("YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO"))
-	if (check_strdup("koala")) {
+	if (check_strdup("koala")\
+		|| check_strdup("YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")\
+		|| check_strdup("")\
+		|| check_strdup(NULL)\
+		|| check_strdup("s")) {
 		return (1);
 	}
 	return (0);
