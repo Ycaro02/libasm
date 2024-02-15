@@ -6,7 +6,7 @@
 #    By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 16:33:38 by nfour             #+#    #+#              #
-#    Updated: 2024/02/15 15:08:45 by nfour            ###   ########.fr        #
+#    Updated: 2024/02/15 16:05:16 by nfour            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS	=	src/ft_strlen.s\
 			src/ft_strdup.s\
 			src/ft_list_push_front.s\
 			src/ft_list_size.s\
+			src/ft_list_push_back.s\
 
 
 NAME	= 	libasm.a

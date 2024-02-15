@@ -30,7 +30,7 @@ void	list_push_front(t_list **lst, void *data)
 
 void	list_push_back(t_list **lst, void *data)
 {
-	t_list	*current;
+	t_list	*current = NULL;
 
 	if (data == NULL)
 		return ;
