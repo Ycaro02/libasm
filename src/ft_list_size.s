@@ -15,7 +15,7 @@ ft_list_size:					; ft_list_size label
 
 _lst_size_loop:
 	mov		rax, qword[rbp-0x14]		; save lst in rax
-	mov		rax, qword[rax+0x8]			; increment it, go next
+	mov		rax, qword[rax+0x8]			; increment it + 8 (size of field to go next) lst = lst->next
 	mov		qword[rbp-0x14], rax		; save this pointer in stack
 	add		rcx, 0x1
 
