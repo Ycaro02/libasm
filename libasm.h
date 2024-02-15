@@ -53,6 +53,8 @@ int		list_size(t_list *begin_list);
 void	list_push_back(t_list **lst, void *data);
 int		my_atoi_base(char *str, char *base);
 void 	list_sort(t_list **begin_list, int (*cmp)());
+/* clear function */
+void    list_clear(t_list **lst, void (*del)(void*));
 
 
 #endif /* FT_LIBASM_H */

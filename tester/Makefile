@@ -6,7 +6,7 @@
 #    By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 16:33:38 by nfour             #+#    #+#              #
-#    Updated: 2024/02/15 14:06:03 by nfour            ###   ########.fr        #
+#    Updated: 2024/02/15 15:09:17 by nfour            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,8 @@ test:	${NAME}
 btest:	${BONUS_NAME}
 		@./${BONUS_NAME}
 
+vbtest:	${BONUS_NAME}
+		valgrind --leak-check=full ./${BONUS_NAME}
 
 gbtest:	${BONUS_NAME}
 		gdb ${BONUS_NAME}

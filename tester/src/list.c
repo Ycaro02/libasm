@@ -57,3 +57,23 @@ int	list_size(t_list *lst)
 	return (count);
 }
 
+void    list_clear(t_list **lst, void (*del)(void*))
+{
+        t_list  *tmp;
+        t_list  *current;
+
+        if (del == NULL || lst == NULL || *lst == NULL)
+                return ;
+        current = *lst;
+        tmp = current;
+        while (tmp != NULL)
+        {
+                tmp = current->next;
+                del(current->content);
+                free(current);
+                current = tmp;
+        }
+        *lst = NULL;
+}
+
+
