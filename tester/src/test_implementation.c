@@ -159,6 +159,29 @@ int  test_strcmp()
     return (0);
 }
 
+
+int check_strdup(char *str)
+{
+    int ret = 0;
+    char *real = strdup(str);
+    char *me = ft_strdup(str);
+    if (ft_strcmp(real, me) != 0) {
+        printf("Error strdup got %s expected %s\n", me, real);
+        ret = 1;
+    }
+    free(real);
+    free(me);
+    return (ret);
+}
+
+
+int test_strdup()
+{
+    if (check_strdup("koala"))
+        return (1);
+    return (0);
+}
+
 void        tester_hub(int test_fun(void), char *str)
 {
     int     error = 0;
