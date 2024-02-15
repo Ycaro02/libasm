@@ -38,7 +38,7 @@ ${NAME}:
 		${CC} ${MAIN} ${LIB} -o ${NAME} 
 		${CC} ${MAIN_WRITE} ${LIB} -o ${NAME_WRITE} 
 
-test:
+test:	${NAME}
 		./${NAME} 
 		./${NAME_WRITE} 2> /dev/null
 

@@ -50,10 +50,10 @@ ${NAME}:	$(OBJS)
 # @ranlib $(NAME) || ar -s $(NAME)
 
 test:
-			@${CALL_TESTER} test
+		@${CALL_TESTER} test
 
 g:
-			${GDB_RULE}
+		${GDB_RULE}
 
 clean:
 			@echo "\033[7;31m\n -----  Cleaning all objects...  ----- \033[0m\n"

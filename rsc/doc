@@ -20,7 +20,8 @@ https://onecompiler.com/assembly/423f8fy9n                              --> Onli
 https://stackoverflow.com/questions/26783797/repnz-scas-assembly-instruction-specifics  --> how to while on string
 - repnz scasb:
 repnz means "repeat until zero flag is not set and cx is not zero". Each iteration decrements ecx. 
-scas or more precisely scasb compares the value in al to the memory operand (always es:[edi] or es:[di] depending on address size), then sets the flags accordingly (zero flag will be set if the two values equal) and increments (or decrements, based on the direction flag) edi.
+scas or more precisely scasb compares the value in al to the memory operand (always es:[edi] or es:[di] depending on address size), 
+then sets the flags accordingly (zero flag will be set if the two values equal) and increments (or decrements, based on the direction flag) edi.
 
 https://docs.oracle.com/cd/E19620-01/805-4693/instructionset-64/index.html  --> how to copy data 
 movsb move data from string to string 

@@ -20,12 +20,13 @@ ft_read:						; read
 	ret
 
 _handle_erno:
-	neg			rax				; get positif error code
-	push		rax				; save rax
+	neg			rax					; get positif error code
+	push		rax					; save rax
 	call		__errno_location WRT ..plt; call errno location see https://www.tortall.net/projects/yasm/manual/html/objfmt-elf64.html
 	mov			rbx, rax			; rbx = rax, get return value in rbx (erno pointer)
 	pop			rax					; restore rax
 	mov			[rbx], rax			; update erno
-	mov			rax, -1
+	xor			rax, rax
+	sub			rax, 0x1
 	ret
 
