@@ -17,6 +17,7 @@ SRCS	=	src/ft_strlen.s\
 			src/ft_strcmp.s\
 			src/ft_write.s\
 			src/ft_read.s\
+			src/ft_strdup.s\
 			src/gcc_strlen.s\
 
 NAME	= 	libasm.a
@@ -51,6 +52,9 @@ ${NAME}:	$(OBJS)
 
 test:
 		@${CALL_TESTER} test
+
+vtest:
+		@${CALL_TESTER} vtest
 
 g:
 		${GDB_RULE}

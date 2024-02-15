@@ -26,7 +26,8 @@ then sets the flags accordingly (zero flag will be set if the two values equal) 
 https://docs.oracle.com/cd/E19620-01/805-4693/instructionset-64/index.html  --> how to copy data 
 movsb move data from string to string 
 
-
+Use the rep (repeat while equal), repnz (repeat while nonzero) or repz (repeat while zero) prefixes in conjunction with string operations. 
+Each prefix causes the associated string instruction to repeat until the count register (CX) or the zero flag (ZF) matches a tested condition.
 
 ;push	rbp			; Save the stack frame of caller, pushed on stack 
 ;mov 	rbp, rsp	; Set my own stack frame

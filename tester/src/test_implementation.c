@@ -164,14 +164,13 @@ int check_strdup(char *str)
 {
     int ret = 0;
     char *real = strdup(str);
-    char *me = "coucou";
-    // char *me = ft_strdup(str);
+    char *me = ft_strdup(str);
     if (ft_strcmp(real, me) != 0) {
         printf("Error strdup got %s expected %s\n", me, real);
         ret = 1;
     }
     free(real);
-    // free(me);
+    free(me);
     return (ret);
 }
 

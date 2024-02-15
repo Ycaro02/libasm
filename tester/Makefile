@@ -42,7 +42,7 @@ test:	${NAME}
 		./${NAME} 
 		./${NAME_WRITE} 2> /dev/null
 
-testv:
+vtest:
 		valgrind --leak-check=full ./${NAME}
 		valgrind --leak-check=full ./${NAME_WRITE}
 
