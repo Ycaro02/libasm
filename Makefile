@@ -18,7 +18,6 @@ SRCS	=	src/ft_strlen.s\
 			src/ft_write.s\
 			src/ft_read.s\
 			src/ft_strdup.s\
-			src/gcc_strlen.s\
 
 NAME	= 	libasm.a
 
@@ -73,15 +72,4 @@ fclean:		clean
 
 re:			fclean all
 
-
 .PHONY:		all clean fclean re bonus
-
-
-# 			@"${CALL_TESTER}" test0
-# 			@"${CALL_TESTER}" test1
-# 			@"${CALL_TESTER}" test2
-# 			@"${CALL_TESTER}" test3
-# 			@"${CALL_TESTER}" test3b
-# 			@"${CALL_TESTER}" test4
-# 			@"${CALL_TESTER}" test5
-# 			@"${CALL_TESTER}" fclean
