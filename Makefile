@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ycaro <ycaro@student.42.fr>                +#+  +:+       +#+         #
+#    By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 16:33:38 by nfour             #+#    #+#              #
-#    Updated: 2024/02/13 17:05:35 by ycaro            ###   ########.fr        #
+#    Updated: 2024/02/15 13:43:14 by nfour            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS	=	src/ft_strlen.s\
 			src/ft_write.s\
 			src/ft_read.s\
 			src/ft_strdup.s\
+			src/ft_list_push_front.s\
 
 NAME	= 	libasm.a
 
@@ -51,6 +52,11 @@ ${NAME}:	$(OBJS)
 
 test:
 		@${CALL_TESTER} test
+
+
+btest:
+		@${CALL_TESTER} btest
+
 
 vtest:
 		@${CALL_TESTER} vtest

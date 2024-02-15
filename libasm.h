@@ -48,9 +48,9 @@ void 	ft_list_sort(t_list **begin_list, int (*cmp)());
 int		ft_atoi_base(char *str, char *base);
 
 /* BONUS TEST */
-void	list_push_front(t_list **begin_list, void *data);
+void	list_push_front(t_list **lst, void *data);
 int		list_size(t_list *begin_list);
-void	list_push_back(t_list **begin_list, void *data);
+void	list_push_back(t_list **lst, void *data);
 int		my_atoi_base(char *str, char *base);
 void 	list_sort(t_list **begin_list, int (*cmp)());
 
