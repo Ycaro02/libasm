@@ -56,6 +56,7 @@ void 	list_sort(t_list **begin_list, int (*cmp)());
 /* utils */
 void    list_clear(t_list **lst, void (*del)(void*));
 char    *ft_itoa(int n);
+void    ft_sort_int_tab(long int *tab, int size);
 
 #endif /* FT_LIBASM_H */
 

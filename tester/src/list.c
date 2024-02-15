@@ -1,25 +1,6 @@
 
 #include "../../libasm.h"
 
-// void 	ft_list_sort(t_list **begin_list, int (*cmp)())
-// {
-//     if (!lst)
-//         return ;
-//     t_list *head = lst;
-//     t_list *min = NULL;
-//     while (lst)  {
-//         if (!min)
-//             min = lst;
-//         if (cmp())
-//             min = lst;
-//         lst = lst->next;
-//     }
-//     t_file *tmp = head->content;
-//     head->content = min->content;
-//     min->content = tmp;
-//     sort_by_name(head->next, flag_nb);
-// }
-
 void	list_push_front(t_list **lst, void *data)
 {
 	if (lst == NULL || data == NULL)

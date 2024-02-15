@@ -51,3 +51,31 @@ char    *ft_itoa(int n)
         dst = ft_make(nbr, dst, count, sign);
         return (dst);
 }
+
+void    ft_swap(long int *a, long int *b)
+{
+        int     tampon;
+
+        tampon = *b;
+        *b = *a;
+        *a = tampon;
+}
+
+void    ft_sort_int_tab(long int *tab, int size)
+{
+        int     index;
+        int     j;
+
+        index = 0;
+        while (index < size)
+        {
+                j = 0;
+                while (j < size - 1)
+                {
+                        if (tab[j] > tab[j + 1])
+                                ft_swap(&tab[j], &tab[j + 1]);
+                        j++;
+                }
+                index++;
+        }
+}
