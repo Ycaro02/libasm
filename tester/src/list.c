@@ -1,5 +1,5 @@
 
-#include "../libasm.h"
+#include "../../libasm.h"
 
 // void 	ft_list_sort(t_list **begin_list, int (*cmp)())
 // {
@@ -20,29 +20,29 @@
 //     sort_by_name(head->next, flag_nb);
 // }
 
-void	list_push_front(t_list **lst, t_list *new)
+void	list_push_front(t_list **lst, void *data)
 {
-	if (lst == NULL || new == NULL)
+	if (lst == NULL || data == NULL)
 		return ;
-	new->next = *lst;
-	*lst = new;
+	((t_list *)data)->next = *lst;
+	*lst = data;
 }
 
-void	list_push_back(t_list **lst, t_list *new)
+void	list_push_back(t_list **lst, void *data)
 {
 	t_list	*current;
 
-	if (new == NULL)
+	if (data == NULL)
 		return ;
 	if (*lst == NULL)
 	{
-		*lst = new;
+		*lst = data;
 		return ;
 	}
 	current = *lst;
 	while (current->next != NULL)
 		current = current->next;
-	current->next = new;
+	current->next = data;
 }
 
 int	list_size(t_list *lst)
