@@ -47,9 +47,8 @@ void	list_push_back(t_list **lst, void *data)
 
 int	list_size(t_list *lst)
 {
-	int		count;
+	int		count = 0;
 
-	count = 0;
 	while (lst != NULL)
 	{
 		lst = lst->next;

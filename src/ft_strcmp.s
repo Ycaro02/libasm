@@ -1,6 +1,7 @@
 BITS 64
 
-global	ft_strcmp
+section .text
+	global	ft_strcmp
 
 ft_strcmp:
     push        rdi                         ; push rdi to save it
