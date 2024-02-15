@@ -1,3 +1,5 @@
 libasm.a
 *.o
+tester/libasm_test
+tester/libasm_write_test
 peda-session-libasm_test.txt
