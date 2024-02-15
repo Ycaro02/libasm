@@ -8,6 +8,7 @@ section .text
 ft_strcmp:
     push	rbp			    ; Save the stack frame of caller, pushed on stack 
     mov 	rbp, rsp	    ; Set my own stack frame 
+    
     cmp		rdi, 0x0		; rdi NULL
 	je		_strcmp_exit    ; jump equal exit
     cmp		rsi, 0x0		; rdi NULL
