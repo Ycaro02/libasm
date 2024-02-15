@@ -86,6 +86,29 @@ int test_list_push_front()
 	return (ret);
 }
 
+int test_list_push_back()
+{
+	int ret = 0;
+	t_list *real = build_lst(ft_list_push_back);
+	t_list *me = build_lst(list_push_back);
+
+	t_list *head_real = real;
+	t_list *head_me = me;
+
+	while (me) {
+		if (ft_strcmp((char *)me->content, (char *)real->content) != 0) {
+			printf(RED"Error got %s expected %s\n"RESET,(char *)me->content, (char *)real->content);
+			ret = 1;
+			break ;
+		}
+		me = me->next;
+		real = real->next;
+	}
+	list_clear(&head_me, free);
+	list_clear(&head_real, free);
+	return (ret);
+}
+
 
 static int check_lst_size(t_list *lst)
 {
@@ -107,7 +130,7 @@ int test_list_size()
 	}
 	
 	list_clear(&lst, free);
-	lst = build_lst_nb(ft_list_push_front, 207);
+	lst = build_lst_nb(ft_list_push_back, 207);
 	if (check_lst_size(lst)) {
 		ret = 1;
 	}
@@ -128,6 +151,7 @@ int main (void)
 {
 	printf(CYAN"Bonus Tester\n"RESET);
 	tester_hub(test_list_push_front, PURPLE"List push front\t"RESET);
+	tester_hub(test_list_push_back, PURPLE"List push back\t"RESET);
 	tester_hub(test_list_size, PURPLE"List size\t"RESET);
 	return (0);
 }
