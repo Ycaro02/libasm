@@ -5,6 +5,7 @@ section .text
 
 ; RDI: lst list pointer on pointer 0x14
 ; RCX counter
+
 ft_list_size:					; ft_list_size label
 	push	rbp							; push rbp to save it
 	push	rcx							; push rcx to save it
