@@ -1,15 +1,56 @@
 # include "../../libasm.h"
 
+/* display lst */
+void display_lst(t_list *lst)
+{
+	int i = 0;
+	while (lst) {
+		printf("content: %s[%d]%s\t%s|%p|%s %s[%d]%s\t%s%s%s\n", GREEN, (int)((char *)lst->content)[0]\
+			, RESET, CYAN, lst, RESET, RED, i, RESET, YELLOW, (char *)lst->content, RESET);
+		++i;
+		lst = lst->next;
+	}
+}
+
+/* create node */
+t_list  *ft_lstnew(void *content)
+{
+        t_list  *new;
+
+        new = malloc(sizeof(t_list) * 1);
+        if (new == NULL)
+                return (NULL);
+        new->next = NULL;
+        new->content = content;
+        return (new);
+}
+
+/* compare string in lst */
+static int compare_lst_string(t_list *me, t_list *real)
+{
+	int ret = 0;
+	while (me) {
+		if (ft_strcmp((char *)me->content, (char *)real->content) != 0) {
+			printf(RED"Error got %s expected %s\n"RESET,(char *)me->content, (char *)real->content);
+			ret = 1;
+			break ;
+		}
+		me = me->next;
+		real = real->next;
+	}
+	return (ret);
+}
+/* list sort cmp function */
 static int is_minus_value(void *a, void *b)
 {
 	return ((*(char *)a) >= (*(char *)b));
 }
-
+/* list sort cmp function */
 static int is_max_value(void *a, void *b)
 {
 	return ((*(char *)a) <= (*(char *)b));
 }
-
+/* list sort function */
 void 	list_sort(t_list **lst, int (*cmp)())
 {
 	t_list  *next;
@@ -34,31 +75,7 @@ void 	list_sort(t_list **lst, int (*cmp)())
 			current = next;
 	}
 }
-
-t_list  *ft_lstnew(void *content)
-{
-        t_list  *new;
-
-        new = malloc(sizeof(t_list) * 1);
-        if (new == NULL)
-                return (NULL);
-        new->next = NULL;
-        new->content = content;
-        return (new);
-}
-
-
-void display_lst(t_list *lst)
-{
-	int i = 0;
-	while (lst) {
-		printf("content: %s[%d]%s\t%s|%p|%s %s[%d]%s\t%s%s%s\n", GREEN, (int)((char *)lst->content)[0]\
-			, RESET, CYAN, lst, RESET, RED, i, RESET, YELLOW, (char *)lst->content, RESET);
-		++i;
-		lst = lst->next;
-	}
-}
-
+/* harcode build lst for test , take push add back/front function in args*/
 static t_list *build_lst(void lst_fun(t_list **, void*))
 {
 	char *str = ft_strdup("a");
@@ -92,9 +109,7 @@ static t_list *build_lst(void lst_fun(t_list **, void*))
 
 	return (lst);
 }
-
-
-
+/* return the coresponding node with str */
 static t_list *get_node_by_str(t_list *lst, char *str)
 {
 	int i = 0;
@@ -108,24 +123,72 @@ static t_list *get_node_by_str(t_list *lst, char *str)
 	return (NULL);
 }
 
-static int test_remove_if()
+static int check_remove_if(t_list *lst, char *str)
 {
-	t_list *lst = build_lst(ft_list_push_front);
+	t_list *check = get_node_by_str(lst, str);
+	if (check != NULL) {
+		printf(RED"Error %s not deleted \n"RESET, str);
+		return (1);
+	}
+	return (0);
+}
 
-	char *str = "aa";
-	t_list *to_del = get_node_by_str(lst, str);
-	printf(GREEN"Before:, to_Del %s\n"RESET, ((char *) to_del->content));
+
+/* test list remove if function */
+static int adapt_test_remove_if(void (*lst_remove_func)(t_list **, void *, int (*cmp)(), void (*free_fct)(void *)))
+{
+	int 	ret = 0;
+	t_list 	*lst = build_lst(ft_list_push_front);
+	t_list 	*to_del = get_node_by_str(lst, "bb");
+
+	/* For potential debug
+	printf(YELLOW"Before:\n"RESET);
 	display_lst(lst);
-	list_remove_if(&lst, to_del->content, is_same_node, free);
-	printf(GREEN"After:\n"RESET);
-	display_lst(lst);
+	*/
+	/* test all NULL case */
+	lst_remove_func(NULL, to_del->content, is_same_node, free);
+	lst_remove_func(&lst, NULL, is_same_node, free);
+	lst_remove_func(&lst, to_del->content, NULL, free);
+	lst_remove_func(&lst, to_del->content, is_same_node, NULL);
+	if (get_node_by_str(lst, "bb") == NULL) {
+		printf(RED"Error %s was deleted with lst_remove_func(NULL, to_del->content, is_same_node, free)' \n"RESET, "bb");
+		ret = 1;
+	}
+
+	to_del = get_node_by_str(lst, "aa");
+	lst_remove_func(&lst, to_del->content, is_same_node, free);
+	if (check_remove_if(lst, "aa")) {
+		ret = 1;
+	}
+
+	to_del = get_node_by_str(lst, "!first");
+	lst_remove_func(&lst, to_del->content, is_same_node, free);
+	if (check_remove_if(lst, "!first")) {
+		ret = 1;
+	}
 	
-	to_del = get_node_by_str(lst, 0);
-	printf(GREEN"Before:, to_Del %s\n"RESET, ((char *) to_del->content));
+	to_del = get_node_by_str(lst, "a");
+	lst_remove_func(&lst, to_del->content, is_same_node, free);
+	if (check_remove_if(lst, "a")) {
+		ret = 1;
+	}
+
+	to_del = get_node_by_str(lst, "yoo");
+	lst_remove_func(&lst, to_del->content, is_same_node, free);
+	if (check_remove_if(lst, "yoo")) {
+		ret = 1;
+	}
+	/* For potential debug
+	printf(YELLOW"After:\n"RESET);
 	display_lst(lst);
-	list_remove_if(&lst, to_del->content, is_same_node, free);
-	printf(GREEN"After:\n"RESET);
-	display_lst(lst);
+	*/
+	list_clear(&lst, free);
+	return(ret);
+}
+
+int test_remove_if()
+{
+	adapt_test_remove_if(list_remove_if);
 	return(0);
 }
 
@@ -142,20 +205,6 @@ static t_list *build_lst_nb(void lst_fun(t_list **, void*), int max)
 }
 
 
-static int compare_lst_string(t_list *me, t_list *real)
-{
-	int ret = 0;
-	while (me) {
-		if (ft_strcmp((char *)me->content, (char *)real->content) != 0) {
-			printf(RED"Error got %s expected %s\n"RESET,(char *)me->content, (char *)real->content);
-			ret = 1;
-			break ;
-		}
-		me = me->next;
-		real = real->next;
-	}
-	return (ret);
-}
 
 
 int test_list_push_front()
@@ -190,7 +239,7 @@ static int check_lst_size(t_list *lst)
 	int me = ft_list_size(lst);
 	int real = list_size(lst);
 	if (me != real) {
-		printf(RED"Error got %d exptected %d\n"RESET, me , real);
+		printf(RED"Error got %d expected %d\n"RESET, me , real);
 		return (1);
 	} 
 	return (0);

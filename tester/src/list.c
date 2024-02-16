@@ -60,7 +60,7 @@ void    list_remove_if(t_list **list, void *data_ref, int (*cmp)(), void (*free_
 	t_list  *tmp = NULL;
 	t_list  *current = NULL;
 
-	if (list == NULL)
+	if (!list || !cmp || !free_fct || !data_ref)
 		return;
 	current = *list;
 	// printf(YELLOW"current |%s| data |%s|\n"RESET, (char *)current->content, (char *)data_ref);
@@ -69,7 +69,6 @@ void    list_remove_if(t_list **list, void *data_ref, int (*cmp)(), void (*free_
 		free_fct(current->content);
 		free(current);
 		current = *list;
-		printf("yo first\n");
 	}
 	while (current) {
 		if (current->next && cmp(current->next->content, data_ref) == TRUE) {
