@@ -21,6 +21,7 @@ SRCS	=	src/ft_strlen.s\
 			src/ft_list_push_front.s\
 			src/ft_list_size.s\
 			src/ft_list_push_back.s\
+			src/ft_list_sort.s\
 
 
 NAME	= 	libasm.a

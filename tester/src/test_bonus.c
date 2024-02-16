@@ -5,6 +5,11 @@ static int is_minus_value(void *a, void *b)
 	return ((*(char *)a) >= (*(char *)b));
 }
 
+static int is_max_value(void *a, void *b)
+{
+	return ((*(char *)a) <= (*(char *)b));
+}
+
 void 	list_sort(t_list **lst, int (*cmp)())
 {
 	t_list  *next;
@@ -28,9 +33,7 @@ void 	list_sort(t_list **lst, int (*cmp)())
 			}
 			current = next;
 	}
-	printf(YELLOW"After\n"RESET);
 }
-
 
 t_list  *ft_lstnew(void *content)
 {
@@ -49,8 +52,8 @@ void display_lst(t_list *lst)
 {
 	int i = 0;
 	while (lst) {
-		printf("lst %s|%d|%s\t|%p|\t[%d]\t%s%s%s\n", GREEN, (int)((char *)lst->content)[0]\
-			, RESET, lst, i, YELLOW, (char *)lst->content, RESET);
+		printf("content: %s[%d]%s\t%s|%p|%s %s[%d]%s\t%s%s%s\n", GREEN, (int)((char *)lst->content)[0]\
+			, RESET, CYAN, lst, RESET, RED, i, RESET, YELLOW, (char *)lst->content, RESET);
 		++i;
 		lst = lst->next;
 	}
@@ -67,11 +70,14 @@ static t_list *build_lst(void lst_fun(t_list **, void*))
 	t_list *node2 = ft_lstnew((void *)str);
 	str = ft_strdup("-  -");
 	t_list *node3 = ft_lstnew((void *)str);
-	str = ft_strdup("dsakljda");
+	str = ft_strdup("yoo");
 	t_list *node4 = ft_lstnew((void *)str);
 	str = ft_strdup("aa");
 	t_list *node5 = ft_lstnew((void *)str);
-
+	str = ft_strdup("bb");
+	t_list *node6 = ft_lstnew((void *)str);
+	str = ft_strdup("!first");
+	t_list *node7 = ft_lstnew((void *)str);
 
 	lst_fun(&lst, node);
 	lst_fun(&lst, node1);
@@ -79,12 +85,13 @@ static t_list *build_lst(void lst_fun(t_list **, void*))
 	lst_fun(&lst, node3);
 	lst_fun(&lst, node4);
 	lst_fun(&lst, node5);
+	lst_fun(&lst, node6);
+	lst_fun(&lst, node7);
 	lst_fun(&lst, NULL);
 	lst_fun(NULL, NULL);
 
 	return (lst);
 }
-
 
 static t_list *build_lst_nb(void lst_fun(t_list **, void*), int max)
 {
@@ -99,18 +106,19 @@ static t_list *build_lst_nb(void lst_fun(t_list **, void*), int max)
 }
 
 
-
-static int test_lst_sort()
+static int compare_lst_string(t_list *me, t_list *real)
 {
-	t_list *lst = build_lst(ft_list_push_back);
-	display_lst(lst);
-	list_sort(&lst, is_minus_value);
-	display_lst(lst);
-	list_sort(&lst, ft_strcmp);
-	display_lst(lst);
-
-	list_clear(&lst, free);
-	return (0);
+	int ret = 0;
+	while (me) {
+		if (ft_strcmp((char *)me->content, (char *)real->content) != 0) {
+			printf(RED"Error got %s expected %s\n"RESET,(char *)me->content, (char *)real->content);
+			ret = 1;
+			break ;
+		}
+		me = me->next;
+		real = real->next;
+	}
+	return (ret);
 }
 
 
@@ -119,47 +127,27 @@ int test_list_push_front()
 	int ret = 0;
 	t_list *real = build_lst(ft_list_push_front);
 	t_list *me = build_lst(list_push_front);
-
-	t_list *head_real = real;
-	t_list *head_me = me;
-
-	while (me) {
-		if (ft_strcmp((char *)me->content, (char *)real->content) != 0) {
-			printf(RED"Error got %s expected %s\n"RESET,(char *)me->content, (char *)real->content);
-			ret = 1;
-			break ;
-		}
-		me = me->next;
-		real = real->next;
+	if (compare_lst_string(me, real)) {
+		return (1);
 	}
-	list_clear(&head_me, free);
-	list_clear(&head_real, free);
+	list_clear(&me, free);
+	list_clear(&real, free);
 	return (ret);
 }
+
 
 int test_list_push_back()
 {
 	int ret = 0;
 	t_list *real = build_lst(ft_list_push_back);
 	t_list *me = build_lst(list_push_back);
-
-	t_list *head_real = real;
-	t_list *head_me = me;
-
-	while (me) {
-		if (ft_strcmp((char *)me->content, (char *)real->content) != 0) {
-			printf(RED"Error got %s expected %s\n"RESET,(char *)me->content, (char *)real->content);
-			ret = 1;
-			break ;
-		}
-		me = me->next;
-		real = real->next;
+	if (compare_lst_string(me, real)) {
+		return (1);
 	}
-	list_clear(&head_me, free);
-	list_clear(&head_real, free);
+	list_clear(&me, free);
+	list_clear(&real, free);
 	return (ret);
 }
-
 
 static int check_lst_size(t_list *lst)
 {
@@ -197,6 +185,37 @@ int test_list_size()
 	return (ret);
 }
 
+static int test_lst_sort()
+{
+	t_list *first = build_lst(ft_list_push_back);
+	t_list *second = build_lst(ft_list_push_back);
+
+	list_sort(&first, is_minus_value);
+	ft_list_sort(&second, is_minus_value);
+	if (compare_lst_string(first, second)) {
+		return (1);
+	}
+
+	list_sort(&first, is_max_value);
+	ft_list_sort(&second, is_max_value);
+	if (compare_lst_string(first, second)) {
+		return (1);
+	}
+	list_sort(&first, ft_strcmp);
+	ft_list_sort(&second, ft_strcmp);
+	if (compare_lst_string(first, second)) {
+		return (1);
+	}
+	/*
+		display_lst(first);
+		display_lst(second);
+	*/
+
+	list_clear(&first, free);
+	list_clear(&second, free);
+	return (0);
+}
+
 
 int main (void)
 {
@@ -204,6 +223,6 @@ int main (void)
 	tester_hub(test_list_push_front, PURPLE"List push front\t"RESET);
 	tester_hub(test_list_push_back, PURPLE"List push back\t"RESET);
 	tester_hub(test_list_size, PURPLE"List size\t"RESET);
-	test_lst_sort();
+	tester_hub(test_lst_sort, PURPLE"List sort\t"RESET);
 	return (0);
 }
