@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*   my_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfour <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:51:52 by nfour             #+#    #+#             */
-/*   Updated: 2022/09/04 12:24:58 by nfour            ###   ########.fr       */
+/*   Updated: 2024/02/16 15:05:22 by nfour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../../libasm.h"
 
-int	ft_get_int(char c, char *base)
+
+int	char_to_numb(char c, char *base)
 {
-	int	i;
+	int	i = 0;
 
-	i = 0;
-	while (base[i] != '\0')
-	{
+	while (base[i]) {
 		if (base[i] == c)
 			return (i);
 		i++;
@@ -25,13 +23,11 @@ int	ft_get_int(char c, char *base)
 	return (0);
 }
 
-int	char_is_in_base(char c, char *base)
+int	char_in_base(char c, char *base)
 {
-	int	i;
+	int	i = 0;
 
-	i = 0;
-	while (base[i] != '\0')
-	{
+	while (base[i]) {
 		if (c == base[i])
 			return (1);
 		i++;
@@ -39,16 +35,15 @@ int	char_is_in_base(char c, char *base)
 	return (0);
 }
 
-int	ft_check_base(char *str)
+int	is_valid_base(char *str)
 {
-	int	i;
-	int	j;
+	int	i = 0;
+	int	j = 0;
+	int len = ft_strlen(str);
 
-	i = 0;
-	j = 0;
-	if (ft_strlen(str) <= 1)
+	if (len <= 1)
 		return (1);
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		if (str[i] == ' ' || str[i] == '+' || str [i] == '-'
 			|| (str[i] >= '\t' && str[i] <= '\n'))
@@ -63,32 +58,28 @@ int	ft_check_base(char *str)
 		}
 		i++;
 	}
-	return (ft_strlen(str));
+	return (len);
 }
 
 int	my_atoi_base(char *str, char *base)
 {
-	int	i;
-	int	sign;
-	int	tmp;
+	int	i = 0;
+	int	tmp = 0;
+	int	sign = 1;
+	int base_len = is_valid_base(base);
 
-	if (ft_check_base(base) == 1)
+	if (base_len == 1)
 		return (0);
-	i = 0;
-	sign = 1;
-	tmp = 0;
 	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == 32)
 		i++;
-	while (str[i] == '+' || str[i] == '-')
-	{
+	while (str[i] == '+' || str[i] == '-') {
 		if (str[i] == '-')
 			sign *= -1;
 		i++;
 	}
-	while (char_is_in_base(str[i], base) == 1)
-	{
-		tmp *= ft_check_base(base);
-		tmp += ft_get_int(str[i], base);
+	while (char_in_base(str[i], base) == 1) {
+		tmp *= base_len;
+		tmp += char_to_numb(str[i], base);
 		i++;
 	}
 	return (sign * tmp);
