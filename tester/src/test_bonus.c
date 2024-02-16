@@ -303,10 +303,10 @@ static int test_lst_sort()
 int main (void)
 {
 	printf(CYAN"Bonus Tester\n"RESET);
-	tester_hub(test_list_push_front, PURPLE"List push front\t"RESET, 1);
-	tester_hub(test_list_push_back, PURPLE"List push back\t"RESET, 1);
-	tester_hub(test_list_size, PURPLE"List size\t"RESET, 1);
-	tester_hub(test_lst_sort, PURPLE"List sort\t"RESET, 1);
-	tester_hub(test_remove_if, PURPLE"List Remove If\t"RESET, 1);
+	tester_hub(test_list_push_front, PURPLE"List push front\t"RESET);
+	tester_hub(test_list_push_back, PURPLE"List push back\t"RESET);
+	tester_hub(test_list_size, PURPLE"List size\t"RESET);
+	tester_hub(test_lst_sort, PURPLE"List sort\t"RESET);
+	tester_hub(test_remove_if, PURPLE"List Remove If\t"RESET);
 	return (0);
 }
