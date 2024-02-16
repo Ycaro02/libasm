@@ -21,7 +21,7 @@ ssize_t     ft_read(int fd, const void *buf, size_t nbytes);
 char        *ft_strdup(const char *s);
 
 /* tester function */
-void        tester_hub(int test_fun(void), char *str);
+void        tester_hub(int test_fun(void), char *str, int flag);
 int         test_strcmp();
 int         test_strcpy();
 int         test_strlen();

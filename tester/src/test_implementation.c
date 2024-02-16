@@ -198,13 +198,17 @@ int test_strdup()
 	return (0);
 }
 
-void        tester_hub(int test_fun(void), char *str)
+void        tester_hub(int test_fun(void), char *str, int flag)
 {
 	int     error = 0;
-	char    *color, *msg;
-
+	// char    *color, *msg;
+	char *msg;
 	error = test_fun();
-	color = error == 0 ? GREEN : RED;
-	msg = error == 0 ? "OK" : "KO";
-	printf("%s test %s%s\n"RESET, str, color, msg);
+	// color = error == 0 ? GREEN : RED;
+	msg = error == 0 ? GREEN"OK" : RED"KO";
+	if (flag == 0) {
+		printf("%s\t%s\n"RESET, str, msg);
+		return ;
+	}
+	printf("%s%s\n"RESET, str, msg);
 }

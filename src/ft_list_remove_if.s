@@ -1,3 +1,5 @@
+BITS 64
+
 section .text
 	global ft_list_remove_if
 ; register		type		var_name	addr	(subs to rbp)
@@ -32,7 +34,7 @@ ft_list_remove_if:
 	je			_list_remove_if_end_loop
 	mov			rax, qword[rbp-0x10]		; put current in rax
 	mov			rdi, qword[rax]				; put current->content in rdi
-	mov			rsi, qword[rbp-0x20]
+	mov			rsi, qword[rbp-0x20]		; put data in rsi
 	mov			rcx, qword[rbp-0x28]		; get cmp function ptr in rcx
 	mov			eax, 0x0					; reset eax before call
 	call		rcx							; call cmp(current->content, data_ref)
@@ -44,7 +46,7 @@ ft_list_remove_if:
 	mov			rax, qword[rbp-0x18]		; put list in rax
 	mov			qword[rax], rdx				; dereference it and move rdx ---> *list = (*list)->next;
 	mov			rax, qword[rbp-0x10]		; put current in rax
-	mov			rdi, qword[rax]
+	mov			rdi, qword[rax]				; get current->content in rdi
 	mov			rdx, qword[rbp-0x30]		; put free function ptr in rdx
 	call		rdx							; call free_fct(current->content)
 	mov			rdi, qword[rbp-0x10]		; put current in rdi for function call

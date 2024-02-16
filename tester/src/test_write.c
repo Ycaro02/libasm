@@ -109,8 +109,8 @@ static int test_read()
 
 int main(void)
 {
-    tester_hub(test_write, YELLOW"ft_write "RESET);
-    tester_hub(test_read, YELLOW"ft_read  "RESET);
+    tester_hub(test_write, YELLOW"ft_write "RESET, 0);
+    tester_hub(test_read, YELLOW"ft_read  "RESET, 0);
 
     return (0);
 }
