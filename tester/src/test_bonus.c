@@ -206,7 +206,6 @@ static t_list *build_lst_nb(void lst_fun(t_list **, void*), int max)
 
 
 
-
 int test_list_push_front()
 {
 	int ret = 0;
@@ -219,7 +218,6 @@ int test_list_push_front()
 	list_clear(&real, free);
 	return (ret);
 }
-
 
 int test_list_push_back()
 {
