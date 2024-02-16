@@ -42,18 +42,21 @@ typedef struct s_list
 void 	ft_list_push_back(t_list **begin_list, void *data);	/* real bonus not in subject */
 void 	ft_list_push_front(t_list **begin_list, void *data);
 int		ft_list_size(t_list *begin_list);
+void 	ft_list_sort(t_list **begin_list, int (*cmp)());
 /* with function pointer */
 void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_fct)(void *));
-void 	ft_list_sort(t_list **begin_list, int (*cmp)());
+
 // (*cmp)(list_ptr->data, list_other_ptr->data);
 int		ft_atoi_base(char *str, char *base);
 
 /* BONUS TEST */
+void	list_push_back(t_list **lst, void *data);
 void	list_push_front(t_list **lst, void *data);
 int		list_size(t_list *begin_list);
-void	list_push_back(t_list **lst, void *data);
-int		my_atoi_base(char *str, char *base);
 void 	list_sort(t_list **begin_list, int (*cmp)());
+
+void    list_remove_if(t_list **list, void *data_ref, int (*cmp)(), void (*free_fct)(void*))
+int		my_atoi_base(char *str, char *base);
 /* utils */
 void    list_clear(t_list **lst, void (*del)(void*));
 char    *ft_itoa(int n);
