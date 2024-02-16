@@ -16,20 +16,19 @@ ft_list_sort:
 	sub			rsp, 0x30				; sub 0x30 (48 byte)
 	mov			qword[rbp-0x28], rdi	; **begin_lst in 0x28
 	mov			qword[rbp-0x30], rsi	; *cmp in 0x30
+	
 	cmp			qword[rbp-0x30], 0x0	; compare cmp and null
 	je			_exit_label
+	
 	cmp			qword[rbp-0x28], 0x0	; compare **begin_lst and null
 	je			_exit_label
+	
 	mov			rax, qword[rbp-0x28]	; **begin_lst in rax
 	mov			rax, qword[rax]			; dereference it : *begin_lst
 	test		rax, rax				; test if null
 	je			_exit_label
-	; TESTED here too need to gdb
-	; mov			rax, qword[rbp-0x28]	; **begin_lst in rax			SAME LOGIC here maybe not mandatory
-	; mov			rax, qword[rax]			; dereference it : *begin_lst
+	
 	mov			qword[rbp-0x10], rax	; put this in 0x10 (current)
-	; TESTED without this still ok need to check in gdb
-	; mov			rax, qword[rbp-0x10]	; rax = this value, but that was already in rax maybe not mandatory here
 	mov			qword[rbp-0x18], rax	; init current with same value
 	jmp			_list_sort_loop_check
 
