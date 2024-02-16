@@ -48,7 +48,7 @@ all:		${NAME}
 			@$(NASM) $@ $<
 
 ${NAME}:	$(OBJS)
-			@ echo " \033[5;36m ----- Compiling libasm project...  ----- \033[0m\n"
+			@ echo "\033[7;36m ----- Compiling libasm project...  ----- \033[0m"
 			@ar rc -s $(NAME) $(OBJS)
 			@echo "\033[7;32m -----  Compiling libasm done  ----- \033[0m"
 			@${CALL_TESTER}
@@ -79,10 +79,10 @@ g:
 		${GDB_RULE}
 
 clean:
-			@echo "\033[7;31m\n -----  Cleaning all objects...  ----- \033[0m\n"
+			@echo "\033[7;31m\n -----  Cleaning all objects...  ----- \033[0m"
 			@${RM} ${OBJS}
 			@${CALL_TESTER} clean
-			@echo "\033[7;33m -----  Cleaning done  ----- \033[0m\n"
+			@echo "\033[7;33m -----  Cleaning done  ----- \033[0m"
 
 
 fclean:		clean
