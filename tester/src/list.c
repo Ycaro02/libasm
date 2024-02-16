@@ -58,26 +58,28 @@ int is_same_node(void *node1, void *node2)
 void    list_remove_if(t_list **list, void *data_ref, int (*cmp)(), void (*free_fct)(void*))
 {
 	t_list  *tmp = NULL;
-	t_list  *lst = NULL;
+	t_list  *current = NULL;
 
 	if (list == NULL)
 		return;
-	lst = *list;
-	if (lst && cmp(lst->content, data_ref) == TRUE) {
+	current = *list;
+	// printf(YELLOW"current |%s| data |%s|\n"RESET, (char *)current->content, (char *)data_ref);
+	if (current && cmp(current->content, data_ref) == TRUE) {
 		*list = (*list)->next;
-		free_fct(lst->content);
-		free(lst);
-		lst = *list;
+		free_fct(current->content);
+		free(current);
+		current = *list;
+		printf("yo first\n");
 	}
-	while (lst) {
-		if (lst->next && cmp(lst->next, data_ref->content) == TRUE) {
-			tmp = lst->next;
-			lst->next = lst->next->next;
+	while (current) {
+		if (current->next && cmp(current->next->content, data_ref) == TRUE) {
+			tmp = current->next;
+			current->next = current->next->next;
 			free_fct(tmp->content);
 			free(tmp);
 		}
 		else
-			lst = lst->next;
+			current = current->next;
 	}
 }
 

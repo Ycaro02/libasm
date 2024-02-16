@@ -93,6 +93,42 @@ static t_list *build_lst(void lst_fun(t_list **, void*))
 	return (lst);
 }
 
+
+
+static t_list *get_node_by_str(t_list *lst, char *str)
+{
+	int i = 0;
+
+	while(lst) {
+		if (ft_strcmp(str, (char *)lst->content) == 0)
+			return (lst);
+		lst = lst->next;
+		++i;
+	}
+	return (NULL);
+}
+
+static int test_remove_if()
+{
+	t_list *lst = build_lst(ft_list_push_front);
+
+	char *str = "aa";
+	t_list *to_del = get_node_by_str(lst, str);
+	printf(GREEN"Before:, to_Del %s\n"RESET, ((char *) to_del->content));
+	display_lst(lst);
+	list_remove_if(&lst, to_del->content, is_same_node, free);
+	printf(GREEN"After:\n"RESET);
+	display_lst(lst);
+	
+	to_del = get_node_by_str(lst, 0);
+	printf(GREEN"Before:, to_Del %s\n"RESET, ((char *) to_del->content));
+	display_lst(lst);
+	list_remove_if(&lst, to_del->content, is_same_node, free);
+	printf(GREEN"After:\n"RESET);
+	display_lst(lst);
+	return(0);
+}
+
 static t_list *build_lst_nb(void lst_fun(t_list **, void*), int max)
 {
 	t_list *lst = NULL;
@@ -223,5 +259,6 @@ int main (void)
 	tester_hub(test_list_push_back, PURPLE"List push back\t"RESET);
 	tester_hub(test_list_size, PURPLE"List size\t"RESET);
 	tester_hub(test_lst_sort, PURPLE"List sort\t"RESET);
+	tester_hub(test_remove_if, PURPLE"List Remove If\t"RESET);
 	return (0);
 }

@@ -55,9 +55,10 @@ void	list_push_front(t_list **lst, void *data);
 int		list_size(t_list *begin_list);
 void 	list_sort(t_list **begin_list, int (*cmp)());
 
-void    list_remove_if(t_list **list, void *data_ref, int (*cmp)(), void (*free_fct)(void*))
+void    list_remove_if(t_list **list, void *data_ref, int (*cmp)(), void (*free_fct)(void*));
 int		my_atoi_base(char *str, char *base);
 /* utils */
+int 	is_same_node(void *node1, void *node2);
 void    list_clear(t_list **lst, void (*del)(void*));
 char    *ft_itoa(int n);
 void    ft_sort_int_tab(long int *tab, int size);
