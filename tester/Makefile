@@ -61,6 +61,16 @@ test:	${NAME}
 btest:	${BONUS_NAME}
 		@./${BONUS_NAME}
 
+atest:	${NAME} ${BONUS_NAME}
+		@./${NAME} 
+		@./${NAME_WRITE} 2> /dev/null
+		@./${BONUS_NAME}
+
+avtest:	${NAME} ${BONUS_NAME}
+		valgrind --leak-check=full ./${NAME} 
+		valgrind --leak-check=full ./${NAME_WRITE}
+		valgrind --leak-check=full ./${BONUS_NAME}
+
 vbtest:	${BONUS_NAME}
 		valgrind --leak-check=full ./${BONUS_NAME}
 

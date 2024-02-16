@@ -54,6 +54,12 @@ ${NAME}:	$(OBJS)
 			@${CALL_TESTER}
 # @ranlib $(NAME) || ar -s $(NAME)
 
+a:
+		@${CALL_TESTER} atest
+
+av:
+		@${CALL_TESTER} avtest
+
 test:
 		@${CALL_TESTER} test
 
