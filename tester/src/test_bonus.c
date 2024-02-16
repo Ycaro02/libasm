@@ -188,7 +188,8 @@ static int adapt_test_remove_if(void (*lst_remove_func)(t_list **, void *, int (
 
 int test_remove_if()
 {
-	adapt_test_remove_if(list_remove_if);
+	if (adapt_test_remove_if(ft_list_remove_if))
+		return (1);
 	return(0);
 }
 
