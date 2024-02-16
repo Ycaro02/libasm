@@ -300,6 +300,46 @@ static int test_lst_sort()
 }
 
 
+# define HEXA_BASE	"0123456789abcdef"
+
+# define ELEVEN_BASE "0123456789a"
+
+# define OCTA_BASE	"01234567"
+
+# define BIN_BASE	"01"
+
+static int check_atoi_base(char *str, char *base, int res)
+{
+	int nb = my_atoi_base(str, base);
+	if (nb != res) {
+		printf("%s%s%s:\t%s[%d]%s\n", YELLOW, str, RESET, RED, nb , RESET); /* yes */
+		return (1);
+	} else {
+		// printf("%s%s%s:\t%s[%d]%s\n", YELLOW, str, RESET, GREEN, nb, RESET); /* yes */
+	}
+	return (0);
+}
+
+static int test_atoi_base()
+{
+	int res = check_atoi_base("f", HEXA_BASE, 15);
+	res = check_atoi_base("ff", HEXA_BASE, 255);
+	res = check_atoi_base("ssdf", HEXA_BASE, 0); /* invalid char base */
+	res = check_atoi_base("fa1bf", HEXA_BASE, 1024447);
+	res = check_atoi_base("7fffffff", HEXA_BASE, 2147483647);
+	res = check_atoi_base("77722", OCTA_BASE, 32722);
+	res = check_atoi_base("34277321", OCTA_BASE, 7438033);
+	res = check_atoi_base("000000111111010011", BIN_BASE, 4051);
+	res = check_atoi_base("1111111111111111111111111111111", BIN_BASE, 2147483647);
+	res = check_atoi_base("11111111111111111111111111111111", BIN_BASE, -1); /* default oveflow value */
+	res = check_atoi_base("ffffffffffffffffffffff", HEXA_BASE, -1); /* default oveflow value */
+	res = check_atoi_base("aa8812", ELEVEN_BASE, 1768549); /* default oveflow value */
+	res = check_atoi_base("76565a8", ELEVEN_BASE, 13449147); /* default oveflow value */
+	res = check_atoi_base(NULL, ELEVEN_BASE, 0); 
+	res = check_atoi_base("123", NULL, 0);
+	return (res);
+}
+
 int main (void)
 {
 	printf(CYAN"Bonus Tester\n"RESET);
@@ -308,5 +348,6 @@ int main (void)
 	tester_hub(test_list_size, PURPLE"List size\t"RESET);
 	tester_hub(test_lst_sort, PURPLE"List sort\t"RESET);
 	tester_hub(test_remove_if, PURPLE"List Remove If\t"RESET);
+	tester_hub(test_atoi_base, PURPLE"ft_atoi_base\t"RESET);
 	return (0);
 }
