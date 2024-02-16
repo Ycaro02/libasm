@@ -3,4 +3,5 @@ libasm.a
 tester/libasm_bonus_test
 tester/libasm_test
 tester/libasm_write_test
-*peda-session-libasm_test.txt
+*peda-session*.txt
+**/peda-session*.txt
