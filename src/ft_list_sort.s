@@ -28,7 +28,7 @@ ft_list_sort:
 	test		rax, rax				; test if null
 	je			_exit_label
 	
-	mov			qword[rbp-0x10], rax	; put this in 0x10 (current)
+	mov			qword[rbp-0x10], rax	; put rax (*begin_lst) in 0x10 (current)
 	mov			qword[rbp-0x18], rax	; init current with same value
 	jmp			_list_sort_loop_check
 
@@ -36,18 +36,22 @@ ft_list_sort:
 	mov			rax, qword[rbp-0x10]	; put current in rax
 	mov			rax, qword[rax+0x8]		; rax = current->next
 	mov			qword[rbp-0x18], rax	; store this in next ---> next = current->next
+	
 	mov			rax, qword[rbp-0x10]	; put current in rax
-	mov			rdx, qword[rax]			; get current->content
+	mov			rdx, qword[rax]			; get current->content in rdx
+	
 	mov			rax, qword[rbp-0x18]	; put next in rax
-	mov			rax, qword[rax]			; get next->content
+	mov			rax, qword[rax]			; get next->content in rax
+
 	mov			rcx, qword[rbp-0x30]	; put *cmp, function ptr in rcx
+	; setup args for cmp call
 	mov			rsi, rdx				; mov rdx (current->content) in rsi for next CALL
 	mov			rdi, rax				; mov rax (next->content) in rdi for next CALL
 	mov			eax, 0x0				; set eax to 0 (return of call will be in eax)
 	call		rcx						; call cmp function
-	test		eax, eax				; check if 0
-	jg			_list_sort_inc_next		; jump if greater, not lower or equal
-	
+	test		eax, eax				; if return value is 0
+	jg			_list_sort_inc_next		; jump if greater 
+	; if lower or equal
 	mov			rax, qword[rbp-0x10]	; put current in rax
 	mov			rax, qword[rax]			; get current content
 	mov			qword[rbp-0x8], rax		; save this content in tmp --> tmp_content = current->content

@@ -210,7 +210,6 @@ static int test_lst_sort()
 		display_lst(first);
 		display_lst(second);
 	*/
-
 	list_clear(&first, free);
 	list_clear(&second, free);
 	return (0);
