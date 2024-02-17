@@ -62,26 +62,26 @@ _atoi_base_skip_space_loop:
 <+113>:   jmp    _atoi_base_check_sign				; else jump to sign loop check
 
 _atoi_base_sign:
-<+115>:   mov    eax, dword[rbp-0x10]
+<+115>:   mov    eax, dword[rbp-0x10]		; same manipulation to get str[i]
 <+118>:   movsxd rdx, eax
 <+121>:   mov    rax, qword[rbp-0x18]
-<+125>:   add    rax, rdx
+<+125>:   add    rax, rdx					; here str + i
 <+128>:   movzx  eax, byte[rax]
-<+131>:   cmp    al, 0x2b
-<+133>:   sete   al
-<+136>:   movzx  eax, al
-<+139>:   mov    edx, dword[rbp-0x10]
+<+131>:   cmp    al, 0x2b					; if str[i] == '+'
+<+133>:   sete   al							; set al bool to 1 ??
+<+136>:   movzx  eax, al					; move this in eax
+<+139>:   mov    edx, dword[rbp-0x10]		; again just get str[i]
 <+142>:   movsxd rcx, edx
 <+145>:   mov    rdx, qword[rbp-0x18]
-<+149>:   add    rdx, rcx
+<+149>:   add    rdx, rcx					; here str + i
 <+152>:   movzx  edx, byte[rdx]
-<+155>:   cmp    dl, 0x2d
-<+158>:   sete   dl
-<+161>:   movzx  ecx, dl
-<+164>:   sub    eax, ecx
-<+166>:   mov    edx, eax
-<+168>:   mov    eax, dword[rbp-0x8]
-<+171>:   imul   eax, edx
+<+155>:   cmp    dl, 0x2d					; if str[i] == '-'
+<+158>:   sete   dl							; set dl to one ??
+<+161>:   movzx  ecx, dl					; save it in ecx
+<+164>:   sub    eax, ecx					; eax = first bool - second bool
+<+166>:   mov    edx, eax					; save in edx
+<+168>:   mov    eax, dword[rbp-0x8]		; eax = sign
+<+171>:   imul   eax, edx					; mult sign with eax: sign *= expr
 <+174>:   mov    dword[rbp-0x8], eax
 <+177>:   add    dword[rbp-0x10], 0x1
 
@@ -99,8 +99,8 @@ _atoi_base_check_sign:
 <+211>:   add    rax, rdx
 <+214>:   movzx  eax, byte[rax]
 <+217>:   cmp    al, 0x2d				; if (str[i] == '-')
-<+219>:   je     _atoi_base_sign
-<+221>:   jmp    _atoi_base_convert_check
+<+219>:   je     _atoi_base_sign		; jmp sign bode loop
+<+221>:   jmp    _atoi_base_convert_check ; otherwise go to convert
 
 _atoi_base_convert:
 <+223>:   mov    eax, dword[rbp-0xc]
