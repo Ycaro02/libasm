@@ -134,7 +134,7 @@ int  test_strcpy()
 
 int  test_strcmp()
 {    
-	if (ft_strcmp("koala", "kopoa") != 'a' - 'p') {
+	if (ft_strcmp("koala", "kopoa") != ('a' - 'p')) {
 		printf(YELLOW"Error strcmp koala kopoa\n"RESET);
 		return (1);
 	}

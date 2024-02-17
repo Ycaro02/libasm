@@ -22,13 +22,19 @@ static int check_write_return(int fd, char *str, int len)
 
 static int test_write()
 {
-    if (check_write_erno(-1, "lol")\
+	int dir_fd = open(".", O_RDONLY);
+    
+	if (check_write_erno(-1, "lol")\
         || check_write_erno(2, "\\dsaas")
         || check_write_erno(2, "sda")
         || check_write_erno(3, NULL))
         return (1);
+	
+	// printf("dir_fd%d\n", dir_fd);
 
     if (!check_write_return(2, "coucou", ft_strlen("coucou"))\
+		|| !check_write_return(dir_fd, "22", 3)\
+		|| !check_write_return(-1, "", 1)\
         || !check_write_return(2, "2\n", ft_strlen("2\n"))\
         || !check_write_return(-1, "2", ft_strlen("2"))\
         || !check_write_return(2, "2sdas\0dafd", ft_strlen("2sdas\0dafd"))\
