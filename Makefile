@@ -23,6 +23,10 @@ SRCS	=	src/ft_strlen.s\
 			src/ft_list_push_back.s\
 			src/ft_list_sort.s\
 			src/ft_list_remove_if.s\
+			src/utils/ft_char_in_base.s\
+			src/utils/ft_char_to_numb.s\
+			src/utils/ft_is_space.s\
+
 
 NAME	= 	libasm.a
 

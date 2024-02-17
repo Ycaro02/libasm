@@ -298,13 +298,10 @@ static int test_lst_sort()
 }
 
 
-# define HEXA_BASE	"0123456789abcdef"
-
-# define ELEVEN_BASE "0123456789a"
-
-# define OCTA_BASE	"01234567"
-
-# define BIN_BASE	"01"
+# define HEXA_BASE		"0123456789abcdef"
+# define ELEVEN_BASE	"0123456789a"
+# define OCTA_BASE		"01234567"
+# define BIN_BASE		"01"
 
 static int check_atoi_base(char *str, char *base, int res)
 {
@@ -323,7 +320,7 @@ static int check_atoi_base(char *str, char *base, int res)
 static int test_atoi_base()
 {
 	if (check_atoi_base("f", HEXA_BASE, 15)
-	 	|| check_atoi_base("-ff", HEXA_BASE, -255)
+	 	|| check_atoi_base(" -ff", HEXA_BASE, -255) /* test with space */
 	 	|| check_atoi_base("fa1bf", HEXA_BASE, 1024447)
 	 	|| check_atoi_base("7fffffff", HEXA_BASE, 2147483647)
 	 	|| check_atoi_base("ssdf", HEXA_BASE, 0) /* invalid char base */
@@ -334,9 +331,9 @@ static int test_atoi_base()
 	 	|| check_atoi_base("1111111111111111111111111111111", BIN_BASE, 2147483647)
 	 	|| check_atoi_base("+--dsada", ELEVEN_BASE, 0)/* default sign error valu  */
 	 	|| check_atoi_base("-77722", OCTA_BASE, -32722)
-	 	|| check_atoi_base("34277321", OCTA_BASE, 7438033)
+	 	|| check_atoi_base("  \t \n \v  34277321", OCTA_BASE, 7438033) /* test with space */
 	 	|| check_atoi_base("+++aa8812", ELEVEN_BASE, 1768549)
-	 	|| check_atoi_base("76565a8", ELEVEN_BASE, 13449147)
+	 	|| check_atoi_base(" \r\f\r\r   76565a8", ELEVEN_BASE, 13449147) /* test with space */
 	 	|| check_atoi_base(NULL, ELEVEN_BASE, 0) /* defaul NULL error value */
 	 	|| check_atoi_base("123", NULL, 0)  /* defaul NULL error value */
 	 	|| check_atoi_base("123", "12334", 0)  /* default invalid base error value */

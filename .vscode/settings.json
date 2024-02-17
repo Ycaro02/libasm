@@ -79,5 +79,9 @@
             "color": "#007f00",
             "filterFileRegex": "\\.s$",
             },
-    }
+	},
+	"files.associations": {
+		"*.def": "source.def",
+		"libasm.h": "c"
+	}
 }

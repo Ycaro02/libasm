@@ -16,27 +16,24 @@ int	char_to_numb(char c, char *base)
 {
 	int	i = 0;
 
-	while (base[i]) {
-		if (base[i] == c)
+	while (*base) {
+		if (*base == c)
 			return (i);
-		i++;
+		++i;
+		++base;
 	}
-	return (0);
+	return (i);
 }
 
 int	char_in_base(char c, char *base)
 {
-	int	i = 0;
-
-	while (base[i]) {
-		if (c == base[i])
-			return (1);
-		i++;
+	while (*base && *base != c) { /* base checked in is_valid_base/atoi start, can't be null here */
+		++base;
 	}
-	return (0);
+	return (*base != '\0');
 }
 
-static int is_space(char c)
+int is_space(char c)
 {
 	return ((c >= '\t' && c <= '\r') || c == 32);
 }
@@ -52,7 +49,7 @@ int	is_valid_base(char *str)
 	}
 	while (str[i])
 	{
-		if (is_space(str[i]) || str[i] == '+' || str[i] == '-')
+		if (ft_is_space(str[i]) || str[i] == '+' || str[i] == '-')
 			return (-1);
 		j = i + 1;
 		while (str[j] != '\0')
@@ -76,16 +73,16 @@ int	my_atoi_base(char *str, char *base)
 
 	if (!str || base_len == -1)
 		return (0);
-	while (is_space(str[i]))
+	while (ft_is_space(str[i]))
 		i++;
 	while (str[i] == '+' || str[i] == '-') {
 		if (str[i] == '-')
 			sign *= -1;
 		i++;
 	}
-	while (char_in_base(str[i], base) == 1) {
+	while (ft_char_in_base(str[i], base) == 1) {
 		tmp *= base_len;
-		tmp += char_to_numb(str[i], base);
+		tmp += ft_char_to_numb(str[i], base);
 		i++;
 	}
 	return (sign * tmp);

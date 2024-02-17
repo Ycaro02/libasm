@@ -46,9 +46,16 @@ void 	ft_list_sort(t_list **begin_list, int (*cmp)());
 /* with function pointer */
 void	ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_fct)(void *));
 
-// (*cmp)(list_ptr->data, list_other_ptr->data);
 int		ft_atoi_base(char *str, char *base);
+/* atoi base asm utils */
+int		ft_char_to_numb(char c, char *base);
+int		ft_char_in_base(char c, char *base);
+int		ft_is_space(char c);
+int		ft_is_valid_base(char *str);
 
+
+
+/* TESTER */
 /* BONUS TEST */
 void	list_push_back(t_list **lst, void *data);
 void	list_push_front(t_list **lst, void *data);
