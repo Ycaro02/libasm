@@ -314,30 +314,36 @@ static int check_atoi_base(char *str, char *base, int res)
 	if (nb != res) {
 		printf("%s%s%s:\t%s[%d]%s\n", YELLOW, str, RESET, RED, nb , RESET); /* yes */
 		return (1);
-	} else {
-		// printf("%s%s%s:\t%s[%d]%s\n", YELLOW, str, RESET, GREEN, nb, RESET); /* yes */
 	}
+	//  else {
+	// 	printf("%s%s%s:\t%s[%d]%s\n", YELLOW, str, RESET, GREEN, nb, RESET); /* yes */
+	// }
 	return (0);
 }
 
 static int test_atoi_base()
 {
-	int res = check_atoi_base("f", HEXA_BASE, 15);
-	res = check_atoi_base("ff", HEXA_BASE, 255);
-	res = check_atoi_base("ssdf", HEXA_BASE, 0); /* invalid char base */
-	res = check_atoi_base("fa1bf", HEXA_BASE, 1024447);
-	res = check_atoi_base("7fffffff", HEXA_BASE, 2147483647);
-	res = check_atoi_base("77722", OCTA_BASE, 32722);
-	res = check_atoi_base("34277321", OCTA_BASE, 7438033);
-	res = check_atoi_base("000000111111010011", BIN_BASE, 4051);
-	res = check_atoi_base("1111111111111111111111111111111", BIN_BASE, 2147483647);
-	res = check_atoi_base("11111111111111111111111111111111", BIN_BASE, -1); /* default oveflow value */
-	res = check_atoi_base("ffffffffffffffffffffff", HEXA_BASE, -1); /* default oveflow value */
-	res = check_atoi_base("aa8812", ELEVEN_BASE, 1768549); /* default oveflow value */
-	res = check_atoi_base("76565a8", ELEVEN_BASE, 13449147); /* default oveflow value */
-	res = check_atoi_base(NULL, ELEVEN_BASE, 0); 
-	res = check_atoi_base("123", NULL, 0);
-	return (res);
+	if (check_atoi_base("f", HEXA_BASE, 15)
+	 	|| check_atoi_base("-ff", HEXA_BASE, -255)
+	 	|| check_atoi_base("fa1bf", HEXA_BASE, 1024447)
+	 	|| check_atoi_base("7fffffff", HEXA_BASE, 2147483647)
+	 	|| check_atoi_base("ssdf", HEXA_BASE, 0) /* invalid char base */
+	 	|| check_atoi_base("ffffffffffffffffffffff", HEXA_BASE, -1) /* default oveflow value */
+	 	|| check_atoi_base("11111111111111111111111111111111", BIN_BASE, -1) /* default oveflow value */
+	 	|| check_atoi_base("---1111111111111111111111111111111", BIN_BASE, -2147483647)
+	 	|| check_atoi_base("000000111111010011", BIN_BASE, 4051)
+	 	|| check_atoi_base("1111111111111111111111111111111", BIN_BASE, 2147483647)
+	 	|| check_atoi_base("+--dsada", ELEVEN_BASE, 0)/* default sign error valu  */
+	 	|| check_atoi_base("-77722", OCTA_BASE, -32722)
+	 	|| check_atoi_base("34277321", OCTA_BASE, 7438033)
+	 	|| check_atoi_base("+++aa8812", ELEVEN_BASE, 1768549)
+	 	|| check_atoi_base("76565a8", ELEVEN_BASE, 13449147)
+	 	|| check_atoi_base(NULL, ELEVEN_BASE, 0) /* defaul NULL error value */
+	 	|| check_atoi_base("123", NULL, 0))  /* defaul NULL error value */ 
+	{
+		return (1);
+	}
+	return (0);
 }
 
 int main (void)

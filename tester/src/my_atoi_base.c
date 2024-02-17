@@ -6,7 +6,7 @@
 /*   By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:51:52 by nfour             #+#    #+#             */
-/*   Updated: 2024/02/16 17:41:59 by nfour            ###   ########.fr       */
+/*   Updated: 2024/02/16 17:46:46 by nfour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	is_valid_base(char *str)
 	}
 	return (len);
 }
+
+// static int is_space()
 
 int	my_atoi_base(char *str, char *base)
 {
