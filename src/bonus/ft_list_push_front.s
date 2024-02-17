@@ -20,7 +20,7 @@ ft_list_push_front:					; ft_list_push_front label
 	mov		rdx,qword[rax]			; rdx = rax; copy lst addr in rdx
 
 	mov		rax,qword[rbp-0x10]		; rax = rbp-0x10 ---> rax = data addr
-	mov		qword[rax+0x8], rdx		; rax + ptr size = rdx ---> data->next = HEAD, same than data->next = *lst
+	mov		qword[rax], rdx			; data->next = HEAD, same than data->next = *lst
 
 	mov		rax,qword[rbp-0x8]		; rax = rbp-0x8 ---> rax contain lst addr now
 	mov		rdx,qword[rbp-0x10]		; rdx = rbp - 0x10 ----> rdx now contain data addr

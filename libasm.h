@@ -32,8 +32,8 @@ int         test_strdup();
 */
 typedef struct s_list
 {
-	void			*data;
 	struct s_list	*next;
+	void			*data;
 }	t_list;
 
 
