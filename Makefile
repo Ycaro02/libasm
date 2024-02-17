@@ -26,6 +26,7 @@ SRCS	=	src/ft_strlen.s\
 			src/utils/ft_char_in_base.s\
 			src/utils/ft_char_to_numb.s\
 			src/utils/ft_is_space.s\
+			src/utils/ft_is_valid_base.s\
 
 
 NAME	= 	libasm.a

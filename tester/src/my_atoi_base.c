@@ -47,43 +47,44 @@ int	is_valid_base(char *str)
 	if (len <= 1) {
 		return (-1);
 	}
-	while (str[i])
-	{
+	while (str[i]) {
 		if (ft_is_space(str[i]) || str[i] == '+' || str[i] == '-')
 			return (-1);
 		j = i + 1;
-		while (str[j] != '\0')
-		{
-			if (str[i] != str[j])
-				j++;
-			else if (str[i] == str [j])
+		while (str[j]) {
+			if (str[i] == str[j])
 				return (-1);
+			++j;
 		}
-		i++;
+		++i;
 	}
 	return (len);
 }
 
+// + = 43: - = 45
+// ((c == 43) * 1) + ((c == 45) * -1)
 int	my_atoi_base(char *str, char *base)
 {
 	int	i = 0;
 	int	tmp = 0;
 	int	sign = 1;
-	int base_len = is_valid_base(base);
+	int base_len = ft_is_valid_base(base);
 
 	if (!str || base_len == -1)
 		return (0);
 	while (ft_is_space(str[i]))
 		i++;
 	while (str[i] == '+' || str[i] == '-') {
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
+		sign *= ((str[i] == '+') + (str[i] == '-') * -1);
+		// need check 2 version in asm
+		// if (str[i] == '-') 
+		// 	sign *= -1;
+		++i;
 	}
 	while (ft_char_in_base(str[i], base) == 1) {
 		tmp *= base_len;
 		tmp += ft_char_to_numb(str[i], base);
-		i++;
+		++i;
 	}
 	return (sign * tmp);
 }

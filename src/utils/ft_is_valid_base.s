@@ -41,11 +41,11 @@ _is_valid_base_loop:
 	movzx  eax, byte[rax]				; got char str[i]
 	cmp    al, 0x2b					; cmp with '+'
 	je     _valid_base_loop_continue
-	mov    eax, dword[rbp-0xc]
-	movsxd rdx, eax
-	mov    rax, qword[rbp-0x18]		; maybe can remove all this shit
-	add    rax, rdx
-	movzx  eax, byte[rax]
+	; mov    eax, dword[rbp-0xc]
+	; movsxd rdx, eax
+	; mov    rax, qword[rbp-0x18]		; maybe can remove all this shit
+	; add    rax, rdx
+	; movzx  eax, byte[rax]
 	cmp    al, 0x2d					; same here but compare with '-'
 	jne    _valid_base_inc_j
 
@@ -95,9 +95,8 @@ _is_valid_base_compare:
 	add    rax, rdx					; add str + j
 	movzx  eax, byte[rax]				; got str[j]
 	test   al, al						; test if 0
-	jne    _is_valid_base_loop:		; if not go base loop
+	jne    _is_valid_base_loop		; if not go base loop
 	mov    eax, dword[rbp-0x4]		; else put len in eax 
 _is_valid_base_exit:
-	mov			rsp, rbp				; restore rsp
-	pop			rbp						; restore rbp
+	leave								; restore stack
 	ret
