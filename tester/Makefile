@@ -6,7 +6,7 @@
 #    By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 16:33:38 by nfour             #+#    #+#              #
-#    Updated: 2024/02/17 11:12:47 by nfour            ###   ########.fr        #
+#    Updated: 2024/02/17 13:42:21 by nfour            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ MAIN_BONUS		=	src/test_bonus.c\
 					src/ft_itoa.c\
 					src/my_atoi_base.c\
 
-CC			= 	gcc -Wall -Wextra -Werror -g
+# LINK	= ld -o -z noexecsstack
+CC			= 	gcc -Wall -Wextra -Werror -g 
 
 MAIN		= 	src/test.c\
 				src/test_implementation.c

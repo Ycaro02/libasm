@@ -50,7 +50,7 @@ int is_same_node(void *node1, void *node2)
                                 list: addr of the head of linked list to iter on
                                 del: function ptr on the free_node function
                                         args:
-                                                void *: lst content
+                                                void *: lst data
                                 condition: function ptr return true for free node
                                         args:
                                                 void *: node to check
@@ -63,18 +63,18 @@ void    list_remove_if(t_list **list, void *data_ref, int (*cmp)(), void (*free_
 	if (!list || !cmp || !free_fct || !data_ref)
 		return;
 	current = *list;
-	// printf(YELLOW"current |%s| data |%s|\n"RESET, (char *)current->content, (char *)data_ref);
-	if (current && cmp(current->content, data_ref) == TRUE) {
+	// printf(YELLOW"current |%s| data |%s|\n"RESET, (char *)current->data, (char *)data_ref);
+	if (current && cmp(current->data, data_ref) == TRUE) {
 		*list = (*list)->next;
-		free_fct(current->content);
+		free_fct(current->data);
 		free(current);
 		current = *list;
 	}
 	while (current) {
-		if (current->next && cmp(current->next->content, data_ref) == TRUE) {
+		if (current->next && cmp(current->next->data, data_ref) == TRUE) {
 			tmp = current->next;
 			current->next = current->next->next;
-			free_fct(tmp->content);
+			free_fct(tmp->data);
 			free(tmp);
 		}
 		else
@@ -95,7 +95,7 @@ void    list_clear(t_list **lst, void (*del)(void*))
         while (tmp != NULL)
         {
                 tmp = current->next;
-                del(current->content);
+                del(current->data);
                 free(current);
                 current = tmp;
         }

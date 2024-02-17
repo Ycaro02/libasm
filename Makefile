@@ -6,11 +6,9 @@
 #    By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 16:33:38 by nfour             #+#    #+#              #
-#    Updated: 2024/02/17 11:15:09 by nfour            ###   ########.fr        #
+#    Updated: 2024/02/17 13:45:00 by nfour            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-NASM	= 	nasm -f elf64 -o
 
 SRCS	=	src/ft_strlen.s\
 			src/ft_strcpy.s\
@@ -30,17 +28,17 @@ SRCS	=	src/ft_strlen.s\
 			src/bonus/ft_atoi_base.s\
 
 
+NASM	= 	nasm -f elf64 -ggdb -F dwarf -o 
+
 NAME	= 	libasm.a
 
-LINK	= ld -o
+# LINK	= ld -o -z noexecsstack
 
 TEST	=	test
 
 OBJS = $(SRCS:.s=.o)
 
 RM	= rm -f
-
-# MAIN	= 	tester/src/main_test.c
 
 CALL_TESTER	=	make -s -C tester
 

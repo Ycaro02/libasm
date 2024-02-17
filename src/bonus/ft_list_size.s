@@ -7,8 +7,7 @@ section .text
 ; RCX counter
 
 ft_list_size:					; ft_list_size label
-	push	rbp							; push rbp to save it
-	push	rcx							; push rcx to save it
+	push 	rbp
 	mov		rbp,rsp						; rsp = rbp
 	mov		qword[rbp-0x14], rdi		; save rdi, lst pointer on stack
 	xor		rcx, rcx					; rcx = 0 use it like counter
@@ -16,14 +15,13 @@ ft_list_size:					; ft_list_size label
 
 _lst_size_loop:
 	mov		rax, qword[rbp-0x14]		; save lst in rax
-	mov		rax, qword[rax+0x8]			; increment it + 8 (size of field to go next) lst = lst->next
-	mov		qword[rbp-0x14], rax		; save this pointer in stack
+	mov		rax, qword[rax]				; go next field get lst->next
+	mov		qword[rbp-0x14], rax		; save this pointer in stack lst = lst->next
 	add		rcx, 0x1
 
 _lst_size_check:
 	cmp		qword[rbp-0x14],0x0			; if lst == NULL
 	jne		_lst_size_loop				; if not jmp to size loop
 	mov		rax, rcx					; move return value in eax, eax = count
-	pop 	rcx
-	pop		rbp							; restore rbp
+	pop		rbp
 	ret

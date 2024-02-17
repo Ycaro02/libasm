@@ -34,13 +34,13 @@ ft_list_remove_if:
 
 
 	mov			rax, qword[rbp-0x10]		; put current in rax, he is already here ???
-	mov			rax, qword[rax]				; get content
+	mov			rax, qword[rax]				; get data
 	mov			rdx, qword[rbp-0x20]		; put data_ref in rdx 
 	mov			rcx, qword[rbp-0x28]		; get cmp function ptr in rcx
 	mov			rsi, rdx					; put data_ref in rsi (second args)
-	mov			rdi, rax					; put current->content in rdi (first args)
+	mov			rdi, rax					; put current->data in rdi (first args)
 	mov			eax, 0x0					; reset eax before call
-	call		rcx							; call cmp(current->content, data_ref)
+	call		rcx							; call cmp(current->data, data_ref)
 	cmp			eax, 0x1					; check if ret == 1
 	jne			_list_remove_if_end_loop	; if != 1 go end loop else :
 	mov			rax, qword[rbp-0x18]		; get list in rax
@@ -49,14 +49,14 @@ ft_list_remove_if:
 	mov			rax, qword[rbp-0x18]		; put list in rax
 	mov			qword[rax], rdx				; dereference it and move rdx ---> *list = (*list)->next;
 	mov			rax, qword[rbp-0x10]		; put current in rax
-	mov			rax, qword[rax]				; get content
+	mov			rax, qword[rax]				; get data
 	mov			rdx, qword[rbp-0x30]		; put free function ptr in rdx
-	mov			rdi, rax					; put current content in rdi
-	call		rdx							; call free_fct(current->content)
+	mov			rdi, rax					; put current data in rdi
+	call		rdx							; call free_fct(current->data)
 	mov			rax, qword[rbp-0x10]		; put current in rax
 	mov			rdi, rax					; put this in rdi for function call
 	mov			rdx, qword[rbp-0x30]		; put free function ptr in rdx realy mandatory ??
-	call		rdx							; call free_fct(current->content)
+	call		rdx							; call free_fct(current->data)
 	; call		<free@plt> ; TODO replace by ptr on free funct
 	mov			rax, qword[rbp-0x18]		; put list in rax
 	mov			rax, qword[rax]				; dereference it
@@ -70,13 +70,13 @@ _list_remove_if_loop:
 	je			_list_remove_if_next
 	mov			rax, qword[rbp-0x10]		; same here get current and go next 
 	mov			rax, qword[rax+0x8]
-	mov			rax, qword[rax]				; get content current->next->content, direct in rdi ?
+	mov			rax, qword[rax]				; get data current->next->data, direct in rdi ?
 	mov			rdx, qword[rbp-0x20]		; put data_ref in rdx ?? rsi no ? 
 	mov			rcx, qword[rbp-0x28]		; put cmp function in rcx
 	mov			rsi, rdx					; put data un rsi
 	mov			rdi, rax					; put data in rdi
 	mov			eax, 0x0					; reset eax
-	call		rcx							; call cmp(current->next->content, data_ref)
+	call		rcx							; call cmp(current->next->data, data_ref)
 	cmp			eax, 0x1					; check if == 1 
 	jne			_list_remove_if_next		; jump if no equal (continue iterate)
 	mov			rax, qword[rbp-0x10]		; put current in rax
@@ -88,14 +88,14 @@ _list_remove_if_loop:
 	mov			rax, qword[rbp-0x10]		; put current in rax
 	mov			qword[rax+0x8], rdx			; current->next = current->next->next
 	mov			rax, qword[rbp-0x8]			; put tmp in rax
-	mov			rax, qword[rax]				; get content, in rdi ???
+	mov			rax, qword[rax]				; get data, in rdi ???
 	mov			rdx, qword[rbp-0x30]		; free function in rdx
-	mov			rdi, rax					; put tmp->content in rdi 
-	call		rdx							; call free_fct(tmp->content)
+	mov			rdi, rax					; put tmp->data in rdi 
+	call		rdx							; call free_fct(tmp->data)
 	mov			rax, qword[rbp-0x8]			; move tmp in rax
 	mov			rdi, rax					; put it in rdi
 	mov			rdx, qword[rbp-0x30]		; free function in rdx
-	call		rdx							; call free_fct(tmp->content)
+	call		rdx							; call free_fct(tmp->data)
 	; call		<free@plt> ; TODO replace by ptr on free funct maybe just call rbp-0x30
 	jmp			_list_remove_if_end_loop
 
