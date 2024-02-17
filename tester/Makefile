@@ -43,15 +43,14 @@ ${NAME}:
 		./script/check_lib.sh
 		@cp ../${LIB} .
 		@${CC} ${MAIN} ${LIB} -o ${NAME} 
-		@echo "\033[7;33m -----  Compiling ${NAME} done  ----- \033[0m"
 		@${CC} ${MAIN_WRITE} ${LIB} -o ${NAME_WRITE} 
-		@echo "\033[7;33m -----  Compiling ${NAME_WRITE} done  ----- \033[0m"
+		@echo "\033[7;32m ----- Compiling ${NAME}     ----- \033[0m"
 
 ${BONUS_NAME}:
 		@./script/check_lib.sh
 		@cp ../${LIB} .
 		${CC} ${MAIN_BONUS} ${LIB} -o ${BONUS_NAME} 
-		@echo "\033[7;33m -----  Compiling ${BONUS_NAME} done  ----- \033[0m"
+		@echo "\033[7;32m ----- Compiling lib bonus test  ----- \033[0m"
 
 test:	${NAME}
 		@./${NAME} 

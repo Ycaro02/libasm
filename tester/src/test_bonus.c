@@ -205,8 +205,6 @@ static t_list *build_lst_nb(void lst_fun(t_list **, void*), int max)
 	return (lst);
 }
 
-
-
 int test_list_push_front()
 {
 	int ret = 0;
@@ -321,6 +319,7 @@ static int check_atoi_base(char *str, char *base, int res)
 	return (0);
 }
 
+/* check atoi base fun , converter in rsc/convert.sh*/
 static int test_atoi_base()
 {
 	if (check_atoi_base("f", HEXA_BASE, 15)
