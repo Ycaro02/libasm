@@ -18,7 +18,7 @@ ft_list_push_back:					; ft_list_push_back label
    mov    rax, qword[rbp-0x18]		; get lst head
    mov    rax, qword[rax]			; dereference it
    test   rax, rax					; test if 0
-   jne    _lst_push_back_loop				; if not jump
+   jne    _lst_push_back_loop		; if not jump
    mov    rax, qword[rbp-0x18]		; get lst head again
    mov    rdx, qword[rbp-0x20]		; get data in rdx
    mov    qword[rax], rdx			; dereference rax to put rdx, *lst = data
@@ -32,20 +32,17 @@ ft_list_push_back:					; ft_list_push_back label
    
    _lst_push_back_next:
    mov    rax, qword[rbp-0x8]		; put tmp in rax
-;    mov    rax, qword[rax+0x8]		; go next
-   mov    rax, qword[rax]		; go next
+   mov    rax, qword[rax]			; go next
    mov    qword[rbp-0x8], rax		; save value in tmp
    
    _lst_push_back_check:
    mov    rax, qword[rbp-0x8]		; put tmp in rax
-;    mov    rax, qword[rax+0x8]		; go next with + 8
-   mov    rax, qword[rax]		; go next
+   mov    rax, qword[rax]			; go next
    test   rax, rax					; test if 0
    jne    _lst_push_back_next		; if no equal jmp 
    mov    rax, qword[rbp-0x8]		; put tmp in rax, need to acces at tmp->next later
    mov    rdx, qword[rbp-0x20]		; put data in rdx
-;    mov    qword[rax+0x8], rdx		; put data in tmp->next, current->next = data
-   mov    qword[rax], rdx		; put data in tmp->next, current->next = data
+   mov    qword[rax], rdx			; put data in tmp->next, current->next = data
    jmp _lst_push_back_exit   
    
    _lst_push_back_exit:
