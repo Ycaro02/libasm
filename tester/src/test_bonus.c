@@ -358,13 +358,7 @@ int main (void)
 	tester_hub(test_list_size, PURPLE"List size\t"RESET);
 	tester_hub(test_list_push_back, PURPLE"List push back\t"RESET);
 	tester_hub(test_lst_sort, PURPLE"List sort\t"RESET);
-	// tester_hub(test_remove_if, PURPLE"List Remove If\t"RESET);
+	tester_hub(test_remove_if, PURPLE"List Remove If\t"RESET);
 	tester_hub(test_atoi_base, PURPLE"ft_atoi_base\t"RESET);
 	return (0);
 }
-
-// ; RDI:		**begin_list 	----->	 	: 0x28
-// ; RSI: int	*cmp, fun ptr	-----> 		: 0x30
-// ; Current:	t_list *current	----->		: 0x10
-// ; Next:		t_list *next	----->		: 0x18
-// ; tmp		void *tmp		----->		: 0x8

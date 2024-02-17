@@ -31,18 +31,12 @@ ft_list_sort:
 
   _list_sort_loop:
 	mov			rax, qword[rbp-0x10]	; put current in rax
-	; mov			rax, qword[rax+0x8]		; rax = current->next
 	mov			rax, qword[rax]		; rax = current->next
 	mov			qword[rbp-0x18], rax	; store this in next ---> next = current->next
-	
 	mov			rax, qword[rbp-0x10]	; put current in rax
-	; mov			rdx, qword[rax]			; get current->data in rdx
 	mov			rdx, qword[rax+0x8]			; get current->data in rdx
-	
 	mov			rax, qword[rbp-0x18]	; put next in rax
-	; mov			rax, qword[rax]			; get next->data in rax
 	mov			rax, qword[rax+0x8]			; get next->data in rax
-
 	mov			rcx, qword[rbp-0x30]	; put *cmp, function ptr in rcx
 	; setup args for cmp call
 	mov			rsi, rdx				; mov rdx (current->data) in rsi for next CALL
@@ -51,23 +45,16 @@ ft_list_sort:
 	call		rcx						; call cmp function
 	test		eax, eax				; if return value is 0
 	jg			_list_sort_inc_next		; jump if greater 
-	; if lower or equal
+	; if lower or equal basic swap maybe can do func
 	mov			rax, qword[rbp-0x10]	; put current in rax
-	; mov			rax, qword[rax]			; get current data
 	mov			rax, qword[rax+0x8]			; get current data
 	mov			qword[rbp-0x8], rax		; save this data in tmp --> tmp_data = current->data
-	
 	mov			rax, qword[rbp-0x18]	; put next in rax
-	; mov			rdx, qword[rax]			; get next data in rdx
 	mov			rdx, qword[rax+0x8]			; get next data in rdx
-	
 	mov			rax, qword[rbp-0x10]	; put current in rax
-	; mov			qword[rax], rdx			; current->data = next->data
 	mov			qword[rax+0x8], rdx			; current->data = next->data
-	
 	mov			rax, qword[rbp-0x18]	; put next in rax
 	mov			rdx, qword[rbp-0x8]		; put save data (tmp) in rdx
-	; mov			qword[rax], rdx			; next->data = tmp
 	mov			qword[rax+0x8], rdx			; next->data = tmp
 	mov			rax, qword[rbp-0x28]	; put **lst in rax
 	mov			rax, qword[rax]			; rax = *lst
