@@ -6,7 +6,7 @@
 /*   By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:51:52 by nfour             #+#    #+#             */
-/*   Updated: 2024/02/16 18:05:19 by nfour            ###   ########.fr       */
+/*   Updated: 2024/02/17 10:12:07 by nfour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,15 @@ int	is_valid_base(char *str)
 	}
 	return (len);
 }
+
+
+// ; register	| type	| name	| def			| addr	| byte
+// ; RDI		| char* | str	| nb to convert	| 0x18	| 8
+// ; RSI		| char*	| base	| nb base from	| 0x20	| 8
+// ; Local var	| int	| i		| str counter	| 0x10	| 4
+// ; Local var	| int	| tmp	| tampon swap	| 0xc	| 4
+// ; Local var | int	| sign	| sign value	| 0x8	| 4
+// ; Local var | int	| len	| base len		| 0x8	| 4
 
 // + = 43: - = 45
 // ((c == 43) * 1) + ((c == 45) * -1)
