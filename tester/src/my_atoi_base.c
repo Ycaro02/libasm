@@ -6,7 +6,7 @@
 /*   By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:51:52 by nfour             #+#    #+#             */
-/*   Updated: 2024/02/16 17:46:46 by nfour            ###   ########.fr       */
+/*   Updated: 2024/02/16 18:05:19 by nfour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ int	char_in_base(char c, char *base)
 	return (0);
 }
 
+static int is_space(char c)
+{
+	return ((c >= '\t' && c <= '\r') || c == 32);
+}
+
 int	is_valid_base(char *str)
 {
 	int	i = 0;
@@ -47,8 +52,7 @@ int	is_valid_base(char *str)
 	}
 	while (str[i])
 	{
-		if (str[i] == ' ' || str[i] == '+' || str [i] == '-'
-			|| (str[i] >= '\t' && str[i] <= '\n'))
+		if (is_space(str[i]) || str[i] == '+' || str[i] == '-')
 			return (-1);
 		j = i + 1;
 		while (str[j] != '\0')
@@ -63,8 +67,6 @@ int	is_valid_base(char *str)
 	return (len);
 }
 
-// static int is_space()
-
 int	my_atoi_base(char *str, char *base)
 {
 	int	i = 0;
@@ -74,7 +76,7 @@ int	my_atoi_base(char *str, char *base)
 
 	if (!str || base_len == -1)
 		return (0);
-	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == 32)
+	while (is_space(str[i]))
 		i++;
 	while (str[i] == '+' || str[i] == '-') {
 		if (str[i] == '-')

@@ -339,7 +339,12 @@ static int test_atoi_base()
 	 	|| check_atoi_base("+++aa8812", ELEVEN_BASE, 1768549)
 	 	|| check_atoi_base("76565a8", ELEVEN_BASE, 13449147)
 	 	|| check_atoi_base(NULL, ELEVEN_BASE, 0) /* defaul NULL error value */
-	 	|| check_atoi_base("123", NULL, 0))  /* defaul NULL error value */ 
+	 	|| check_atoi_base("123", NULL, 0)  /* defaul NULL error value */
+	 	|| check_atoi_base("123", "12334", 0)  /* default invalid base error value */
+	 	|| check_atoi_base("123", "123+4", 0)  /* default invalid base error value */
+	 	|| check_atoi_base("123", "123-4", 0)  /* default invalid base error value */
+	 	|| check_atoi_base("123", "123 4", 0)  /* default invalid base error value */
+	 	|| check_atoi_base("123", "123\t4", 0))  /* default invalid base error value */
 	{
 		return (1);
 	}
