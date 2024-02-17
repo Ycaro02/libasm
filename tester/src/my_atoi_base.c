@@ -6,7 +6,7 @@
 /*   By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 17:51:52 by nfour             #+#    #+#             */
-/*   Updated: 2024/02/17 10:37:54 by nfour            ###   ########.fr       */
+/*   Updated: 2024/02/17 10:53:59 by nfour            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,11 @@ int	my_atoi_base(char *str, char *base)
 	int	i = 0;
 	int	tmp = 0;
 	int	sign = 1;
-	int base_len = ft_is_valid_base(base);
+	int base_len = is_valid_base(base);
 
 	if (!str || base_len == -1)
 		return (0);
-	while (ft_is_space(str[i]))
+	while (is_space(str[i]))
 		i++;
 	while (str[i] == '+' || str[i] == '-') {
 		sign *= ((str[i] == '+') + (str[i] == '-') * -1);
@@ -90,9 +90,9 @@ int	my_atoi_base(char *str, char *base)
 		// 	sign *= -1;
 		++i;
 	}
-	while (ft_char_in_base(str[i], base) == 1) {
+	while (char_in_base(str[i], base) == 1) {
 		tmp *= base_len;
-		tmp += ft_char_to_numb(str[i], base);
+		tmp += char_to_numb(str[i], base);
 		++i;
 	}
 	return (sign * tmp);

@@ -305,13 +305,16 @@ static int test_lst_sort()
 
 static int check_atoi_base(char *str, char *base, int res)
 {
-	int nb = my_atoi_base(str, base);
-	if (nb != res) {
-		printf("%s%s%s:\t%s[%d]%s\n", YELLOW, str, RESET, RED, nb , RESET); /* yes */
+	int real = my_atoi_base(str, base);
+	int nb = ft_atoi_base(str, base);
+	if (nb != res || nb != real) {
+		printf("%sft_atoi_base\t%s%s:\t%s[%d]%s\n", YELLOW, str, RESET, RED, nb , RESET); /* yes */
+		printf("%sReal func\t%s%s:\t%s[%d]%s\n", YELLOW, str, RESET, RED, nb , RESET); /* yes */
 		return (1);
 	}
 	//  else {
-	// 	printf("%s%s%s:\t%s[%d]%s\n", YELLOW, str, RESET, GREEN, nb, RESET); /* yes */
+	// 	printf("%sft_atoi_base\t%s%s:\t%s[%d]%s\n", YELLOW, str, RESET, GREEN, nb , RESET); /* yes */
+	// 	printf("%sReal func\t%s%s:\t%s[%d]%s\n", YELLOW, str, RESET, GREEN, nb , RESET); /* yes */
 	// }
 	return (0);
 }

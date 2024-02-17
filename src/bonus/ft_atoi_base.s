@@ -9,7 +9,7 @@ extern	ft_char_in_base
 extern 	ft_is_space
 
 ; Byte count
-; 8 + 8 + 4 + 4 + 4 : 28
+; 8 + 8 + 4 + 4 + 4 + 4 : 32
 
 ; register	| type	| name	| def			| addr	| byte
 ; RDI		| char* | str	| nb to convert	| 0x18	| 8
@@ -23,7 +23,7 @@ extern 	ft_is_space
 ft_atoi_base:
 	push   rbp						; save rbp
 	mov    rbp, rsp					; set my own stack frame
-	sub    rsp, 0x20					; reserve 32 byte on stack
+	sub    rsp, 0x20				; reserve 32 byte on stack
 	mov    qword[rbp-0x18], rdi		; save str pointer at 0x18
 	mov    qword[rbp-0x20], rsi		; save base pointer at 0x20
 	mov    dword[rbp-0x10], 0x0		; create int i = 0
@@ -31,17 +31,17 @@ ft_atoi_base:
 	mov    dword[rbp-0x8], 0x1		; create int sign = 1
 ;mov    rax, qword[rbp-0x20]
 ;mov    rdi, rax
-	mov    rdi, qword[rbp-0x20]		; move base in rdi for call
+	mov    rdi, qword[rbp-0x20]			; move base in rdi for call
 	call   ft_is_valid_base	;
-	mov    dword[rbp-0x4], eax		; save return value base_len at 0x4
-	cmp    qword[rbp-0x18], 0x0		; check for null str
+	mov    dword[rbp-0x4], eax			; save return value base_len at 0x4
+	cmp    qword[rbp-0x18], 0x0			; check for null str
 	je     _atoi_base_go_exit
-	cmp    dword[rbp-0x4], 0xffffffff ; if base_len == -1
+	cmp    dword[rbp-0x4], 0xffffffff	; if base_len == -1
 	jne    _atoi_base_skip_space_loop	; if no equal go skip space loop else just go atoi base go exit
 
 _atoi_base_go_exit:
 ;mov    eax, 0x0					; set return value to 0 
-	xor     rax, rax					; set return value to 0 
+	xor     rax, rax				; set return value to 0 
 	jmp    _atoi_base_exit			; jmp exit
 
 _atoi_base_skip_space:

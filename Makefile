@@ -6,7 +6,7 @@
 #    By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 16:33:38 by nfour             #+#    #+#              #
-#    Updated: 2024/02/16 14:03:18 by nfour            ###   ########.fr        #
+#    Updated: 2024/02/17 10:49:12 by nfour            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS	=	src/ft_strlen.s\
 			src/bonus/utils/ft_char_to_numb.s\
 			src/bonus/utils/ft_is_space.s\
 			src/bonus/utils/ft_is_valid_base.s\
+			src/bonus/ft_atoi_base.s\
 
 
 NAME	= 	libasm.a
