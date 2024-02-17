@@ -77,7 +77,7 @@
 
           "(;.*)": {
             "color": "#007f00",
-            "filterFileRegex": "\\.s",
+            "filterFileRegex": "\\.s$",
             },
     }
 }

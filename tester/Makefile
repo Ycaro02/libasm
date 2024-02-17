@@ -35,7 +35,15 @@ MAIN_WRITE	= 	src/test_write.c\
 
 CHECK_LIB	= 	./script/check_lib.sh
 
-# make re && gcc test.c libasm.a && ./a.out
+
+VAL_OUT		=	valgrind_output
+
+VAL			=	valgrind --leak-check=full --log-file=${VAL_OUT}
+
+CHECK_VAL_OUT	= script/check_valgrind_output.sh
+
+# Used for write/read test cause invalid syscall write on stderr
+REDIR_NULL	= 2> /dev/null
 
 all:	${NAME}
 
@@ -54,39 +62,39 @@ ${BONUS_NAME}:
 
 test:	${NAME}
 		@./${NAME} 
-		@./${NAME_WRITE} 2> /dev/null
+		@./${NAME_WRITE} ${REDIR_NULL}
 
 btest:	${BONUS_NAME}
 		@./${BONUS_NAME}
 
 atest:	${NAME} ${BONUS_NAME}
-		@./${NAME} 
-		@./${NAME_WRITE} 2> /dev/null
+		@./${NAME}
+		@./${NAME_WRITE} ${REDIR_NULL}
 		@./${BONUS_NAME}
 
 avtest:	${NAME} ${BONUS_NAME}
-		valgrind --leak-check=full ./${NAME} 
-		valgrind --leak-check=full ./${NAME_WRITE}
-		valgrind --leak-check=full ./${BONUS_NAME}
+		@${VAL} ./${NAME} && ${CHECK_VAL_OUT} ${NAME}
+		@${VAL} ./${NAME_WRITE} ${REDIR_NULL} && ${CHECK_VAL_OUT} ${NAME_WRITE}
+		@${VAL} ./${BONUS_NAME} && ${CHECK_VAL_OUT} ${BONUS_NAME}
 
 vbtest:	${BONUS_NAME}
-		valgrind --leak-check=full ./${BONUS_NAME}
+		${VAL} ./${BONUS_NAME}
 
 gbtest:	${BONUS_NAME}
 		gdb ${BONUS_NAME}
 
 vtest:
-		valgrind --leak-check=full ./${NAME}
-		valgrind --leak-check=full ./${NAME_WRITE}
+		${VAL} ./${NAME}
+		${VAL} ./${NAME_WRITE}
 
 gdb:
 	gdb ${NAME}
 
 clean:
-		@${RM} ${NAME} ${NAME_WRITE} ${BONUS_NAME}
+		@${RM} ${NAME} ${NAME_WRITE} ${BONUS_NAME} ${VAL_OUT}
 
 fclean:	clean
-		@${RM} ${NAME} ${LIB} ${NAME_WRITE} ${BONUS_NAME}
+		@${RM} ${NAME} ${LIB} ${NAME_WRITE} ${BONUS_NAME} 
 
 re:		fclean all
 
