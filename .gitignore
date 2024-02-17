@@ -1,7 +1,10 @@
 libasm.a
 *.o
+tester/valgrind_output
 tester/libasm_bonus_test
 tester/libasm_test
 tester/libasm_write_test
 *peda-session*.txt
 **/peda-session*.txt
+**/.gdb_history
+.gdb_history
