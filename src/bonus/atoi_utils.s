@@ -21,120 +21,121 @@ extern 	ft_is_space
 
 ; mult sign version
 ft_atoi_base:
-<+4>:     push   rbp						; save rbp
-<+5>:     mov    rbp, rsp					; set my own stack frame
-<+8>:     sub    rsp, 0x20					; reserve 32 byte on stack
-<+12>:    mov    qword[rbp-0x18], rdi		; save str pointer at 0x18
-<+16>:    mov    qword[rbp-0x20], rsi		; save base pointer at 0x20
-<+20>:    mov    dword[rbp-0x10], 0x0		; create int i = 0
-<+27>:    mov    dword[rbp-0xc], 0x0		; create int tmp = 0
-<+34>:    mov    dword[rbp-0x8], 0x1		; create int sign = 1
-; <+41>:    mov    rax, qword[rbp-0x20]
-; <+45>:    mov    rdi, rax
-<+41>:    mov    rdi, qword[rbp-0x20]		; move base in rdi for call
-<+48>:    call   ft_is_valid_base	;
-<+53>:    mov    dword[rbp-0x4], eax		; save return value base_len at 0x4
-<+56>:    cmp    qword[rbp-0x18], 0x0		; check for null str
-<+61>:    je     _atoi_base_go_exit
-<+63>:    cmp    dword[rbp-0x4], 0xffffffff ; if base_len == -1
-<+67>:    jne    _atoi_base_skip_space_loop	; if no equal go skip space loop else just go atoi base go exit
+	push   rbp						; save rbp
+	mov    rbp, rsp					; set my own stack frame
+	sub    rsp, 0x20					; reserve 32 byte on stack
+	mov    qword[rbp-0x18], rdi		; save str pointer at 0x18
+	mov    qword[rbp-0x20], rsi		; save base pointer at 0x20
+	mov    dword[rbp-0x10], 0x0		; create int i = 0
+	mov    dword[rbp-0xc], 0x0		; create int tmp = 0
+	mov    dword[rbp-0x8], 0x1		; create int sign = 1
+;mov    rax, qword[rbp-0x20]
+;mov    rdi, rax
+	mov    rdi, qword[rbp-0x20]		; move base in rdi for call
+	call   ft_is_valid_base	;
+	mov    dword[rbp-0x4], eax		; save return value base_len at 0x4
+	cmp    qword[rbp-0x18], 0x0		; check for null str
+	je     _atoi_base_go_exit
+	cmp    dword[rbp-0x4], 0xffffffff ; if base_len == -1
+	jne    _atoi_base_skip_space_loop	; if no equal go skip space loop else just go atoi base go exit
 
 _atoi_base_go_exit:
-; <+69>:    mov    eax, 0x0					; set return value to 0 
-<+69>:    xor     rax, rax					; set return value to 0 
-<+74>:    jmp    _atoi_base_exit			; jmp exit
+;mov    eax, 0x0					; set return value to 0 
+	xor     rax, rax					; set return value to 0 
+	jmp    _atoi_base_exit			; jmp exit
 
 _atoi_base_skip_space:
-<+79>:    add    dword[rbp-0x10], 0x1		; i++
+	add    dword[rbp-0x10], 0x1		; i++
 
 ; here can be refactor i mean
 _atoi_base_skip_space_loop:
-<+83>:    mov    eax, dword[rbp-0x10]		; put i in eax
-<+86>:    movsxd rdx, eax					; rdx = eax
-<+89>:    mov    rax, qword[rbp-0x18]		; put str in rax
-<+93>:    add    rax, rdx					; get str + i in rax 
-<+96>:    movzx  eax, byte[rax]				; move byte (char) in eax
-<+99>:    movsx  eax, al					; isole char
-<+102>:   mov    edi, eax					; put char id edi for call
-<+104>:   call   ft_is_space
-<+109>:   test   eax, eax					; test if 0
-<+111>:   jne    _atoi_base_skip_space		; if not 0 (is space) cotinue skip
-<+113>:   jmp    _atoi_base_check_sign				; else jump to sign loop check
+	mov    eax, dword[rbp-0x10]		; put i in eax
+	movsxd rdx, eax					; rdx = eax
+	mov    rax, qword[rbp-0x18]		; put str in rax
+	add    rax, rdx					; get str + i in rax 
+	movzx  eax, byte[rax]				; move byte (char) in eax
+	movsx  eax, al					; isole char
+	mov    edi, eax					; put char id edi for call
+	call   ft_is_space
+	test   eax, eax					; test if 0
+	jne    _atoi_base_skip_space		; if not 0 (is space) cotinue skip
+	jmp    _atoi_base_check_sign				; else jump to sign loop check
 
 _atoi_base_sign:
-<+115>:   mov    eax, dword[rbp-0x10]		; same manipulation to get str[i]
-<+118>:   movsxd rdx, eax
-<+121>:   mov    rax, qword[rbp-0x18]
-<+125>:   add    rax, rdx					; here str + i
-<+128>:   movzx  eax, byte[rax]
-<+131>:   cmp    al, 0x2b					; if str[i] == '+'
-<+133>:   sete   al							; set al bool to 1 ??
-<+136>:   movzx  eax, al					; move this in eax
-<+139>:   mov    edx, dword[rbp-0x10]		; again just get str[i]
-<+142>:   movsxd rcx, edx
-<+145>:   mov    rdx, qword[rbp-0x18]
-<+149>:   add    rdx, rcx					; here str + i
-<+152>:   movzx  edx, byte[rdx]
-<+155>:   cmp    dl, 0x2d					; if str[i] == '-'
-<+158>:   sete   dl							; set dl to one ??
-<+161>:   movzx  ecx, dl					; save it in ecx
-<+164>:   sub    eax, ecx					; eax = first bool - second bool
-<+166>:   mov    edx, eax					; save in edx
-<+168>:   mov    eax, dword[rbp-0x8]		; eax = sign
-<+171>:   imul   eax, edx					; mult sign with eax: sign *= expr
-<+174>:   mov    dword[rbp-0x8], eax
-<+177>:   add    dword[rbp-0x10], 0x1
+	mov    eax, dword[rbp-0x10]		; same manipulation to get str[i]
+	movsxd rdx, eax
+	mov    rax, qword[rbp-0x18]
+	add    rax, rdx					; here str + i
+	movzx  eax, byte[rax]
+	cmp    al, 0x2b					; if str[i] == '+'
+	sete   al							; set al bool to 1 ??
+	movzx  eax, al					; move this in eax
+	mov    edx, dword[rbp-0x10]		; again just get str[i]
+	movsxd rcx, edx
+	mov    rdx, qword[rbp-0x18]
+	add    rdx, rcx					; here str + i
+	movzx  edx, byte[rdx]
+	cmp    dl, 0x2d					; if str[i] == '-'
+	sete   dl							; set dl to one ??
+	movzx  ecx, dl					; save it in ecx
+	sub    eax, ecx					; eax = first bool - second bool
+	mov    edx, eax					; save in edx
+	mov    eax, dword[rbp-0x8]		; eax = sign
+	imul   eax, edx					; mult sign with eax: sign *= expr
+	mov    dword[rbp-0x8], eax
+	add    dword[rbp-0x10], 0x1
 
 _atoi_base_check_sign:
-<+181>:   mov    eax, dword[rbp-0x10]	; eax = i
-<+184>:   movsxd rdx, eax				; rdx = i
-<+187>:   mov    rax, qword[rbp-0x18]	; rax = str
-<+191>:   add    rax, rdx				; rax = str + i
-<+194>:   movzx  eax, byte[rax]			; eax = str[i]
-<+197>:   cmp    al, 0x2b				; if (str[i]) == '+'
-<+199>:   je     _atoi_base_sign		; jmp sign loop body
-<+201>:   mov    eax, dword[rbp-0x10]	; same shit can be remove
-<+204>:   movsxd rdx, eax
-<+207>:   mov    rax, qword[rbp-0x18]
-<+211>:   add    rax, rdx
-<+214>:   movzx  eax, byte[rax]
-<+217>:   cmp    al, 0x2d				; if (str[i] == '-')
-<+219>:   je     _atoi_base_sign		; jmp sign bode loop
-<+221>:   jmp    _atoi_base_convert_check ; otherwise go to convert
+	mov    eax, dword[rbp-0x10]	; eax = i
+	movsxd rdx, eax				; rdx = i
+	mov    rax, qword[rbp-0x18]	; rax = str
+	add    rax, rdx				; rax = str + i
+	movzx  eax, byte[rax]			; eax = str[i]
+	cmp    al, 0x2b				; if (str[i]) == '+'
+	je     _atoi_base_sign		; jmp sign loop body
+	mov    eax, dword[rbp-0x10]	; same shit can be remove
+	movsxd rdx, eax
+	mov    rax, qword[rbp-0x18]
+	add    rax, rdx
+	movzx  eax, byte[rax]
+	cmp    al, 0x2d				; if (str[i] == '-')
+	je     _atoi_base_sign		; jmp sign bode loop
+	jmp    _atoi_base_convert_check ; otherwise go to convert
 
 _atoi_base_convert:
-<+223>:   mov    eax, dword[rbp-0xc]
-<+226>:   imul   eax, dword[rbp-0x4]
-<+230>:   mov    dword[rbp-0xc], eax
-<+233>:   mov    eax, dword[rbp-0x10]
-<+236>:   movsxd rdx, eax
-<+239>:   mov    rax, qword[rbp-0x18]
-<+243>:   add    rax, rdx
-<+246>:   movzx  eax, byte[rax]
-<+249>:   movsx  eax, al
-<+252>:   mov    rdx, qword[rbp-0x20]
-<+256>:   mov    rsi, rdx
-<+259>:   mov    edi, eax
-<+261>:   call   ft_char_to_numb
-<+266>:   add    dword[rbp-0xc], eax
-<+269>:   add    dword[rbp-0x10], 0x1
+	mov    eax, dword[rbp-0xc]	; eax = tmp
+	imul   eax, dword[rbp-0x4]	; eax *= base_len
+	mov    dword[rbp-0xc], eax	; tmp = eax, tmp *= b_len
+	mov    eax, dword[rbp-0x10]	; again just get str[i]
+	movsxd rdx, eax				 
+	mov    rax, qword[rbp-0x18]
+	add    rax, rdx				; here str + i
+	movzx  eax, byte[rax]
+	movsx  eax, al				; eax = str[i]
+;mov    rdx, qword[rbp-0x20]
+;mov    rsi, rdx
+	mov    rsi, qword[rbp-0x20]	; rsi = base ptr
+	mov    edi, eax				; edi = str[i]
+	call   ft_char_to_numb		; call char_to_numb(str[i], base)
+	add    dword[rbp-0xc], eax	; tmp += res
+	add    dword[rbp-0x10], 0x1	; i++
 
 _atoi_base_convert_check:
-<+273>:   mov    eax, dword[rbp-0x10]
-<+276>:   movsxd rdx, eax
-<+279>:   mov    rax, qword[rbp-0x18]
-<+283>:   add    rax, rdx
-<+286>:   movzx  eax, byte[rax]
-<+289>:   movsx  eax, al
-<+292>:   mov    rdx, qword[rbp-0x20]
-<+296>:   mov    rsi, rdx
-<+299>:   mov    edi, eax
-<+301>:   call   ft_char_in_base
-<+306>:   cmp    eax, 0x1
-<+309>:   je     _atoi_base_convert
-<+311>:   mov    eax, dword[rbp-0x8]
-<+314>:   imul   eax, dword[rbp-0xc]
+	mov    eax, dword[rbp-0x10]	; get str[i] start;
+	movsxd rdx, eax
+	mov    rax, qword[rbp-0x18]
+	add    rax, rdx				; here str + i
+	movzx  eax, byte[rax]
+	movsx  eax, al				; eax = str[i]
+;mov    rdx, qword[rbp-0x20]	; rdx = base ptr
+;mov    rsi, rdx
+	mov    rsi, qword[rbp-0x20]	; rsi = base ptr
+	mov    edi, eax
+	call   ft_char_in_base		; call car_in_base(str[i], base)
+	cmp    eax, 0x1				; check if res == 1
+	je     _atoi_base_convert		; jmp to convert 
+	mov    eax, dword[rbp-0x8]	; eax = sign
+	imul   eax, dword[rbp-0xc]	; eax *= tmp
 _atoi_base_exit:
-<+318>:   leave
-<+319>:   ret
-End of assembler dump.
+	leave							; to replace
+	ret
