@@ -6,7 +6,7 @@
 #    By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 16:33:38 by nfour             #+#    #+#              #
-#    Updated: 2024/02/17 10:49:12 by nfour            ###   ########.fr        #
+#    Updated: 2024/02/17 11:15:09 by nfour            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,6 @@ SRCS	=	src/ft_strlen.s\
 
 
 NAME	= 	libasm.a
-
-GDB_RULE	= make -C tester gdb
 
 LINK	= ld -o
 
@@ -79,7 +77,10 @@ vtest:
 		@${CALL_TESTER} vtest
 
 g:
-		${GDB_RULE}
+		@${CALL_TESTER} gdb
+
+bg:
+		@${CALL_TESTER} gbtest
 
 clean:
 			@echo "\033[7;31m\n ----- Cleaning  ${NAME} obj    ----- \033[0m"

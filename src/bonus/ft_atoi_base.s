@@ -129,6 +129,7 @@ _atoi_base_convert_check:
 	je     _atoi_base_convert			; jmp to convert 
 	mov    eax, dword[rbp-0x8]			; eax = sign
 	imul   eax, dword[rbp-0xc]			; eax *= tmp
+	
 _atoi_base_exit:
 	mov		rsp,rbp
 	pop		rbp

@@ -6,7 +6,7 @@
 #    By: nfour <<marvin@42.fr>>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/12 16:33:38 by nfour             #+#    #+#              #
-#    Updated: 2024/02/15 15:32:30 by nfour            ###   ########.fr        #
+#    Updated: 2024/02/17 11:12:47 by nfour            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,7 @@ vtest:
 		${VAL} ./${NAME_WRITE}
 
 gdb:
-	gdb ${NAME}
+		gdb ${NAME}
 
 clean:
 		@${RM} ${NAME} ${NAME_WRITE} ${BONUS_NAME} ${VAL_OUT}
