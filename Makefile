@@ -68,14 +68,11 @@ av:
 test:
 		@${CALL_TESTER} test
 
-
 btest:
 		@${CALL_TESTER} btest
 
-
 vbtest:
 		@${CALL_TESTER} vbtest
-
 
 vtest:
 		@${CALL_TESTER} vtest

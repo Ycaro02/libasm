@@ -75,10 +75,10 @@ int	my_atoi_base(char *str, char *base)
 	while (ft_is_space(str[i]))
 		i++;
 	while (str[i] == '+' || str[i] == '-') {
-		// sign *= ((str[i] == '+') + (str[i] == '-') * -1);
+		sign *= ((str[i] == '+') + (str[i] == '-') * -1);
 		// need check 2 version in asm
-		if (str[i] == '-') 
-			sign *= -1;
+		// if (str[i] == '-') 
+		// 	sign *= -1;
 		++i;
 	}
 	while (ft_char_in_base(str[i], base) == 1) {
