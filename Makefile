@@ -18,15 +18,15 @@ SRCS	=	src/ft_strlen.s\
 			src/ft_write.s\
 			src/ft_read.s\
 			src/ft_strdup.s\
-			src/ft_list_push_front.s\
-			src/ft_list_size.s\
-			src/ft_list_push_back.s\
-			src/ft_list_sort.s\
-			src/ft_list_remove_if.s\
-			src/utils/ft_char_in_base.s\
-			src/utils/ft_char_to_numb.s\
-			src/utils/ft_is_space.s\
-			src/utils/ft_is_valid_base.s\
+			src/bonus/ft_list_push_front.s\
+			src/bonus/ft_list_size.s\
+			src/bonus/ft_list_push_back.s\
+			src/bonus/ft_list_sort.s\
+			src/bonus/ft_list_remove_if.s\
+			src/bonus/utils/ft_char_in_base.s\
+			src/bonus/utils/ft_char_to_numb.s\
+			src/bonus/utils/ft_is_space.s\
+			src/bonus/utils/ft_is_valid_base.s\
 
 
 NAME	= 	libasm.a
