@@ -29,13 +29,19 @@ int         test_strdup();
 
 /**
  * Simple linked list
- * void content need to be casted to acces value
 */
 typedef struct s_list
 {
-	void			*content;
+	void			*data;
 	struct s_list	*next;
 }	t_list;
+
+
+// typedef struct s_list
+// {
+// 	void			*data;
+// 	struct s_list	*next;
+// }	t_list;
 
 
 /* BONUS */
