@@ -241,7 +241,7 @@ int test_list_size()
 	}
 	list_clear(&lst, free);
 
-	lst = build_lst_nb(list_push_back, 207);
+	lst = build_lst_nb(ft_list_push_back, 207);
 	if (check_lst_size(lst)) {
 		ret = 1;
 	}
@@ -260,7 +260,7 @@ int test_list_size()
 // static int test_lst_sort()
 int test_lst_sort()
 {
-	t_list *first = build_lst(list_push_back);
+	t_list *first = build_lst(ft_list_push_back);
 	t_list *second = build_lst(list_push_back);
 
 	list_sort(&first, is_minus_value);
