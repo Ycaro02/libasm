@@ -42,7 +42,8 @@ _lst_push_back_next:
 
 _lst_push_back_check:
 	mov    rax, qword[rbp-0x10]			; get current in rax
-	mov    rax, qword[rax]				; go current->next
+	; mov    rax, qword[rax]				; go current->next
+	mov    rax, qword[rax+0x8]				; go current->next
 	test   rax, rax						; test if NULL
 	jne    _lst_push_back_next			; if not null got store this
 	mov    rax, qword[rbp-0x10]			; get current in rax
