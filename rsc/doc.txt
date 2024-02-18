@@ -89,3 +89,31 @@ _ft_strlen_exit:
 	mov    rax,QWORD [rbp-0x8]
 	pop    rbp
 	ret
+
+
+Chapter IV
+Bonus part
+You can rewrite these functions in asm. The linked list function will use the following structure:
+Libasm subject reclaim :
+typedef struct s_list
+{
+void *data;
+struct s_list *next;
+} t_list;
+• ft_atoi_base (like the one in the piscine) :
+https://cdn.intra.42.fr/pdf/pdf/119458/en.subject.pdf --> c piscine 5
+• ft_list_push_front (like the one in the piscine)
+• ft_list_size (like the one in the piscine)
+• ft_list_sort (like the one in the piscine)
+void ft_list_sort(t_list **begin_list, int (*cmp)());
+• ft_list_remove_if (like the one in the piscine):
+void ft_list_remove_if(t_list **begin_list, void *data_ref, int (*cmp)(), void (*free_fct)(void *));
+https://cdn.intra.42.fr/pdf/pdf/121967/en.subject.pdf --> c piscine 12 
+C12 subject reclaim :
+typedef struct s_list
+{
+struct s_list *next;
+void *data;
+} t_list;
+I'ts 'just' field order but in asm, this change the written code (reverse compute to access at next or data field)
+I choice to follow libasm subject structure and implement function like C 12 pdf;
