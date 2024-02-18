@@ -28,7 +28,7 @@ ft_list_push_front:
 	mov    rax, qword[rbp-0x18]		; get lst
 	mov    rdx, qword[rax]			; dereference it in rdx got *lst
 	mov    rax, qword[rbp-0x8]		; get new node in rax
-	mov    qword[rax], rdx			; node->next = *lst
+	mov    qword[rax+0x8], rdx			; node->next = *lst
 	mov    rax, qword[rbp-0x18] 	; rax = lst
 	mov    rdx, qword[rbp-0x8]		; rdx = node
 	mov    qword[rax], rdx			; *lst = node

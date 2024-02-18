@@ -24,10 +24,10 @@ ft_create_list_node:
 
 _list_node_init:
 	mov    rax, qword[rbp-0x8]		; put node in rax
-	mov    qword[rax], 0x0			; node->next = NULL 
+	mov    qword[rax+0x8], 0x0			; node->next = NULL 
 	mov    rax, qword[rbp-0x8]		; put in node in rax
 	mov    rdx, qword[rbp-0x18]		; put lst head pointer/addr in rdx
-	mov    qword[rax+0x8], rdx		; node->data = rdx
+	mov    qword[rax], rdx		; node->data = rdx
 	mov    rax, qword[rbp-0x8]		; set turen value = node
 
 _list_node_exit:

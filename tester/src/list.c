@@ -60,17 +60,6 @@ int is_same_node(void *node1, void *node2)
 	return (node1 == node2);
 }
 
-/*
-        lst_remove_if : iter on list and delete targeted node
-                        args:
-                                list: addr of the head of linked list to iter on
-                                del: function ptr on the free_node function
-                                        args:
-                                                void *: lst data
-                                condition: function ptr return true for free node
-                                        args:
-                                                void *: node to check
-*/
 void    list_remove_if(t_list **list, void *data_ref, int (*cmp)(), void (*free_fct)(void*))
 {
 	t_list  *tmp = NULL;

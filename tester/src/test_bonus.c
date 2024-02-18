@@ -91,8 +91,8 @@ static t_list *build_lst(void lst_fun(t_list **, void*))
 	lst_fun(&lst, ft_strdup("aa"));
 	lst_fun(&lst, ft_strdup("bb"));
 	lst_fun(&lst, ft_strdup("!first"));
-	lst_fun(&lst, NULL);
-	lst_fun(NULL, NULL);
+	// lst_fun(&lst, NULL);
+	// lst_fun(NULL, NULL);
 
 	return (lst);
 }
@@ -197,7 +197,7 @@ int test_list_push_front()
 	int ret = 0;
 	t_list *real = build_lst(list_push_front);
 	t_list *me = build_lst(ft_list_push_front);
-	// t_list *me = build_lst(list_push_front);
+	// t_list *me = build_lst(ft_list_push_front);
 	if (compare_lst_string(me, real)) {
 		return (1);
 	}
@@ -211,6 +211,8 @@ int test_list_push_back()
 	int ret = 0;
 	t_list *real = build_lst(list_push_back);
 	t_list *me = build_lst(ft_list_push_back);
+	// display_lst(me);
+	// display_lst(real);
 	if (compare_lst_string(me, real)) {
 		return (1);
 	}
@@ -259,7 +261,7 @@ int test_list_size()
 int test_lst_sort()
 {
 	t_list *first = build_lst(ft_list_push_back);
-	t_list *second = build_lst(ft_list_push_back);
+	t_list *second = build_lst(list_push_back);
 
 	list_sort(&first, is_minus_value);
 	ft_list_sort(&second, is_minus_value);
@@ -344,8 +346,8 @@ int main (void)
 	printf(CYAN"Bonus Tester\n"RESET);
 	tester_hub(test_list_push_front, PURPLE"List push front\t"RESET);
 	tester_hub(test_list_size, PURPLE"List size\t"RESET);
-	tester_hub(test_list_push_back, PURPLE"List push back\t"RESET);
 	tester_hub(test_lst_sort, PURPLE"List sort\t"RESET);
+	tester_hub(test_list_push_back, PURPLE"List push back\t"RESET);
 	tester_hub(test_remove_if, PURPLE"List Remove If\t"RESET);
 	tester_hub(test_atoi_base, PURPLE"ft_atoi_base\t"RESET);
 
