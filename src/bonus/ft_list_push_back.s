@@ -42,13 +42,12 @@ _lst_push_back_next:
 
 _lst_push_back_check:
 	mov    rax, qword[rbp-0x10]			; get current in rax
-	; mov    rax, qword[rax]				; go current->next
-	mov    rax, qword[rax+0x8]				; go current->next
+	mov    rax, qword[rax+0x8]			; go current->next
 	test   rax, rax						; test if NULL
-	jne    _lst_push_back_next			; if not null got store this
+	jne    _lst_push_back_next			; if not null go store this
 	mov    rax, qword[rbp-0x10]			; get current in rax
 	mov    rdx, qword[rbp-0x8]			; get new_node in rdx
-	mov    qword[rax], rdx				; *lst = new_node
+	mov    qword[rax+0x8], rdx			; current->next = new_node
 
 _lst_push_back_exit:
 	mov    rsp, rbp						; restore stack
