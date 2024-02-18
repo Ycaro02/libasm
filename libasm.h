@@ -78,6 +78,8 @@ void    list_clear(t_list **lst, void (*del)(void*));
 char    *ft_itoa(int n);
 void    ft_sort_int_tab(long int *tab, int size);
 
+t_list  *ft_lstnew(void *data);
+
 #endif /* FT_LIBASM_H */
 
 // (write.o): warning: relocation against `__errno_location

@@ -1,12 +1,26 @@
 
 #include "../../libasm.h"
 
+/* create node */
+t_list  *ft_lstnew(void *data)
+{
+        t_list  *new;
+
+        new = malloc(sizeof(t_list) * 1);
+        if (new == NULL)
+                return (NULL);
+        new->next = NULL;
+        new->data = data;
+        return (new);
+}
+
 void	list_push_front(t_list **lst, void *data)
 {
 	if (lst == NULL || data == NULL)
 		return ;
-	((t_list *)data)->next = *lst;
-	*lst = data;
+	t_list *new_node = ft_lstnew(data);
+	new_node->next = *lst;
+	*lst = new_node;
 }
 
 void	list_push_back(t_list **lst, void *data)
