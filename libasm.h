@@ -63,8 +63,6 @@ int		ft_is_space(char c);
 /* asm version is valid base */
 int		ft_is_valid_base(char *str);
 
-
-
 /* TESTER */
 /* BONUS TEST */
 void	list_push_back(t_list **lst, void *data);
