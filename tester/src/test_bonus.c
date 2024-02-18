@@ -12,19 +12,6 @@ void display_lst(t_list *lst)
 	}
 }
 
-/* create node */
-t_list  *ft_lstnew(void *data)
-{
-        t_list  *new;
-
-        new = malloc(sizeof(t_list) * 1);
-        if (new == NULL)
-                return (NULL);
-        new->next = NULL;
-        new->data = data;
-        return (new);
-}
-
 /* compare string in lst */
 static int compare_lst_string(t_list *me, t_list *real)
 {
@@ -78,32 +65,32 @@ void 	list_sort(t_list **lst, int (*cmp)())
 /* harcode build lst for test , take push add back/front function in args*/
 static t_list *build_lst(void lst_fun(t_list **, void*))
 {
-	char *str = ft_strdup("a");
+	// char *str = ft_strdup("a");
+	// t_list *node = ft_create_list_node((void *)str);
+	// str = ft_strdup("aaa");
+	// t_list *node1 = ft_create_list_node((void *)str);
+	// str = ft_strdup("yoooo");
+	// t_list *node2 = ft_create_list_node((void *)str);
+	// str = ft_strdup("-  -");
+	// t_list *node3 = ft_create_list_node((void *)str);
+	// str = ft_strdup("yoo");
+	// t_list *node4 = ft_create_list_node((void *)str);
+	// str = ft_strdup("aa");
+	// t_list *node5 = ft_create_list_node((void *)str);
+	// str = ft_strdup("bb");
+	// t_list *node6 = ft_create_list_node((void *)str);
+	// str = ft_strdup("!first");
+	// t_list *node7 = ft_create_list_node((void *)str);
 	t_list *lst = NULL;
-	t_list *node = ft_lstnew((void *)str);
-	str = ft_strdup("aaa");
-	t_list *node1 = ft_lstnew((void *)str);
-	str = ft_strdup("yoooo");
-	t_list *node2 = ft_lstnew((void *)str);
-	str = ft_strdup("-  -");
-	t_list *node3 = ft_lstnew((void *)str);
-	str = ft_strdup("yoo");
-	t_list *node4 = ft_lstnew((void *)str);
-	str = ft_strdup("aa");
-	t_list *node5 = ft_lstnew((void *)str);
-	str = ft_strdup("bb");
-	t_list *node6 = ft_lstnew((void *)str);
-	str = ft_strdup("!first");
-	t_list *node7 = ft_lstnew((void *)str);
 
-	lst_fun(&lst, node);
-	lst_fun(&lst, node1);
-	lst_fun(&lst, node2);
-	lst_fun(&lst, node3);
-	lst_fun(&lst, node4);
-	lst_fun(&lst, node5);
-	lst_fun(&lst, node6);
-	lst_fun(&lst, node7);
+	lst_fun(&lst, ft_strdup("a"));
+	lst_fun(&lst, ft_strdup("aaa"));
+	lst_fun(&lst, ft_strdup("yoooo"));
+	lst_fun(&lst, ft_strdup("-  -"));
+	lst_fun(&lst, ft_strdup("yoo"));
+	lst_fun(&lst, ft_strdup("aa"));
+	lst_fun(&lst, ft_strdup("bb"));
+	lst_fun(&lst, ft_strdup("!first"));
 	lst_fun(&lst, NULL);
 	lst_fun(NULL, NULL);
 
@@ -199,7 +186,7 @@ static t_list *build_lst_nb(void lst_fun(t_list **, void*), int max)
 	// t_list *node = NULL;
 	for (int i =0; i < max; ++i) {
 		char *number = ft_itoa(i);
-		lst_fun(&lst, ft_lstnew(number));
+		lst_fun(&lst, number);
 	}
 
 	return (lst);
@@ -208,9 +195,9 @@ static t_list *build_lst_nb(void lst_fun(t_list **, void*), int max)
 int test_list_push_front()
 {
 	int ret = 0;
-	t_list *real = build_lst(ft_list_push_front);
-	// t_list *me = build_lst(ft_list_push_front);
-	t_list *me = build_lst(list_push_front);
+	t_list *real = build_lst(list_push_front);
+	t_list *me = build_lst(ft_list_push_front);
+	// t_list *me = build_lst(list_push_front);
 	if (compare_lst_string(me, real)) {
 		return (1);
 	}
@@ -222,8 +209,8 @@ int test_list_push_front()
 int test_list_push_back()
 {
 	int ret = 0;
-	t_list *real = build_lst(ft_list_push_back);
-	t_list *me = build_lst(list_push_back);
+	t_list *real = build_lst(list_push_back);
+	t_list *me = build_lst(ft_list_push_back);
 	if (compare_lst_string(me, real)) {
 		return (1);
 	}
@@ -250,8 +237,8 @@ int test_list_size()
 	if (check_lst_size(lst)) {
 		ret = 1;
 	}
-	
 	list_clear(&lst, free);
+
 	lst = build_lst_nb(ft_list_push_back, 207);
 	if (check_lst_size(lst)) {
 		ret = 1;
@@ -268,7 +255,8 @@ int test_list_size()
 	return (ret);
 }
 
-static int test_lst_sort()
+// static int test_lst_sort()
+int test_lst_sort()
 {
 	t_list *first = build_lst(ft_list_push_back);
 	t_list *second = build_lst(ft_list_push_back);
@@ -360,5 +348,17 @@ int main (void)
 	tester_hub(test_lst_sort, PURPLE"List sort\t"RESET);
 	tester_hub(test_remove_if, PURPLE"List Remove If\t"RESET);
 	tester_hub(test_atoi_base, PURPLE"ft_atoi_base\t"RESET);
+
+	// t_list *lst = NULL;
+	// ft_list_push_front(&lst, (void *)1);
+	// if (lst == NULL) {
+	// 	printf("lst = %p\n", lst);
+	// 	return (1);
+	// }
+	// if (lst->data == (void*)1 && lst->next == NULL) {
+	// 	printf("1 ok\n");
+	// } else {
+	// 	printf("1 ko\n");
+	// }
 	return (0);
 }

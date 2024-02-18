@@ -45,6 +45,8 @@ typedef struct s_list
 
 
 /* BONUS */
+/* list utils  create node */
+t_list *ft_create_list_node(void *data);
 void 	ft_list_push_back(t_list **begin_list, void *data);	/* real bonus not in subject */
 void 	ft_list_push_front(t_list **begin_list, void *data);
 int		ft_list_size(t_list *begin_list);
@@ -61,8 +63,6 @@ int		ft_is_space(char c);
 /* asm version is valid base */
 int		ft_is_valid_base(char *str);
 
-
-
 /* TESTER */
 /* BONUS TEST */
 void	list_push_back(t_list **lst, void *data);
@@ -77,6 +77,8 @@ int 	is_same_node(void *node1, void *node2);
 void    list_clear(t_list **lst, void (*del)(void*));
 char    *ft_itoa(int n);
 void    ft_sort_int_tab(long int *tab, int size);
+
+t_list  *create_lst_node(void *data);
 
 #endif /* FT_LIBASM_H */
 
