@@ -5,7 +5,6 @@ section .text
 
 ft_strlen:					; int strlen(char *s);
 	push			rdi				; push rdi on stack to save it
-	push			rcx				; push rcx on stack
 	xor				rcx, rcx		; initial value 0, for blank or null string 
 	cmp				rdi, 0x0		; rdi NULL
 	je				_ft_strlen_exit ; jump equal exit
@@ -20,6 +19,5 @@ _ft_strlen_loop:
 
 _ft_strlen_exit:
 	mov 			rax, rcx		; put return value in rax
-	pop 			rcx
 	pop 			rdi				; pop rdi from stack
 	ret
