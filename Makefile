@@ -16,6 +16,7 @@ SRCS	=	src/ft_strlen.s\
 			src/ft_write.s\
 			src/ft_read.s\
 			src/ft_strdup.s\
+			src/bonus/utils/ft_create_list_node.s\
 			src/bonus/ft_list_push_front.s\
 			src/bonus/ft_list_size.s\
 			src/bonus/ft_list_push_back.s\
