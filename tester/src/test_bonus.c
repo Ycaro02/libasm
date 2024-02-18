@@ -348,7 +348,7 @@ int main (void)
 	tester_hub(test_list_size, PURPLE"List size\t"RESET);
 	tester_hub(test_lst_sort, PURPLE"List sort\t"RESET);
 	tester_hub(test_list_push_back, PURPLE"List push back\t"RESET);
-	// tester_hub(test_remove_if, PURPLE"List Remove If\t"RESET);
+	tester_hub(test_remove_if, PURPLE"List Remove If\t"RESET);
 	tester_hub(test_atoi_base, PURPLE"ft_atoi_base\t"RESET);
 
 	// t_list *lst = NULL;
