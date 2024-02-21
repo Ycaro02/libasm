@@ -4,5 +4,5 @@ NAME=../libasm.a
 
 if [ ! -f $NAME ]
 then 
-    make -s -C ..
+    make -s -C .. bonus
 fi
