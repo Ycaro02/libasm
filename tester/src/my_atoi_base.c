@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../libasm.h"
+# include "../libasm.h"
 
 int	char_to_numb(char c, char *base)
 {

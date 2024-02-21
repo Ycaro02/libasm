@@ -1,4 +1,4 @@
-#include "../../libasm.h"
+#include "../libasm.h"
 
 static int check_write_erno(int fd, char *str)
 {

@@ -1,4 +1,4 @@
-# include "../../libasm.h"
+# include "../libasm.h"
 
 int main(void)
 {

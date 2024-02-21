@@ -1,4 +1,4 @@
-#include "../../libasm.h"
+#include "../libasm.h"
 
 static char     *ft_make(long int n, char *dst, int count, int sign)
 {

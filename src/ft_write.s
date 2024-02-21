@@ -10,13 +10,11 @@ section .text
 ; rsi --> void * buff
 ; rdx --> size_t count ?? 
 
-; ssize_t ft_write(int fd, const void *buf, size_t count);
-
-ft_write:						; write
-	mov			rax, 0x1		; 1 for write
+ft_write:						; ssize_t ft_write(int fd, const void *buf, size_t count);
+	mov			rax, 0x1		; 1 for write syscall value
 	syscall
-	cmp			rax, 0x0
-	jl			_handle_erno
+	cmp			rax, 0x0		; cmp if NULL
+	jl			_handle_erno	; jump lower
 	ret
 
 _handle_erno:

@@ -1,4 +1,4 @@
-# include "../../libasm.h"
+# include "../libasm.h"
 
 /* display lst */
 void display_lst(t_list *lst)

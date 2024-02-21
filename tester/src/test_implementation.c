@@ -1,4 +1,4 @@
-# include "../../libasm.h"
+# include "../libasm.h"
 
 int         basic_strcmp(char *s1, char *s2)
 {

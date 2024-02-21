@@ -1,5 +1,5 @@
 
-#include "../../libasm.h"
+#include "../libasm.h"
 
 /* create node */
 t_list  *create_lst_node(void *data)

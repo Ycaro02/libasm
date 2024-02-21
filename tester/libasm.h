@@ -1,7 +1,7 @@
 #ifndef FT_LIBASM_H
 # define FT_LIBASM_H
 
-# include "tester/basic_define.h"
+# include "basic_define.h"
 # include <stddef.h>
 # include <sys/types.h>
 # include <errno.h>
