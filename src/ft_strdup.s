@@ -6,6 +6,7 @@ section .text
 extern	ft_strlen
 extern	ft_strcpy
 extern  malloc
+
 ; https://www.cs.uaf.edu/2010/fall/cs301/lecture/10_04_malloc.html malloc call assembly
 ; rdi --> char *src --> src string to copy
 

@@ -1,9 +1,9 @@
 BITS 64
 
 section .text
-	global ft_strlen		; Function entry point
+	global ft_strlen				; Function entry point
 
-ft_strlen:					; int strlen(char *s);
+ft_strlen:							; int strlen(char *s);
 	push			rdi				; push rdi on stack to save it
 	xor				rcx, rcx		; initial value 0, for blank or null string 
 	cmp				rdi, 0x0		; rdi NULL
