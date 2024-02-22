@@ -57,7 +57,7 @@ int	list_size(t_list *lst)
 
 int is_same_node(void *node1, void *node2)
 {
-	return (node1 == node2);
+	return (node1 != node2);
 }
 
 void    list_remove_if(t_list **list, void *data_ref, int (*cmp)(), void (*free_fct)(void*))
@@ -65,22 +65,23 @@ void    list_remove_if(t_list **list, void *data_ref, int (*cmp)(), void (*free_
 	t_list  *tmp = NULL;
 	t_list  *current = NULL;
 
-	if (!list || !cmp || !free_fct || !data_ref)
+	if (!list || !cmp || !free_fct)
 		return;
 	current = *list;
 	// printf(YELLOW"current |%s| data |%s|\n"RESET, (char *)current->data, (char *)data_ref);
-	if (current && cmp(current->data, data_ref) == TRUE) {
+	if (current && cmp(current->data, data_ref) == 0) {
 		*list = (*list)->next;
 		free_fct(current->data);
 		free(current);
 		current = *list;
 	}
 	while (current) {
-		if (current->next && cmp(current->next->data, data_ref) == TRUE) {
+		if (current->next && cmp(current->next->data, data_ref) == 0) {
 			tmp = current->next;
 			current->next = current->next->next;
 			free_fct(tmp->data);
 			free(tmp);
+			break ;
 		}
 		else
 			current = current->next;

@@ -41,8 +41,8 @@ ft_list_remove_if:
 	mov			rcx, qword[rbp-0x28]		; get cmp function ptr in rcx
 	mov			eax, 0x0					; reset eax before call
 	call		rcx							; call cmp(current->data, data_ref)
-	cmp			eax, 0x1					; check if ret == 1
-	jne			_list_remove_if_end_loop	; if != 1 go end loop else :
+	cmp			eax, 0x0					; check if ret == 0
+	jne			_list_remove_if_end_loop	; if != 0 go end loop else :
 
 	mov			rax, qword[rbp-0x18]		; get list in rax
 	mov			rax, qword[rax]				; dereference it got *list
@@ -71,7 +71,7 @@ _list_remove_if_loop:
 	mov			rcx, qword[rbp-0x28]		; put cmp function in rcx
 	mov			eax, 0x0					; reset eax
 	call		rcx							; call cmp(current->next->data, data_ref)
-	cmp			eax, 0x1					; check if == 1 
+	cmp			eax, 0x0					; check if == 0 
 	jne			_list_remove_if_next		; jump if no equal (continue iterate)
 	mov			rax, qword[rbp-0x10]		; put current in rax
 	mov			rax, qword[rax+0x8]			; go next
@@ -88,7 +88,7 @@ _list_remove_if_loop:
 	mov			rdi, qword[rbp-0x8]			; move tmp in rdi
 	mov			rdx, qword[rbp-0x30]		; free function in rdx
 	call		rdx							; call free_fct(tmp->data)
-	jmp			_list_remove_if_end_loop
+	jmp			_list_remove_if_exit
 
 _list_remove_if_next:
 	mov			rax, qword[rbp-0x10]		; put current in rax

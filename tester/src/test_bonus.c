@@ -65,22 +65,6 @@ void 	list_sort(t_list **lst, int (*cmp)())
 /* harcode build lst for test , take push add back/front function in args*/
 static t_list *build_lst(void lst_fun(t_list **, void*))
 {
-	// char *str = ft_strdup("a");
-	// t_list *node = ft_create_list_node((void *)str);
-	// str = ft_strdup("aaa");
-	// t_list *node1 = ft_create_list_node((void *)str);
-	// str = ft_strdup("yoooo");
-	// t_list *node2 = ft_create_list_node((void *)str);
-	// str = ft_strdup("-  -");
-	// t_list *node3 = ft_create_list_node((void *)str);
-	// str = ft_strdup("yoo");
-	// t_list *node4 = ft_create_list_node((void *)str);
-	// str = ft_strdup("aa");
-	// t_list *node5 = ft_create_list_node((void *)str);
-	// str = ft_strdup("bb");
-	// t_list *node6 = ft_create_list_node((void *)str);
-	// str = ft_strdup("!first");
-	// t_list *node7 = ft_create_list_node((void *)str);
 	t_list *lst = NULL;
 
 	lst_fun(&lst, ft_strdup("a"));
@@ -91,8 +75,6 @@ static t_list *build_lst(void lst_fun(t_list **, void*))
 	lst_fun(&lst, ft_strdup("aa"));
 	lst_fun(&lst, ft_strdup("bb"));
 	lst_fun(&lst, ft_strdup("!first"));
-	// lst_fun(&lst, NULL);
-	// lst_fun(NULL, NULL);
 
 	return (lst);
 }
@@ -137,6 +119,7 @@ static int adapt_test_remove_if(void (*lst_remove_func)(t_list **, void *, int (
 	lst_remove_func(&lst, NULL, is_same_node, free);
 	lst_remove_func(&lst, to_del->data, NULL, free);
 	lst_remove_func(&lst, to_del->data, is_same_node, NULL);
+	/* end NULL test */
 	if (get_node_by_str(lst, "bb") == NULL) {
 		printf(RED"Error %s was deleted with lst_remove_func(NULL, to_del->data, is_same_node, free)' \n"RESET, "bb");
 		ret = 1;
@@ -155,13 +138,13 @@ static int adapt_test_remove_if(void (*lst_remove_func)(t_list **, void *, int (
 	}
 	
 	to_del = get_node_by_str(lst, "a");
-	lst_remove_func(&lst, to_del->data, is_same_node, free);
+	lst_remove_func(&lst, to_del->data, ft_strcmp, free);
 	if (check_remove_if(lst, "a")) {
 		ret = 1;
 	}
 
 	to_del = get_node_by_str(lst, "yoo");
-	lst_remove_func(&lst, to_del->data, is_same_node, free);
+	lst_remove_func(&lst, to_del->data, ft_strcmp, free);
 	if (check_remove_if(lst, "yoo")) {
 		ret = 1;
 	}
