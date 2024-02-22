@@ -187,6 +187,30 @@ int  test_strcmp()
 		printf(YELLOW"Error koala %d koalaaaaaaaaa expected %d\n"RESET, ft_strcmp("koala", "koalaaaaaaaaa"), -'a');
 		return (1);
 	}
+	if (ft_strcmp("", "") != 0) {
+		printf(YELLOW"Error  %d  expected %d\n"RESET, ft_strcmp("", ""), 0);
+		return (1);
+	}
+	if (ft_strcmp("", "koala") != -'k') {
+		printf(YELLOW"Error empty %d koala expected %d\n"RESET, ft_strcmp("", "koala"), -'k');
+		return (1);
+	}
+	if (ft_strcmp("koala", "") != 'k') {
+		printf(YELLOW"Error koala %d empty expected %d\n"RESET, ft_strcmp("koala", ""), 'k');
+		return (1);
+	}
+	if (ft_strcmp("yes", "yes") != 0) {
+		printf(YELLOW"Error yes %d yes expected %d\n"RESET, ft_strcmp("yes", "yes"), 0);
+		return (1);
+	}
+	if (ft_strcmp("yess", "yes") != 's') {
+		printf(YELLOW"Error yess %d yes expected %d\n"RESET, ft_strcmp("yess", "yes"), 's');
+		return (1);
+	}
+	if (ft_strcmp("yes", "yess") != -'s') {
+		printf(YELLOW"Error yes %d yess expected %d\n"RESET, ft_strcmp("yes", "yess"), -'s');
+		return (1);
+	}
 	return (0);
 }
 
@@ -214,7 +238,7 @@ int check_strdup(char *str)
 int test_strdup()
 {
 	if (check_strdup("koala")\
-		|| check_strdup("YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")\
+		|| check_strdup("YOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOYOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO")\
 		|| check_strdup("")\
 		|| check_strdup(NULL)\
 		|| check_strdup("s")) {
