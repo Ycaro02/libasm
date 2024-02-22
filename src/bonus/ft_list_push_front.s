@@ -19,8 +19,8 @@ ft_list_push_front:
 	mov    qword[rbp-0x20], rsi		; save rsi at 0x20
 	cmp    qword[rbp-0x18], 0x0		; if lst == NULL
 	je     _lst_push_front_exit
-	cmp    qword[rbp-0x20], 0x0 	; if data == NULL
-	je     _lst_push_front_exit
+	; cmp    qword[rbp-0x20], 0x0 	; if data == NULL
+	; je     _lst_push_front_exit	; NOT mandatory we are now allocated node for store this data
 	mov    rax, qword[rbp-0x20]
 	mov    rdi, rax
 	call   ft_create_list_node

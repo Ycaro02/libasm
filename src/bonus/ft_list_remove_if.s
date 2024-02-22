@@ -26,8 +26,8 @@ ft_list_remove_if:
 	je			_list_remove_if_exit
 	cmp			qword[rbp-0x30], 0x0		; if !free_fct
 	je			_list_remove_if_exit
-	cmp			qword[rbp-0x20], 0x0		; if !data_ref
-	je			_list_remove_if_exit
+	; cmp			qword[rbp-0x20], 0x0		; if !data_ref
+	; je			_list_remove_if_exit
 	
 	mov			rax, qword[rbp-0x18]		; put list in rax
 	mov			rax, qword[rax]				; dereference it got *list
