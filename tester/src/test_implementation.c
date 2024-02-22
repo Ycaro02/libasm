@@ -33,7 +33,7 @@ int  test_strlen()
 		|| !check_strlen(NULL)\
 		|| !check_strlen("")\
 		|| !check_strlen(" ")\
-		|| !check_strlen("very longnnfjf lonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnng")\
+		|| !check_strlen("very longnnfjf lonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnng")\
 		|| !check_strlen("y")\
 		|| !check_strlen("yooo\nsdasda")\
 		|| !check_strlen("yasda\0sdadsa")) {
@@ -95,31 +95,23 @@ int  test_strcpy()
 	char *str = "Classic test";
 	int max = 25, ret = 0;
 	char *tmp = malloc(sizeof(char) * max);
-	for (int i = 0; i < max; ++i) {
-		tmp[i] = 'Y';
-	}
-	tmp[max - 1] = '\0';
 
 	if (check_strcpy(tmp, str, str)) {
 		ret = 1;
 	} 
 	if (ret == 0) {
 		char *save = strdup(tmp);
-		char *big = "Biggggeeeeeeeeeeeeeeeeeeeesseeeeeeeesst";
-		if (check_strcpy(tmp, big, save)) {
+		char *test = "We can write here";
+		if (check_strcpy(tmp, test, test)) {
 			ret = 1;
 		}
 		free(save);
 	}
 	if (ret == 0) {
 		free(tmp);
-		max = 200;
+		max = 1200;
 		tmp = malloc(sizeof(char)*max);
-		for (int i = 0; i < max; ++i) {
-			tmp[i] = 'Y';
-		}
-		tmp[max - 1] = '\0';
-		str = "BIG BIG BIG BIG BIG BIG BIG BIG TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST OK OK OK OK OK\nBIG TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST OK OK OK OK OK";
+		str = "BIG BIG BIG BIG lonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnglonnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnng";
 		if (check_strcpy(tmp, str, str)) {
 			ret = 1;
 		} 
@@ -128,6 +120,39 @@ int  test_strcpy()
 	if (ret == 0) {
 		ret = strcpy_null_test();
 	}
+	if (ret == 0){
+		tmp = calloc(sizeof(char), 10);
+		tmp[0] = 'a';
+		if (check_strcpy(tmp, "", "")) {
+			ret = 1;
+		}
+	}
+	if (ret == 0) {
+		free(tmp);
+		tmp = calloc(sizeof(char), 3);
+		if (check_strcpy(tmp, "hy", "hy")) {
+			ret = 1;
+		}
+	}
+	free(tmp);
+	/*
+		char *koala = "";
+		strcpy(koala, "coucou");
+		This test don't compile with -Werror flag:
+		src/test_implementation.c: In function ‘test_strcpy’:
+		src/test_implementation.c:139:9: error: ‘__builtin_memcpy’ writing 7 bytes into a region of size 1 overflows the destination [-Werror=stringop-overflow=]
+  		139 | strcpy(koala, "coucou");
+		Obviously if we remove gcc protect flag we get a beautifull segfault
+
+	*/
+	/*	This case is undefined behaviors and cause segfault strcpy("", "hey"): 
+		man strcpy 3:
+		These  functions  copy  the string pointed to by src, into a string at the buffer pointed to by dst.  The programmer is responsible for allocating a
+        destination buffer large enough, that is, strlen(src) + 1
+		
+		Your functions should not quit unexpectedly (segmentation fault, bus error, double
+		free, etc) apart from undefined behaviors.
+	*/
 	return (ret);
 
 }
