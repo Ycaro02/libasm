@@ -1,6 +1,6 @@
 ### Register --> https://wiki.osdev.org/CPU_Registers_x86-64
 ---
-## $${\color{blue}Instructions: MOV, MOVZX, MOVSX, MOVSXD}$$
+## $${\color{lightgreen}Instructions: MOV, MOVZX, MOVSX, MOVSXD}$$
 ## $${\color{orange}Register \space Value \space Assignment \space}$$
 ---
 ### $${\color{orange}Instruction \space \color{red}MOV}$$
@@ -27,7 +27,7 @@
 ---
 
 ---
-## $${\color{blue}Instructions: ADD, SUB, IMUL}$$
+## $${\color{lightgreen}Instructions: ADD, SUB, IMUL}$$
 ## $${\color{orange}Register \space Value \space Basic \space Operation}$$
 ---
 ### $${\color{orange}Instruction \space \color{red}ADD}$$
@@ -45,7 +45,7 @@
 ---
 
 ---
-## $${\color{blue}Instructions: TEST, XOR, NEG}$$
+## $${\color{lightgreen}Instructions: TEST, XOR, NEG}$$
 ## $${\color{orange}Register \space Value \space Binary \space Operation}$$
 ---
 ### $${\color{orange}Instruction \space \color{red}TEST}$$
@@ -63,7 +63,7 @@
 ---
 
 ---
-## $${\color{blue}Instructions: SCASB}$$
+## $${\color{lightgreen}Instructions: SCASB}$$
 ## $${\color{orange}Special  \space String  \space Operation  \space Instruction}$$
 ---
 ### $${\color{orange}Instruction \space \color{red}SCASB}$$
@@ -77,7 +77,7 @@
 ---
 
 ---
-## $${\color{blue}Instructions: CMP, SETE, JE, JL, JNE, JLE, JG, JZ}$$
+## $${\color{lightgreen}Instructions: CMP, SETE, JE, JL, JNE, JLE, JG, JZ}$$
 ## $${\color{orange}Compare \space and \space Conditional \space operation \space}$$
 ---
 ### $${\color{orange}Instruction \space \color{red}CMP}$$
@@ -95,7 +95,7 @@
 ---
 
 ---
-## $${\color{blue}Instructions: PUSH, POP, RET}$$
+## $${\color{lightgreen}Instructions: PUSH, POP, RET}$$
 ## $${\color{orange}Stack \space Manipulation \space}$$
 
 ---
@@ -114,7 +114,7 @@
 ---
 
 ---
-## $${\color{blue}Instructions: SYSCALL, CALL}$$
+## $${\color{lightgreen}Instructions: SYSCALL, CALL}$$
 ## $${\color{orange}Syscall \space Classic \space Call}$$
 ---
 ### $${\color{orange}Instruction \space \color{red}SYSCALL}$$
@@ -128,7 +128,7 @@
 ---
 
 ---
-## $${\color{blue}Instructions: REP, REPZ, SCASB, CLD}$$
+## $${\color{lightgreen}Instructions: REP, REPZ, SCASB, CLD}$$
 ## $${\color{orange}Repeat \space Instruction}$$
 ---
 ### $${\color{orange}Instruction \space \color{red}REP}$$
