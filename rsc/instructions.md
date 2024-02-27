@@ -105,6 +105,17 @@
 ### $${\color{red}JMP}$$
 - Operand(s) Supported: Destination
 - Description: The JMP (Jump) instruction transfers program control to a specified destination. It does not conditionally execute based on any flags or conditions; rather, it unconditionally transfers the execution flow to the specified destination address.
+
+---
+## $${\color{orange}Syscall \space Classic \space Call}$$
+---
+### $${\color{red}SYSCALL}$$
+- Operand(s) Supported: None
+- Description: The SYSCALL instruction is used in 64-bit mode to make a system call to the kernel. It transfers control to the operating system to request services such as I/O operations, process management, and more.
+
+### $${\color{red}CALL}$$
+- Operand(s) Supported: Target address
+- Description: The CALL instruction is used to call a subroutine or procedure. It pushes the return address onto the stack and then jumps to the specified target address. Upon completion of the subroutine, the RET instruction is typically used to return control to the calling routine.
 ---
 
 ---
@@ -123,20 +134,6 @@
 ### $${\color{red}RET}$$
 - Operand(s) Supported: None
 - Description: The RET (RETurn) instruction is used to return control from a subroutine to the calling routine. It pops the return address from the stack and jumps to that address.
-
----
-
----
-## $${\color{lightgreen}Instructions: SYSCALL, CALL}$$
-## $${\color{orange}Syscall \space Classic \space Call}$$
----
-### $${\color{red}SYSCALL}$$
-- Operand(s) Supported: None
-- Description: The SYSCALL instruction is used in 64-bit mode to make a system call to the kernel. It transfers control to the operating system to request services such as I/O operations, process management, and more.
-
-### $${\color{red}CALL}$$
-- Operand(s) Supported: Target address
-- Description: The CALL instruction is used to call a subroutine or procedure. It pushes the return address onto the stack and then jumps to the specified target address. Upon completion of the subroutine, the RET instruction is typically used to return control to the calling routine.
 
 ---
 
