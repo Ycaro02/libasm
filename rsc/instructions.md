@@ -32,7 +32,7 @@ $${\color{orange}Instruction \space \color{red}SETE}$$
 - Operand(s) Supported: Destination
 - Description: The SETE (SET if Equal) instruction sets the destination operand to 1 if the Zero Flag (ZF) is set (indicating that the previous comparison resulted in equality); otherwise, it sets the destination operand to 0.
 
-- $${\color{orange}Instruction \tab \color{red}JE} \space {\color{lightblue}(\space Jump \space if \space Equal), \space} \space {\color{red}JL} \space {\color{lightblue}(\space Jump \space if \space Less)} \space {\color{red}JLE} \space {\color{lightblue}(\space Jump \space if \space Less \space Equal)} \space {\color{red}JNE} \space {\color{lightblue}(\space Jump \space if \space no \space Equal)} \space {\color{red}JG} \space {\color{lightblue}(\space Jump \space if \space Greater)} \space {\color{red}JZ} \space {\color{lightblue}(\space Jump \space if \space Zero)}$$
+- $${\color{orange}Instruction \space \color{red}JE} \space {\color{lightblue}(\space Jump \space if \space Equal), \space} \space {\color{red}JL} \space {\color{lightblue}(\space Jump \space if \space Less), \space} \space {\color{red}JLE} \space {\color{lightblue}(\space Jump \space if \space Less \space Equal), \space} \space {\color{red}JNE} \space {\color{lightblue}(\space Jump \space if \space no \space Equal)} \space {\color{red}JG} \space {\color{lightblue}(\space Jump \space if \space Greater)} \space {\color{red}JZ} \space {\color{lightblue}(\space Jump \space if \space Zero)}$$
 - Operand(s) Supported: Relative displacement
 - Description: The JE instruction performs a jump to a specified target address if the Zero Flag (ZF) is set, indicating that the two compared operands are equal.
 ---
