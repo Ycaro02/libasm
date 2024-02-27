@@ -45,6 +45,9 @@
 - Operand(s) Supported: Source, Destination
 - Description: The IMUL (Integer MULtiply) instruction performs signed integer multiplication of the source operand with the destination operand. It stores the result in the destination operand, and it may also set the overflow and carry flags depending on the result.
 
+### $${\color{red}INC}$$
+- Operand(s) Supported: Source
+- Description: The INC instruction increment the source operand, similar to add 1.
 ---
 
 ---
