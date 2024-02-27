@@ -114,6 +114,7 @@
 - Operand(s) Supported: None
 - Description: The REP (REPeat) instruction is used in conjunction with string manipulation instructions such as MOVS, STOS, INS, and OUTS. It causes the specified string operation to repeat until the ECX register becomes zero or the specified condition is met.
 
+
 ### $${\color{orange}Instruction \space \color{red}REPZ}$$
 - Operand(s) Supported: None
 - Description: The REPZ (REPeat while Zero) instruction is a specific form of the REP instruction. It causes the string operation to repeat while the Zero Flag (ZF) is set, or until the ECX register becomes zero.
