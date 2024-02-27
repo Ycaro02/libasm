@@ -24,6 +24,9 @@
 - Operand(s) Supported: Source, Destination
 - Description: The MOVSXD (MOVe with Sign eXtension of Doubleword) instruction is used in 64-bit mode to move a signed doubleword from a 32-bit source to a 64-bit destination, sign-extending the value to fill the 64-bit destination.
 
+### $${\color{red}XCHG}$$
+- Operand(s) Supported: Source, Destination
+- Description: EXCHanGes the contents of the destination (first) and source (second) operands. The operands can be two general-purpose registers or a register and a memory location.
 ---
 
 ---

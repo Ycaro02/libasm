@@ -41,8 +41,8 @@ _strcpy_exit:
 
 ;This case is undefined behaviors and cause segfault strcpy("", "hey"): 
 ;man strcpy 3:
-;These  functions  copy  the string pointed to by src, into a string at the buffer pointed to by dst.  The programmer is responsible for allocating a
-;destination buffer large enough, that is, strlen(src) + 1
+;These  functions  copy  the string pointed to by src, into a string at the buffer pointed to by dst.  
+;The programmer is responsible for allocating a destination buffer large enough, that is, strlen(src) + 1
 ;Subject:
 ;Your functions should not quit unexpectedly (segmentation fault, bus error, double
 ;free, etc) apart from undefined behaviors.
