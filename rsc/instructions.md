@@ -24,11 +24,11 @@
 ## $${\color{yellow}Instructions: CMP, SETE, JE, JL, JNE, JLE, JG, JZ}$$
 
 ---
-$${\color{orange}Instruction \space \color{red}CMP}$$
+### $${\color{orange}Instruction \space \color{red}CMP}$$
 - Operand(s) Supported: Source, Destination
 - Description: The CMP (CoMPare) instruction compares the values of two operands. It performs a subtraction between the operands but does not store the result, only updating the status flags. It is commonly used in conditional branching instructions to determine whether a branch should be taken based on the result of the comparison.
 
-$${\color{orange}Instruction \space \color{red}SETE}$$
+### $${\color{orange}Instruction \space \color{red}SETE}$$
 - Operand(s) Supported: Destination
 - Description: The SETE (SET if Equal) instruction sets the destination operand to 1 if the Zero Flag (ZF) is set (indicating that the previous comparison resulted in equality); otherwise, it sets the destination operand to 0.
 
@@ -42,11 +42,11 @@ $${\color{orange}Instruction \space \color{red}SETE}$$
 ## $${\color{yellow}Instructions: SYSCALL, CALL}$$
 
 ---
-$${\color{orange}Instruction \space \color{red}SYSCALL}$$
+### $${\color{orange}Instruction \space \color{red}SYSCALL}$$
 - Operand(s) Supported: None
 - Description: The SYSCALL instruction is used in 64-bit mode to make a system call to the kernel. It transfers control to the operating system to request services such as I/O operations, process management, and more.
 
-$${\color{orange}Instruction \space \color{red}CALL}$$
+### $${\color{orange}Instruction \space \color{red}CALL}$$
 - Operand(s) Supported: Target address
 - Description: The CALL instruction is used to call a subroutine or procedure. It pushes the return address onto the stack and then jumps to the specified target address. Upon completion of the subroutine, the RET instruction is typically used to return control to the calling routine.
 
