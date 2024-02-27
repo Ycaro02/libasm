@@ -2,19 +2,19 @@
 ## $${\color{yellow}Instructions: MOV, MOVZX, MOVSX, MOVSXD}$$
 
 ---
-$${\color{orange}Instruction \space \color{red}MOV}$$
+### $${\color{orange}Instruction \space \color{red}MOV}$$
 - Operand(s) Supported: Source, Destination
 - Description: The MOV (MOVe) instruction is used to move data from a source to a destination.
 
-$${\color{orange}Instruction \space \color{red}MOVZX}$$
+### $${\color{orange}Instruction \space \color{red}MOVZX}$$
 - Operand(s) Supported: Source, Destination
 - Description: The MOVZX (MOVe with Zero eXtension) instruction moves the source operand to the destination operand, zero-extending it to the size of the destination operand. It is typically used to clear upper bits when moving data between registers or memory locations of different sizes.
 
-$${\color{orange}Instruction \space \color{red}MOVSX}$$
+### $${\color{orange}Instruction \space \color{red}MOVSX}$$
 - Operand(s) Supported: Source, Destination
 - Description: The MOVSX (MOVe with Sign eXtension) instruction moves the source operand to the destination operand, sign-extending it to the size of the destination operand. It is commonly used to preserve the sign of data when moving between registers or memory locations of different sizes.
 
-$${\color{orange}Instruction \space \color{red}MOVSXD}$$
+### $${\color{orange}Instruction \space \color{red}MOVSXD}$$
 - Operand(s) Supported: Source, Destination
 - Description: The MOVSXD (MOVe with Sign eXtension of Doubleword) instruction is used in 64-bit mode to move a signed doubleword from a 32-bit source to a 64-bit destination, sign-extending the value to fill the 64-bit destination.
 
