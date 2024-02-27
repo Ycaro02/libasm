@@ -7,7 +7,7 @@
 - Operand(s) Supported: Source, Destination
 - Description: The MOV (MOVe) instruction is used to move data from a source to a destination.
 ### $${\color{red}MOVSB}$$
-```bash
+```
 Operand(s) Supported: None
 Description: The MOVSB (MOVe String Byte) instruction moves a byte of data from the memory location 
 addressed by the source index register (SI) to the memory location addressed by the destination
