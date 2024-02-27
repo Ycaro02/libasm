@@ -4,45 +4,76 @@
 ## $${\color{orange}Register \space Value \space Assignment \space}$$
 ---
 ### $${\color{red}MOV}$$
-- Operand(s) Supported: Source, Destination
-- Description: The MOV (MOVe) instruction is used to move data from a source to a destination.
+```
+Operand(s) Supported: Source, Destination
+Description: The MOV (MOVe) instruction is used to move data 
+from a source to a destination.
+```
 
 ### $${\color{red}MOVZX}$$
-- Operand(s) Supported: Source, Destination
-- Description: The MOVZX (MOVe with Zero eXtension) instruction moves the source operand to the destination operand, zero-extending it to the size of the destination operand. It is typically used to clear upper bits when moving data between registers or memory locations of different sizes.
+```
+Operand(s) Supported: Source, Destination
+Description: The MOVZX (MOVe with Zero eXtension) instruction moves the source
+operand to the destination operand, zero-extending it to the size of the
+destination operand. It is typically used to clear upper bits when moving data
+between registers or memory locations of different sizes.
+```
 
 ### $${\color{red}MOVSX}$$
-- Operand(s) Supported: Source, Destination
-- Description: The MOVSX (MOVe with Sign eXtension) instruction moves the source operand to the destination operand, sign-extending it to the size of the destination operand. It is commonly used to preserve the sign of data when moving between registers or memory locations of different sizes.
+```
+Operand(s) Supported: Source, Destination
+Description: The MOVSX (MOVe with Sign eXtension) instruction moves the source
+operand to the destination operand, sign-extending it to the size of the destination
+operand. It is commonly used to preserve the sign of data when moving between
+registers or memory locations of different sizes.
+```
 
 ### $${\color{red}MOVSXD}$$
-- Operand(s) Supported: Source, Destination
-- Description: The MOVSXD (MOVe with Sign eXtension of Doubleword) instruction is used in 64-bit mode to move a signed doubleword from a 32-bit source to a 64-bit destination, sign-extending the value to fill the 64-bit destination.
+```
+Operand(s) Supported: Source, Destination
+Description: The MOVSXD (MOVe with Sign eXtension of Doubleword) instruction
+is used in 64-bit mode to move a signed doubleword from a 32-bit source to
+a 64-bit destination, sign-extending the value to fill the 64-bit destination.
+```
 
 ### $${\color{red}XCHG}$$
-- Operand(s) Supported: Source, Destination
-- Description: EXCHanGes the contents of the destination (first) and source (second) operands. The operands can be two general-purpose registers or a register and a memory location.
----
-
----
+```
+Operand(s) Supported: Source, Destination
+Description: EXCHanGes the contents of the destination and source operands.
+The operands can be two general-purpose registers or a register and a memory location.
+```
 ## $${\color{lightgreen}Instructions: ADD, SUB, IMUL}$$
 ## $${\color{orange}Register \space Value \space Basic \space Operation}$$
----
+```
 ### $${\color{red}ADD}$$
-- Operand(s) Supported: Source, Destination
-- Description: The ADD instruction adds the source operand to the destination operand and stores the result in the destination operand. It updates the status flags based on the result of the addition.
+Operand(s) Supported: Source, Destination
+Description: The ADD instruction adds the source operand to the destination operand
+and stores the result in the destination operand.
+It updates the status flags based on the result of the addition.
+```
 
 ### $${\color{red}SUB}$$
-- Operand(s) Supported: Source, Destination
-- Description: The SUB (SUBtract) instruction subtracts the source operand from the destination operand and stores the result in the destination operand. It updates the status flags based on the result of the subtraction.
+```
+Operand(s) Supported: Source, Destination
+Description: The SUB (SUBtract) instruction subtracts the source operand from the
+destination operand and stores the result in the destination operand.
+It updates the status flags based on the result of the subtraction.
+```
 
 ### $${\color{red}IMUL}$$
-- Operand(s) Supported: Source, Destination
-- Description: The IMUL (Integer MULtiply) instruction performs signed integer multiplication of the source operand with the destination operand. It stores the result in the destination operand, and it may also set the overflow and carry flags depending on the result.
+```
+Operand(s) Supported: Source, Destination
+Description: The IMUL (Integer MULtiply) instruction performs signed integer
+multiplication of the source operand with the destination operand.
+It stores the result in the destination operand, and it may also set the overflow
+and carry flags depending on the result.
+```
 
 ### $${\color{red}INC}$$
-- Operand(s) Supported: Source
-- Description: The INC instruction increment the source operand, similar to add 1.
+```
+Operand(s) Supported: Source
+Description: The INC instruction increment the source operand, similar to add 1.
+```
 
 ---
 
@@ -51,16 +82,30 @@
 ## $${\color{orange}Register \space Value \space Binary \space Operation}$$
 ---
 ### $${\color{red}TEST}$$
-- Operand(s) Supported: Source, Destination
-- Description: The TEST instruction performs a bitwise AND operation between the source and destination operands, updating the status flags based on the result without storing the result. It is often used to check for the presence of specific bits or to perform a null test.
+```
+Operand(s) Supported: Source, Destination
+Description: The TEST instruction performs a bitwise AND operation between the 
+sourceand destination operands, updating the status flags based on the result without
+storingthe result. It is often used to check for the presence of specific bits 
+or to perform a null test.
+```
 
 ### $${\color{red}XOR}$$
-- Operand(s) Supported: Source, Destination
-- Description: The XOR (eXclusive OR) instruction performs a bitwise XOR operation between the source and destination operands, storing the result in the destination operand. Each bit of the result is set to 1 if the corresponding bits of the operands are different, otherwise, it is set to 0. XOR operations are commonly used for bitwise manipulation, clearing specific bits, or toggling bits.
+```
+Operand(s) Supported: Source, Destination
+Description: The XOR (eXclusive OR) instruction performs a bitwise XOR operation between
+the source and destination operands, storing the result in the destination operand.
+Each bit of the result is set to 1 if the corresponding bits of the operands are different
+, otherwise, it is set to 0. XOR operations are commonly used for bitwise manipulation
+, clearing specific bits, or toggling bits.
+```
 
 ### $${\color{red}NEG}$$
-- Operand(s) Supported: Destination
-- Description: The NEG (NEGate) instruction negates the value of the destination operand. It performs a two's complement negation, effectively changing the sign of the operand.
+```
+Operand(s) Supported: Destination
+Description: The NEG (NEGate) instruction negates the value of the destination operand.
+It performs a two's complement negation, effectively changing the sign of the operand.
+```
 
 ---
 
