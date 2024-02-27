@@ -1,5 +1,5 @@
 ---
-## $${\color{yellow}Instructions: MOV, MOVZX, MOVSX, MOVSXD}$$
+## $${\color{lightgreen}Instructions: MOV, MOVZX, MOVSX, MOVSXD}$$
 
 ---
 ### $${\color{orange}Instruction \space \color{red}MOV}$$
@@ -21,7 +21,7 @@
 ---
 
 ---
-## $${\color{yellow}Instructions: CMP, SETE, JE, JL, JNE, JLE, JG, JZ}$$
+## $${\color{lightgreen}Instructions: CMP, SETE, JE, JL, JNE, JLE, JG, JZ}$$
 
 ---
 ### $${\color{orange}Instruction \space \color{red}CMP}$$
@@ -39,7 +39,7 @@
 ---
 
 ---
-## $${\color{yellow}Instructions: SYSCALL, CALL}$$
+## $${\color{lightgreen}Instructions: SYSCALL, CALL}$$
 
 ---
 ### $${\color{orange}Instruction \space \color{red}SYSCALL}$$
@@ -53,7 +53,7 @@
 ---
 
 ---
-## $${\color{yellow}Instructions: PUSH, POP, RET}$$
+## $${\color{lightgreen}Instructions: PUSH, POP, RET}$$
 
 ---
 ### $${\color{orange}Instruction \space \color{red}PUSH}$$
@@ -71,7 +71,7 @@
 ---
 
 ---
-## $${\color{yellow}Instructions: ADD, SUB, IMUL}$$
+## $${\color{lightgreen}Instructions: ADD, SUB, IMUL}$$
 
 ---
 ### $${\color{orange}Instruction \space \color{red}ADD}$$
@@ -89,7 +89,7 @@
 ---
 
 ---
-## $${\color{yellow}Instructions: TEST, XOR, NEG}$$
+## $${\color{lightgreen}Instructions: TEST, XOR, NEG}$$
 
 ---
 ### $${\color{orange}Instruction \space \color{red}TEST}$$
@@ -107,7 +107,7 @@
 ---
 
 ---
-## $${\color{yellow}Instructions: REP, REPZ, SCASB, CLD}$$
+## $${\color{lightgreen}Instructions: REP, REPZ, SCASB, CLD}$$
 
 ---
 ### $${\color{orange}Instruction \space \color{red}REP}$$

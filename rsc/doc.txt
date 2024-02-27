@@ -21,6 +21,8 @@ https://stackoverflow.com/questions/26783797/repnz-scas-assembly-instruction-spe
 
 
 
+colored markdown: https://github.com/orgs/community/discussions/31570
+
 /* gcc basic strlen version, basic while with jump and label, and iter on string */
 
 ft_strlen:
