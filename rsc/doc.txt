@@ -20,33 +20,6 @@ https://onecompiler.com/assembly/423f8fy9n                              --> Onli
 https://stackoverflow.com/questions/26783797/repnz-scas-assembly-instruction-specifics  --> how to while on string
 
 
-instruction speed table
-- repnz scasb:
-repnz means "repeat until zero flag is not set and cx is not zero". Each iteration decrements ecx. 
-scas or more precisely scasb compares the value in al to the memory operand (always es:[edi] or es:[di] depending on address size), 
-then sets the flags accordingly (zero flag will be set if the two values equal) and increments (or decrements, based on the direction flag) edi.
-
-
-- move movsb movzx ...
-https://docs.oracle.com/cd/E19620-01/805-4693/instructionset-64/index.html  --> how to copy data 
-movsb move data from string to string 
-
-- movsb: move string byte -> https://faculty.kfupm.edu.sa/COE/aimane/assembly/pagegen.aspx-ThemeID=1&m185_20.htm
-
-- movsxd	Cette instruction permet de copier un registre de taille inférieur dans un registre 64 bits en remplissant les bits supplémentaires avec l'extension des signes.
-
-- movzx : operandedestination(register), operandesource
-- Cette instruction permet de copier un registre de taille inférieur dans un registre de plus grande taille en remplissant les bits supplémentaires par des 0.
-
-- rep -repz -repnz
-Use the rep (repeat while equal), repnz (repeat while nonzero) or repz (repeat while zero) prefixes in conjunction with string operations. 
-Each prefix causes the associated string instruction to repeat until the count register (CX) or the zero flag (ZF) matches a tested condition.
-
--test & logical operator
-
-- jmp je jz ..
-https://www.tutorialspoint.com/assembly_programming/assembly_conditions.htm ----> jump usage
-
 
 /* gcc basic strlen version, basic while with jump and label, and iter on string */
 
