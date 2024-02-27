@@ -45,6 +45,20 @@
 ---
 
 ---
+## $${\color{lightgreen}Instructions: SCASB}$$
+## $${\color{orange}Special String Operation Instruction}$$
+---
+### $${\color{orange}Instruction \space \color{red}SCASB}$$
+- Operand(s) Supported: None
+- Description: The SCASB (SCan String for Byte) instruction compares the byte in the AL register with the byte at the address specified by the ES:DI or ES:EDI register pair. It sets the status flags based on the result of the comparison and increments or decrements the DI or EDI register depending on the direction flag (DF) in the FLAGS register.
+
+### $${\color{orange}Instruction \space \color{red}CLD}$$
+- Operand(s) Supported: None
+- Description: The CLD (CLear Direction flag) instruction clears the Direction Flag (DF) in the FLAGS register. This causes string manipulation instructions to auto-increment the index registers (such as DI or EDI) after each operation, allowing them to move forward through memory.
+
+---
+
+---
 ## $${\color{lightgreen}Instructions: TEST, XOR, NEG}$$
 ## $${\color{orange}Register \space Value \space Binary \space Operation}$$
 ---
@@ -115,23 +129,13 @@
 
 ---
 ## $${\color{lightgreen}Instructions: REP, REPZ, SCASB, CLD}$$
-
+## $${\color{orange}Repeat \space Instruction}$$
 ---
 ### $${\color{orange}Instruction \space \color{red}REP}$$
 - Operand(s) Supported: None
 - Description: The REP (REPeat) instruction is used in conjunction with string manipulation instructions such as MOVS, STOS, INS, and OUTS. It causes the specified string operation to repeat until the ECX register becomes zero or the specified condition is met.
 
-
 ### $${\color{orange}Instruction \space \color{red}REPZ}$$
 - Operand(s) Supported: None
 - Description: The REPZ (REPeat while Zero) instruction is a specific form of the REP instruction. It causes the string operation to repeat while the Zero Flag (ZF) is set, or until the ECX register becomes zero.
-
-### $${\color{orange}Instruction \space \color{red}SCASB}$$
-- Operand(s) Supported: None
-- Description: The SCASB (SCan String for Byte) instruction compares the byte in the AL register with the byte at the address specified by the ES:DI or ES:EDI register pair. It sets the status flags based on the result of the comparison and increments or decrements the DI or EDI register depending on the direction flag (DF) in the FLAGS register.
-
-### $${\color{orange}Instruction \space \color{red}CLD}$$
-- Operand(s) Supported: None
-- Description: The CLD (CLear Direction flag) instruction clears the Direction Flag (DF) in the FLAGS register. This causes string manipulation instructions to auto-increment the index registers (such as DI or EDI) after each operation, allowing them to move forward through memory.
-
 ---
