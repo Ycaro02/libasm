@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assembly Instructions</title>
+</head>
+<body>
+
+<h2 style="color:yellow">Instructions: MOV, MOVZX, MOVSX, MOVSXD</h2>
+
+<p><strong>Instruction:</strong> <span style="color:red">MOV</span><br>
+<strong>Operand(s) Supported:</strong> Source, Destination<br>
+<strong>Description:</strong> The <span style="color:red">MOV</span> (MOVe) instruction is used to move data from a source to a destination.</p>
+
+<p><strong>Instruction:</strong> <span style="color:red">MOVZX</span><br>
+<strong>Operand(s) Supported:</strong> Source, Destination<br>
+<strong>Description:</strong> The <span style="color:red">MOVZX</span> (MOVe with Zero eXtension) instruction moves the source operand to the destination operand, zero-extending it to the size of the destination operand. It is typically used to clear upper bits when moving data between registers or memory locations of different sizes.</p>
+
+<p><strong>Instruction:</strong> <span style="color:red">MOVSX</span><br>
+<strong>Operand(s) Supported:</strong> Source, Destination<br>
+<strong>Description:</strong> The <span style="color:red">MOVSX</span> (MOVe with Sign eXtension) instruction moves the source operand to the destination operand, sign-extending it to the size of the destination operand. It is commonly used to preserve the sign of data when moving between registers or memory locations of different sizes.</p>
+
+<p><strong>Instruction:</strong> <span style="color:red">MOVSXD</span><br>
+<strong>Operand(s) Supported:</strong> Source, Destination<br>
+<strong>Description:</strong> The <span style="color:red">MOVSXD</span> (MOVe with Sign eXtension of Doubleword) instruction is used in 64-bit mode to move a signed doubleword from a 32-bit source to a 64-bit destination, sign-extending the value to fill the 64-bit destination.</p>
+
+<h2 style="color:yellow">Instructions: CMP, SETE, JE, JL, JNE, JLE, JG, JZ</h2>
+
+<p><strong>Instruction:</strong> <span style="color:red">CMP</span><br>
+<strong>Operand(s) Supported:</strong> Source, Destination<br>
+<strong>Description:</strong> The <span style="color:red">CMP</span> (CoMPare) instruction compares the values of two operands. It performs a subtraction between the operands but does not store the result, only updating the status flags. It is commonly used in conditional branching instructions to determine whether a branch should be taken based on the result of the comparison.</p>
+
+<p><strong>Instruction:</strong> <span style="color:red">SETE</span><br>
+<strong>Operand(s) Supported:</strong> Destination<br>
+<strong>Description:</strong> The <span style="color:red">SETE</span> (SET if Equal) instruction sets the destination operand to 1 if the Zero Flag (ZF) is set (indicating that the previous comparison resulted in equality); otherwise, it sets the destination operand to 0.</p>
+
+<p><strong>Instruction:</strong> <span style="color:red">JE</span> (Jump if Equal)<br>
+<strong>Operand(s) Supported:</strong> Relative displacement<br>
+<strong>Description:</strong> The <span style="color:red">JE</span> instruction performs a jump to a specified target address if the Zero Flag (ZF) is set, indicating that the two compared operands are equal.</p>
+
+<p><strong>Instruction:</strong> <span style="color:red">JL</span> (Jump if Less), <span style="color:red">JNE</span> (Jump if no Equal), <span style="color:red">JLE</span> (Jump if Less equal), <span style="color:red">JG</span> (Jump if Greater), <span style="color:red">JZ</span> (Jump if Zero flag (ZF))<br>
+<strong>Operand(s) Supported:</strong> Relative displacement<br>
+<strong>Description:</strong> The <span style="color:red">JL</span> instruction performs a jump to a specified target address if the Sign Flag (SF) is not equal to the Overflow Flag (OF), indicating that the most recent comparison resulted in a signed less-than condition.</p>
+
+<!-- Repeat the pattern for other sections -->
+
+</body>
+</html>

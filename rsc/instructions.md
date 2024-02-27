@@ -1,7 +1,6 @@
 ## Instructions: MOV, MOVZX, MOVSX, MOVSXD
 
 ---
-
 Instruction: <font color="red">MOV</font>  
 Operand(s) Supported: Source, Destination  
 Description: The <font color="red">MOV</font> (MOVe) instruction is used to move data from a source to a destination.
