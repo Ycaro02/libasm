@@ -27,24 +27,6 @@
 ---
 
 ---
-## $${\color{lightgreen}Instructions: CMP, SETE, JE, JL, JNE, JLE, JG, JZ}$$
-## $${\color{orange}Compare \space Conditional\space}$$
----
-### $${\color{orange}Instruction \space \color{red}CMP}$$
-- Operand(s) Supported: Source, Destination
-- Description: The CMP (CoMPare) instruction compares the values of two operands. It performs a subtraction between the operands but does not store the result, only updating the status flags. It is commonly used in conditional branching instructions to determine whether a branch should be taken based on the result of the comparison.
-
-### $${\color{orange}Instruction \space \color{red}SETE}$$
-- Operand(s) Supported: Destination
-- Description: The SETE (SET if Equal) instruction sets the destination operand to 1 if the Zero Flag (ZF) is set (indicating that the previous comparison resulted in equality); otherwise, it sets the destination operand to 0.
-
-### $${\color{orange}Instruction \space \color{red}JE} \space {\color{lightblue}(\space Jump \space if \space Equal), \space} \space {\color{red}JL} \space {\color{lightblue}(\space Jump \space if \space Less), \space} \space {\color{red}JG} \space {\color{lightblue}(\space Jump \space if \space Greater), \space} \space {\color{red}JZ} \space {\color{lightblue}(\space Jump \space if \space Zero) \space ...}$$
-### $${\color{orange}Instruction \space \color{red}JLE} \space {\color{lightblue}(\space Jump \space if \space Less \space Equal), \space} \space {\color{red}JNE} \space {\color{lightblue}(\space Jump \space if \space no \space Equal), \space} \space {\color{red}JGE} \space {\color{lightblue}(\space Jump \space if \space Greater \space Equal) \space ...}$$
-- Operand(s) Supported: Relative displacement
-- Description: The JE instruction performs a jump to a specified target address if the Zero Flag (ZF) is set, indicating that the two compared operands are equal.
----
-
----
 ## $${\color{lightgreen}Instructions: SYSCALL, CALL}$$
 ## $${\color{orange}Syscall \space Classic \space Call}$$
 ---
@@ -111,6 +93,24 @@
 - Operand(s) Supported: Destination
 - Description: The NEG (NEGate) instruction negates the value of the destination operand. It performs a two's complement negation, effectively changing the sign of the operand.
 
+---
+
+---
+## $${\color{lightgreen}Instructions: CMP, SETE, JE, JL, JNE, JLE, JG, JZ}$$
+## $${\color{orange}Compare \space and \space Conditional \space operation \space}$$
+---
+### $${\color{orange}Instruction \space \color{red}CMP}$$
+- Operand(s) Supported: Source, Destination
+- Description: The CMP (CoMPare) instruction compares the values of two operands. It performs a subtraction between the operands but does not store the result, only updating the status flags. It is commonly used in conditional branching instructions to determine whether a branch should be taken based on the result of the comparison.
+
+### $${\color{orange}Instruction \space \color{red}SETE}$$
+- Operand(s) Supported: Destination
+- Description: The SETE (SET if Equal) instruction sets the destination operand to 1 if the Zero Flag (ZF) is set (indicating that the previous comparison resulted in equality); otherwise, it sets the destination operand to 0.
+
+### $${\color{orange}Instruction \space \color{red}JE} \space {\color{lightblue}(\space Jump \space if \space Equal), \space} \space {\color{red}JL} \space {\color{lightblue}(\space Jump \space if \space Less), \space} \space {\color{red}JG} \space {\color{lightblue}(\space Jump \space if \space Greater), \space} \space {\color{red}JZ} \space {\color{lightblue}(\space Jump \space if \space Zero) \space ...}$$
+### $${\color{orange}Instruction \space \color{red}JLE} \space {\color{lightblue}(\space Jump \space if \space Less \space Equal), \space} \space {\color{red}JNE} \space {\color{lightblue}(\space Jump \space if \space no \space Equal), \space} \space {\color{red}JGE} \space {\color{lightblue}(\space Jump \space if \space Greater \space Equal) \space ...}$$
+- Operand(s) Supported: Relative displacement
+- Description: The JE instruction performs a jump to a specified target address if the Zero Flag (ZF) is set, indicating that the two compared operands are equal.
 ---
 
 ---
