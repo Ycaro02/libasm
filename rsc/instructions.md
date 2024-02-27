@@ -36,11 +36,7 @@ $${\color{orange}Instruction \space \color{red}JE} \space {\color{lightblue}(\sp
 - Operand(s) Supported: Relative displacement
 - Description: The JE instruction performs a jump to a specified target address if the Zero Flag (ZF) is set, indicating that the two compared operands are equal.
 
-$${\color{orange}Instruction \space \color{red}JL} \space {\color{lightblue}(\space Jump \space if \space Less)}$$ 
-$${\color{orange}Instruction \space \color{red}JLE} \space {\color{lightblue}(\space Jump \space if \space Less \space Equal)}$$
-$${\color{orange}Instruction \space \color{red}JNE} \space {\color{lightblue}(\space Jump \space if \space no \space Equal)}$$
-$${\color{orange}Instruction \space \color{red}JG} \space {\color{lightblue}(\space Jump \space if \space Greater)}$$
-$${\color{orange}Instruction \space \color{red}JZ} \space {\color{lightblue}(\space Jump \space if \space Zero)}$$
+$${\color{orange}Instruction \space \color{red}JL} \space {\color{lightblue}(\space Jump \space if \space Less)}$$  $${\color{orange}Instruction \space \color{red}JLE} \space {\color{lightblue}(\space Jump \space if \space Less \space Equal)}$$ $${\color{orange}Instruction \space \color{red}JNE} \space {\color{lightblue}(\space Jump \space if \space no \space Equal)}$$ $${\color{orange}Instruction \space \color{red}JG} \space {\color{lightblue}(\space Jump \space if \space Greater)}$$ $${\color{orange}Instruction \space \color{red}JZ} \space {\color{lightblue}(\space Jump \space if \space Zero)}$$
 - Operand(s) Supported: Relative displacement
 - Description: The JL instruction performs a jump to a specified target address if the Sign Flag (SF) is not equal to the Overflow Flag (OF), indicating that the most recent comparison resulted in a signed less-than condition.
 
