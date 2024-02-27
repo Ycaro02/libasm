@@ -1,8 +1,7 @@
 ### Register --> https://wiki.osdev.org/CPU_Registers_x86-64
----
+
 ## $${\color{lightgreen}Instructions: MOV, MOVZX, MOVSX, MOVSXD}$$
 ## $${\color{orange}Register \space Value \space Assignment \space}$$
----
 ### $${\color{red}MOV}$$
 ```
 Operand(s) Supported: Source, Destination
@@ -75,12 +74,12 @@ Operand(s) Supported: Source
 Description: The INC instruction increment the source operand, similar to add 1.
 ```
 
----
 
----
+
+
 ## $${\color{lightgreen}Instructions: TEST, XOR, NEG}$$
 ## $${\color{orange}Register \space Value \space Binary \space Operation}$$
----
+
 ### $${\color{red}TEST}$$
 ```
 Operand(s) Supported: Source, Destination
@@ -107,12 +106,9 @@ Description: The NEG (NEGate) instruction negates the value of the destination o
 It performs a two's complement negation, effectively changing the sign of the operand.
 ```
 
----
-
----
 ## $${\color{lightgreen}Instructions: SCASB}$$
 ## $${\color{orange}Special  \space String  \space Operation  \space Instruction}$$
----
+
 ### $${\color{red}MOVSB}$$
 ```
 Operand(s) Supported: None
@@ -135,76 +131,118 @@ the DI or EDI register depending on the direction flag (DF) in the FLAGS registe
 
 ### $${\color{red}CLD}$$
 ```
-- Operand(s) Supported: None
-- Description: The CLD (CLear Direction flag) instruction clears the Direction Flag (DF)
+Operand(s) Supported: None
+Description: The CLD (CLear Direction flag) instruction clears the Direction Flag (DF)
 in the FLAGS register. This causes string manipulation instructions to auto-increment
 the index registers (such as DI or EDI) after each operation, allowing them
 to move forward through memory.
 ```
 
----
+
 ## $${\color{lightgreen}Instructions: CMP, SETE ... }$$
 ## $${\color{orange}Compare \space and \space Conditional \space operation \space}$$
----
+
 ### $${\color{red}CMP}$$
-- Operand(s) Supported: Source, Destination
-- Description: The CMP (CoMPare) instruction compares the values of two operands. It performs a subtraction between the operands but does not store the result, only updating the status flags. It is commonly used in conditional branching instructions to determine whether a branch should be taken based on the result of the comparison.
+```
+Operand(s) Supported: Source, Destination
+Description: The CMP (CoMPare) instruction compares the values of two operands.
+It performs a subtraction between the operands but does not store the result, 
+only updating the status flags. It is commonly used in conditional branching instructions
+to determine whether a branch should be taken based on the result of the comparison.
+```
 
 ### $${\color{red}SETE}$$
+```
 - Operand(s) Supported: Destination
-- Description: The SETE (SET if Equal) instruction sets the destination operand to 1 if the Zero Flag (ZF) is set (indicating that the previous comparison resulted in equality); otherwise, it sets the destination operand to 0.
----
+- Description: The SETE (SET if Equal) instruction sets the destination operand to 1
+if the Zero Flag (ZF) is set (indicating that the previous comparison resulted in equality);
+otherwise, it sets the destination operand to 0.
+```
 
----
+
+
 ## $${\color{lightgreen}Instructions: JMP, JE, JL, JNE, JLE, JG, JZ}$$
 ## $${\color{orange}Jump \space and \space Conditional \space Jump}$$
----
+
  #### $${\color{orange}\color{red}JE} \space {\color{lightblue}(\space Jump \space if \space Equal), \space} \space {\color{red}JL} \space {\color{lightblue}(\space Jump \space if \space Less), \space} \space {\color{red}JG} \space {\color{lightblue}(\space Jump \space if \space Greater), \space} \space {\color{red}JZ} \space {\color{lightblue}(\space Jump \space if \space Zero) \space \space ...}$$
  #### $${\color{orange}\color{red}JLE} \space {\color{lightblue}(\space Jump \space if \space Less \space Equal), \space} \space {\color{red}JNE} \space {\color{lightblue}(\space Jump \space if \space no \space Equal), \space} \space {\color{red}JGE} \space {\color{lightblue}(\space Jump \space if \space Greater \space Equal) \space \space ...}$$
 ### $${\color{red}JMP}$$
-- Operand(s) Supported: Destination
-- Description: The JMP (Jump) instruction transfers program control to a specified destination. It does not conditionally execute based on any flags or conditions; rather, it unconditionally transfers the execution flow to the specified destination address.
+```
+Operand(s) Supported: Destination
+Description: The JMP (Jump) instruction transfers program control to a specified destination.
+It does not conditionally execute based on any flags or conditions; rather,
+it unconditionally transfers the execution flow to the specified destination address.
+```
 
----
+
 ## $${\color{orange}Syscall \space Classic \space Call}$$
----
+
 ### $${\color{red}SYSCALL}$$
+```
 - Operand(s) Supported: None
-- Description: The SYSCALL instruction is used in 64-bit mode to make a system call to the kernel. It transfers control to the operating system to request services such as I/O operations, process management, and more.
+- Description: The SYSCALL instruction is used in 64-bit mode to make a
+system call to the kernel. It transfers control to the operating system
+to request services such as I/O operations, process management, and more.
+```
 
 ### $${\color{red}CALL}$$
+```
 - Operand(s) Supported: Target address
-- Description: The CALL instruction is used to call a subroutine or procedure. It pushes the return address onto the stack and then jumps to the specified target address. Upon completion of the subroutine, the RET instruction is typically used to return control to the calling routine.
----
+- Description: The CALL instruction is used to call a subroutine or procedure.
+It pushes the return address onto the stack and then jumps to the specified
+target address. Upon completion of the subroutine, the RET instruction is
+typically used to return control to the calling routine.
+```
 
----
+
+
 ## $${\color{lightgreen}Instructions: PUSH, POP, RET}$$
 ## $${\color{orange}Stack \space Manipulation \space}$$
 
----
+
 ### $${\color{red}PUSH}$$
+```
 - Operand(s) Supported: Source
-- Description: The PUSH instruction pushes the source operand onto the top of the stack. It decrements the stack pointer (ESP or RSP) and stores the operand in the memory location pointed to by the stack pointer.
+- Description: The PUSH instruction pushes the source operand onto the top of the stack.
+It decrements the stack pointer (ESP or RSP) and stores the operand in the memory
+location pointed to by the stack pointer.
+```
 
 ### $${\color{red}POP}$$
+```
 - Operand(s) Supported: Destination
-- Description: The POP instruction pops the topmost value from the stack and stores it in the destination operand. It increments the stack pointer (ESP or RSP) after retrieving the value.
+- Description: The POP instruction pops the topmost value from the stack
+and stores it in the destination operand.
+It increments the stack pointer (ESP or RSP) after retrieving the value.
+```
 
 ### $${\color{red}RET}$$
+```
 - Operand(s) Supported: None
-- Description: The RET (RETurn) instruction is used to return control from a subroutine to the calling routine. It pops the return address from the stack and jumps to that address.
+- Description: The RET (RETurn) instruction is used to return control from
+a subroutine to the calling routine. It pops the return address
+from the stack and jumps to that address.
+```
 
----
 
----
+
+
 ## $${\color{lightgreen}Instructions: REP, REPZ, SCASB, CLD}$$
 ## $${\color{orange}Repeat \space Instruction}$$
----
+
 ### $${\color{red}REP}$$
-- Operand(s) Supported: None
-- Description: The REP (REPeat) instruction is used in conjunction with string manipulation instructions such as MOVS, STOS, INS, and OUTS. It causes the specified string operation to repeat until the ECX register becomes zero or the specified condition is met.
+```
+Operand(s) Supported: None
+Description: The REP (REPeat) instruction is used in conjunction with string
+manipulation instructions such as MOVS, STOS, SCASB, MOVSB ...
+It causes the specified string operation to repeat until the ECX register 
+becomes zero or the specified condition is met.
+```
 
 ### $${\color{red}REPZ}$$
-- Operand(s) Supported: None
-- Description: The REPZ (REPeat while Zero) instruction is a specific form of the REP instruction. It causes the string operation to repeat while the Zero Flag (ZF) is set, or until the ECX register becomes zero.
----
+```
+Operand(s) Supported: None
+Description: The REPZ (REPeat while Zero) instruction is a specific form of the 
+REP instruction. It causes the string operation to repeat while the Zero Flag (ZF)
+is set, or until the ECX register becomes zero.
+```
