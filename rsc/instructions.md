@@ -32,7 +32,7 @@ $${\color{orange}Instruction \space \color{red}SETE}$$
 - Operand(s) Supported: Destination
 - Description: The SETE (SET if Equal) instruction sets the destination operand to 1 if the Zero Flag (ZF) is set (indicating that the previous comparison resulted in equality); otherwise, it sets the destination operand to 0.
 
-$${\color{orange}Instruction \space \color{red}JE}$$ (Jump if Equal)
+$${\color{orange}Instruction \space \color{red}JE} \space {\color{lightblue}(\space Jump \space if \space Equal)}$$ 
 - Operand(s) Supported: Relative displacement
 - Description: The JE instruction performs a jump to a specified target address if the Zero Flag (ZF) is set, indicating that the two compared operands are equal.
 
