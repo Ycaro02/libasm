@@ -8,13 +8,13 @@
 - Description: The MOV (MOVe) instruction is used to move data from a source to a destination.
 ### $${\color{red}MOVSB}$$
 ```bash
-'Operand(s) Supported: None
+Operand(s) Supported: None
 Description: The MOVSB (MOVe String Byte) instruction moves a byte of data from the memory location 
 addressed by the source index register (SI) to the memory location addressed by the destination
 index register (DI). After the byte is moved, both the source and destination index registers
 are incremented or decremented, depending on the state of the Direction Flag (DF) in the FLAGS
 register. This instruction is commonly used for string manipulation tasks such as copying
-a string from one location to another.'
+a string from one location to another.
 ```
 
 
