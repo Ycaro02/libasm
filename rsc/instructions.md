@@ -48,6 +48,7 @@
 ### $${\color{red}INC}$$
 - Operand(s) Supported: Source
 - Description: The INC instruction increment the source operand, similar to add 1.
+
 ---
 
 ---
@@ -83,7 +84,7 @@
 ---
 
 ---
-## $${\color{lightgreen}Instructions: CMP, SETE, JE, JL, JNE, JLE, JG, JZ}$$
+## $${\color{lightgreen}Instructions: CMP, SETE ... }$$
 ## $${\color{orange}Compare \space and \space Conditional \space operation \space}$$
 ---
 ### $${\color{red}CMP}$$
@@ -93,11 +94,17 @@
 ### $${\color{red}SETE}$$
 - Operand(s) Supported: Destination
 - Description: The SETE (SET if Equal) instruction sets the destination operand to 1 if the Zero Flag (ZF) is set (indicating that the previous comparison resulted in equality); otherwise, it sets the destination operand to 0.
+---
 
+---
+## $${\color{lightgreen}Instructions: JMP, JE, JL, JNE, JLE, JG, JZ}$$
+## $${\color{orange}Jump \space and \space Conditional \space Jump}$$
+---
  #### $${\color{orange}\color{red}JE} \space {\color{lightblue}(\space Jump \space if \space Equal), \space} \space {\color{red}JL} \space {\color{lightblue}(\space Jump \space if \space Less), \space} \space {\color{red}JG} \space {\color{lightblue}(\space Jump \space if \space Greater), \space} \space {\color{red}JZ} \space {\color{lightblue}(\space Jump \space if \space Zero) \space \space ...}$$
  #### $${\color{orange}\color{red}JLE} \space {\color{lightblue}(\space Jump \space if \space Less \space Equal), \space} \space {\color{red}JNE} \space {\color{lightblue}(\space Jump \space if \space no \space Equal), \space} \space {\color{red}JGE} \space {\color{lightblue}(\space Jump \space if \space Greater \space Equal) \space \space ...}$$
-- Operand(s) Supported: Relative displacement
-- Description: The JE instruction performs a jump to a specified target address if the Zero Flag (ZF) is set, indicating that the two compared operands are equal.
+### $${\color{red}JMP}$$
+- Operand(s) Supported: Destination
+- Description: The JMP (Jump) instruction transfers program control to a specified destination. It does not conditionally execute based on any flags or conditions; rather, it unconditionally transfers the execution flow to the specified destination address.
 ---
 
 ---
