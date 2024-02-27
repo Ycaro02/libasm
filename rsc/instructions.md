@@ -27,39 +27,6 @@
 ---
 
 ---
-## $${\color{lightgreen}Instructions: SYSCALL, CALL}$$
-## $${\color{orange}Syscall \space Classic \space Call}$$
----
-### $${\color{orange}Instruction \space \color{red}SYSCALL}$$
-- Operand(s) Supported: None
-- Description: The SYSCALL instruction is used in 64-bit mode to make a system call to the kernel. It transfers control to the operating system to request services such as I/O operations, process management, and more.
-
-### $${\color{orange}Instruction \space \color{red}CALL}$$
-- Operand(s) Supported: Target address
-- Description: The CALL instruction is used to call a subroutine or procedure. It pushes the return address onto the stack and then jumps to the specified target address. Upon completion of the subroutine, the RET instruction is typically used to return control to the calling routine.
-
----
-
----
-## $${\color{lightgreen}Instructions: PUSH, POP, RET}$$
-## $${\color{orange}Stack \space Manipulation \space}$$
-
----
-### $${\color{orange}Instruction \space \color{red}PUSH}$$
-- Operand(s) Supported: Source
-- Description: The PUSH instruction pushes the source operand onto the top of the stack. It decrements the stack pointer (ESP or RSP) and stores the operand in the memory location pointed to by the stack pointer.
-
-### $${\color{orange}Instruction \space \color{red}POP}$$
-- Operand(s) Supported: Destination
-- Description: The POP instruction pops the topmost value from the stack and stores it in the destination operand. It increments the stack pointer (ESP or RSP) after retrieving the value.
-
-### $${\color{orange}Instruction \space \color{red}RET}$$
-- Operand(s) Supported: None
-- Description: The RET (RETurn) instruction is used to return control from a subroutine to the calling routine. It pops the return address from the stack and jumps to that address.
-
----
-
----
 ## $${\color{lightgreen}Instructions: ADD, SUB, IMUL}$$
 ## $${\color{orange}Register \space Value \space Basic \space Operation}$$
 ---
@@ -111,6 +78,39 @@
 ### $${\color{orange}Instruction \space \color{red}JLE} \space {\color{lightblue}(\space Jump \space if \space Less \space Equal), \space} \space {\color{red}JNE} \space {\color{lightblue}(\space Jump \space if \space no \space Equal), \space} \space {\color{red}JGE} \space {\color{lightblue}(\space Jump \space if \space Greater \space Equal) \space ...}$$
 - Operand(s) Supported: Relative displacement
 - Description: The JE instruction performs a jump to a specified target address if the Zero Flag (ZF) is set, indicating that the two compared operands are equal.
+---
+
+---
+## $${\color{lightgreen}Instructions: PUSH, POP, RET}$$
+## $${\color{orange}Stack \space Manipulation \space}$$
+
+---
+### $${\color{orange}Instruction \space \color{red}PUSH}$$
+- Operand(s) Supported: Source
+- Description: The PUSH instruction pushes the source operand onto the top of the stack. It decrements the stack pointer (ESP or RSP) and stores the operand in the memory location pointed to by the stack pointer.
+
+### $${\color{orange}Instruction \space \color{red}POP}$$
+- Operand(s) Supported: Destination
+- Description: The POP instruction pops the topmost value from the stack and stores it in the destination operand. It increments the stack pointer (ESP or RSP) after retrieving the value.
+
+### $${\color{orange}Instruction \space \color{red}RET}$$
+- Operand(s) Supported: None
+- Description: The RET (RETurn) instruction is used to return control from a subroutine to the calling routine. It pops the return address from the stack and jumps to that address.
+
+---
+
+---
+## $${\color{lightgreen}Instructions: SYSCALL, CALL}$$
+## $${\color{orange}Syscall \space Classic \space Call}$$
+---
+### $${\color{orange}Instruction \space \color{red}SYSCALL}$$
+- Operand(s) Supported: None
+- Description: The SYSCALL instruction is used in 64-bit mode to make a system call to the kernel. It transfers control to the operating system to request services such as I/O operations, process management, and more.
+
+### $${\color{orange}Instruction \space \color{red}CALL}$$
+- Operand(s) Supported: Target address
+- Description: The CALL instruction is used to call a subroutine or procedure. It pushes the return address onto the stack and then jumps to the specified target address. Upon completion of the subroutine, the RET instruction is typically used to return control to the calling routine.
+
 ---
 
 ---
