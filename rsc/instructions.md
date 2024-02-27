@@ -36,8 +36,7 @@ $${\color{orange}Instruction \space \color{red}JE}$$ (Jump if Equal)
 - Operand(s) Supported: Relative displacement
 - Description: The JE instruction performs a jump to a specified target address if the Zero Flag (ZF) is set, indicating that the two compared operands are equal.
 
-$${\color{orange}Instruction \space \color{red}JL} \space {\color{lightblue}(\space Jump \space if \space Less)}$$  
-$${\color{orange}Instruction \space \color{red}JNE} \space {\color{lightblue}(\space Jump \space if \space no \space Equal)}$$
+$${\color{orange}Instruction \space \color{red}JL} \space {\color{lightblue}(\space Jump \space if \space Less)}$$ $${\color{orange}Instruction \space \color{red}JNE} \space {\color{lightblue}(\space Jump \space if \space no \space Equal)}$$
 $${\color{orange}Instruction \space \color{red}JLE}$$ (Jump if Less equal)
 $${\color{orange}Instruction \space \color{red}JG}$$ (Jump if Greater)
 $${\color{orange}Instruction \space \color{red}JZ}$$ (Jump if Zero flag (ZF))
