@@ -45,20 +45,6 @@
 ---
 
 ---
-## $${\color{lightgreen}Instructions: SCASB}$$
-## $${\color{orange}Special String Operation Instruction}$$
----
-### $${\color{orange}Instruction \space \color{red}SCASB}$$
-- Operand(s) Supported: None
-- Description: The SCASB (SCan String for Byte) instruction compares the byte in the AL register with the byte at the address specified by the ES:DI or ES:EDI register pair. It sets the status flags based on the result of the comparison and increments or decrements the DI or EDI register depending on the direction flag (DF) in the FLAGS register.
-
-### $${\color{orange}Instruction \space \color{red}CLD}$$
-- Operand(s) Supported: None
-- Description: The CLD (CLear Direction flag) instruction clears the Direction Flag (DF) in the FLAGS register. This causes string manipulation instructions to auto-increment the index registers (such as DI or EDI) after each operation, allowing them to move forward through memory.
-
----
-
----
 ## $${\color{lightgreen}Instructions: TEST, XOR, NEG}$$
 ## $${\color{orange}Register \space Value \space Binary \space Operation}$$
 ---
@@ -73,6 +59,20 @@
 ### $${\color{orange}Instruction \space \color{red}NEG}$$
 - Operand(s) Supported: Destination
 - Description: The NEG (NEGate) instruction negates the value of the destination operand. It performs a two's complement negation, effectively changing the sign of the operand.
+
+---
+
+---
+## $${\color{lightgreen}Instructions: SCASB}$$
+## $${\color{orange}Special  /space String  /space Operation  /space Instruction}$$
+---
+### $${\color{orange}Instruction \space \color{red}SCASB}$$
+- Operand(s) Supported: None
+- Description: The SCASB (SCan String for Byte) instruction compares the byte in the AL register with the byte at the address specified by the ES:DI or ES:EDI register pair. It sets the status flags based on the result of the comparison and increments or decrements the DI or EDI register depending on the direction flag (DF) in the FLAGS register.
+
+### $${\color{orange}Instruction \space \color{red}CLD}$$
+- Operand(s) Supported: None
+- Description: The CLD (CLear Direction flag) instruction clears the Direction Flag (DF) in the FLAGS register. This causes string manipulation instructions to auto-increment the index registers (such as DI or EDI) after each operation, allowing them to move forward through memory.
 
 ---
 
