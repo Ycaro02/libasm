@@ -145,9 +145,9 @@ Description: The <font color="red">REP</font> (REPeat) instruction is used in co
 
 ---
 
-Instruction: <font color="red">REPZ</font>  
+Instruction: $${\color{red}REPNZ}$$  
 Operand(s) Supported: None  
-Description: The <font color="red">REPZ</font> (REPeat while Zero) instruction is a specific form of the REP instruction. It causes the string operation to repeat while the Zero Flag (ZF) is set, or until the ECX register becomes zero.
+Description: The $${\color{red}REPNZ}$$ (REPeat while Zero) instruction is a specific form of the REP instruction. It causes the string operation to repeat while the Zero Flag (ZF) is set, or until the ECX register becomes zero.
 
 ---
 
