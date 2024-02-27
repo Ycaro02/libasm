@@ -79,7 +79,7 @@
 
 ---
 ## $${\color{lightgreen}Instructions: ADD, SUB, IMUL}$$
-
+## $${\color{orange}Register \space Value \space Basic \space Operation}$$
 ---
 ### $${\color{orange}Instruction \space \color{red}ADD}$$
 - Operand(s) Supported: Source, Destination
@@ -97,7 +97,7 @@
 
 ---
 ## $${\color{lightgreen}Instructions: TEST, XOR, NEG}$$
-
+## $${\color{orange}Register \space Value \space Binary \space Operation}$$
 ---
 ### $${\color{orange}Instruction \space \color{red}TEST}$$
 - Operand(s) Supported: Source, Destination
