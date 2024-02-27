@@ -3,8 +3,8 @@
 
 ---
 $${\color{orange}Instruction \space \color{red}MOV}$$
-Operand(s) Supported: Source, Destination
-Description: The MOV (MOVe) instruction is used to move data from a source to a destination.
+- Operand(s) Supported: Source, Destination
+- Description: The MOV (MOVe) instruction is used to move data from a source to a destination.
 
 $${\color{orange}Instruction \space \color{red}MOVZX}$$
 Operand(s) Supported: Source, Destination
