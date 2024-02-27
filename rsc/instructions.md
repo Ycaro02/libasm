@@ -224,9 +224,6 @@ a subroutine to the calling routine. It pops the return address
 from the stack and jumps to that address.
 ```
 
-
-
-
 ## $${\color{lightgreen}Instructions: REP, REPZ, SCASB, CLD}$$
 ## $${\color{orange}Repeat \space Instruction}$$
 

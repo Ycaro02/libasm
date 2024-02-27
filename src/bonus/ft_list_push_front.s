@@ -12,26 +12,26 @@ extern ft_create_list_node
 
 ft_list_push_front:
 
-	push   rbp						; save rbp
-	mov    rbp, rsp
-	sub    rsp, 0x20				; alloc ox20 on stack
-	mov    qword[rbp-0x18], rdi		; save rdi at 0x18
-	mov    qword[rbp-0x20], rsi		; save rsi at 0x20
-	cmp    qword[rbp-0x18], 0x0		; if lst == NULL
-	je     _lst_push_front_exit
-	; cmp    qword[rbp-0x20], 0x0 	; if data == NULL
-	; je     _lst_push_front_exit	; NOT mandatory we are now allocated node for store this data
-	mov    rax, qword[rbp-0x20]
-	mov    rdi, rax
-	call   ft_create_list_node
-	mov    qword[rbp-0x8], rax		; move return value (allocated node) in 0x8
-	mov    rax, qword[rbp-0x18]		; get lst
-	mov    rdx, qword[rax]			; dereference it in rdx got *lst
-	mov    rax, qword[rbp-0x8]		; get new node in rax
-	mov    qword[rax+0x8], rdx			; node->next = *lst
-	mov    rax, qword[rbp-0x18] 	; rax = lst
-	mov    rdx, qword[rbp-0x8]		; rdx = node
-	mov    qword[rax], rdx			; *lst = node
+	push	rbp						; save rbp
+	mov		rbp, rsp
+	sub		rsp, 0x20				; alloc ox20 on stack
+	mov		qword[rbp-0x18], rdi		; save rdi at 0x18
+	mov		qword[rbp-0x20], rsi		; save rsi at 0x20
+	cmp		qword[rbp-0x18], 0x0		; if lst == NULL
+	je		_lst_push_front_exit
+	mov		rax, qword[rbp-0x20]
+	mov		rdi, rax
+	call	ft_create_list_node
+	cmp		rax, 0x0					; if create node return NULL
+	je		_lst_push_front_exit
+	mov		qword[rbp-0x8], rax		; move return value (allocated node) in 0x8
+	mov		rax, qword[rbp-0x18]		; get lst
+	mov		rdx, qword[rax]			; dereference it in rdx got *lst
+	mov		rax, qword[rbp-0x8]		; get new node in rax
+	mov		qword[rax+0x8], rdx			; node->next = *lst
+	mov		rax, qword[rbp-0x18] 	; rax = lst
+	mov		rdx, qword[rbp-0x8]		; rdx = node
+	mov		qword[rax], rdx			; *lst = node
    
 _lst_push_front_exit:
 	mov rsp, rbp
