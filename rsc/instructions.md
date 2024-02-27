@@ -1,7 +1,7 @@
 ### Register --> https://wiki.osdev.org/CPU_Registers_x86-64
 ---
 ## $${\color{lightgreen}Instructions: MOV, MOVZX, MOVSX, MOVSXD}$$
-## $${\color{orange}Register \space Value \space Assignment \space Instruction}$$
+## $${\color{orange}Register \space Value \space Assignment \space}$$
 ---
 ### $${\color{orange}Instruction \space \color{red}MOV}$$
 - Operand(s) Supported: Source, Destination
@@ -28,7 +28,7 @@
 
 ---
 ## $${\color{lightgreen}Instructions: CMP, SETE, JE, JL, JNE, JLE, JG, JZ}$$
-
+## $${\color{orange}Compare \space Conditional\space}$$
 ---
 ### $${\color{orange}Instruction \space \color{red}CMP}$$
 - Operand(s) Supported: Source, Destination
@@ -46,7 +46,7 @@
 
 ---
 ## $${\color{lightgreen}Instructions: SYSCALL, CALL}$$
-
+## $${\color{orange}Syscall \space Classic \space Call}$$
 ---
 ### $${\color{orange}Instruction \space \color{red}SYSCALL}$$
 - Operand(s) Supported: None
@@ -60,6 +60,7 @@
 
 ---
 ## $${\color{lightgreen}Instructions: PUSH, POP, RET}$$
+## $${\color{orange}Stack \space Manipulation \space}$$
 
 ---
 ### $${\color{orange}Instruction \space \color{red}PUSH}$$
